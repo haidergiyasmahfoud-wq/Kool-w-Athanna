@@ -17,9 +17,6 @@
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     
-    <!-- Leaflet CSS (خرائط بديلة مجانية) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
     <style>
         :root {
             --primary: #FF6B35;
@@ -51,7 +48,6 @@
             overflow-x: hidden;
         }
 
-        /* ============ animated background ============ */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -70,7 +66,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating particles */
         .floating-shapes {
             position: fixed;
             top: 0;
@@ -91,7 +86,6 @@
             50% { transform: translateY(-100px) rotate(180deg); }
         }
 
-        /* ============ SCROLLBAR ============ */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--secondary); border-radius: 10px; }
         ::-webkit-scrollbar-thumb { 
@@ -99,7 +93,6 @@
             border-radius: 10px;
         }
 
-        /* ============ HEADER ============ */
         .header {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
@@ -170,14 +163,12 @@
             cursor: pointer;
         }
 
-        /* ============ HERO SECTION WITH SLIDER ============ */
         .hero {
             margin-top: 85px;
             min-height: 100vh;
             position: relative;
         }
 
-        /* Hero Slider */
         .hero-slider {
             position: relative;
             height: 70vh;
@@ -252,7 +243,6 @@
             color: var(--primary);
         }
 
-        /* ============ PROVINCES GRID ============ */
         .section-title {
             text-align: center;
             font-size: 2rem;
@@ -260,41 +250,110 @@
             color: var(--primary);
         }
 
-        .provinces-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 20px;
-            padding: 0 5%;
+        /* ============ PROVINCES SLIDER ============ */
+        .provinces-slider-container {
+            position: relative;
+            padding: 20px 60px;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
         }
+
+        .provincesSwiper {
+            width: 100%;
+            padding: 15px 10px;
+            overflow: hidden;
+        }
+
         .province-card {
             background: var(--white);
-            padding: 25px 15px;
+            padding: 30px 20px;
             border-radius: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.4s;
             box-shadow: var(--shadow);
             border: 1px solid rgba(255,107,53,0.2);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
         }
         .province-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-10px) scale(1.03);
             border-color: var(--primary);
             box-shadow: var(--shadow-hover);
+            background: linear-gradient(135deg, #FFF5EE, #FFF0E6);
         }
         .province-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        .province-card:hover .province-icon {
+            transform: scale(1.2) rotate(5deg);
         }
         .province-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 5px;
         }
         .restaurant-count {
             color: var(--gray-text);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .province-nav-prev,
+        .province-nav-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+        .province-nav-prev:hover,
+        .province-nav-next:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .province-nav-prev {
+            right: 5px;
+        }
+        .province-nav-next {
+            left: 5px;
+        }
+
+        .province-pagination {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .province-pagination .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+        .province-pagination .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--primary);
+            transform: scale(1.3);
         }
 
         /* ============ CITY PAGE ============ */
@@ -419,7 +478,7 @@
             transform: scale(1.05);
         }
 
-        /* ============ MODAL with Google Map ============ */
+        /* ============ MODAL ============ */
         .modal {
             display: none;
             position: fixed;
@@ -503,7 +562,47 @@
             box-shadow: var(--shadow);
         }
 
-        /* ============ RESPONSIVE ============ */
+        /* ============ DEVELOPER FOOTER ============ */
+        .developer-footer {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            text-align: center;
+            padding: 25px 5%;
+            border-top: 3px solid var(--primary);
+        }
+        .developer-footer .dev-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .developer-footer .dev-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+        }
+        .developer-footer .dev-text {
+            text-align: right;
+        }
+        .developer-footer .dev-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            color: var(--secondary);
+        }
+        .developer-footer .dev-text p {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        .developer-footer .dev-text a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
         @media (max-width: 768px) {
             .search-bar {
                 display: none;
@@ -526,20 +625,29 @@
             .stat-number {
                 font-size: 1.5rem;
             }
-            .provinces-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-                padding: 0 15px;
+            .provinces-slider-container {
+                padding: 20px 45px;
             }
             .province-card {
-                padding: 15px 10px;
+                min-height: 150px;
+                padding: 20px 15px;
+            }
+            .province-icon {
+                font-size: 2.2rem;
+            }
+            .province-name {
+                font-size: 1.1rem;
+            }
+            .province-nav-prev,
+            .province-nav-next {
+                width: 38px;
+                height: 38px;
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Animated Background -->
 <div class="animated-bg"></div>
 <div class="floating-shapes" id="shapes"></div>
 
@@ -558,7 +666,7 @@
     </div>
 </header>
 
-<!-- HERO WITH SLIDER -->
+<!-- HERO -->
 <div id="mainPage">
     <div class="hero">
         <div class="hero-slider">
@@ -603,14 +711,23 @@
         </div>
 
         <h2 class="section-title">📍 اختر محافظتك</h2>
-        <div class="provinces-grid" id="provincesGrid"></div>
+        
+        <!-- PROVINCES SLIDER -->
+        <div class="provinces-slider-container">
+            <div class="swiper provincesSwiper" id="provincesSwiper">
+                <div class="swiper-wrapper" id="provincesWrapper"></div>
+            </div>
+            <div class="province-nav-prev" id="provincePrev"><i class="fas fa-chevron-right"></i></div>
+            <div class="province-nav-next" id="provinceNext"><i class="fas fa-chevron-left"></i></div>
+            <div class="province-pagination" id="provincePagination"></div>
+        </div>
     </div>
 </div>
 
 <!-- City Pages Container -->
 <div id="cityPagesContainer"></div>
 
-<!-- RESTAURANT MODAL with Google Map -->
+<!-- RESTAURANT MODAL -->
 <div id="restaurantModal" class="modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -623,30 +740,40 @@
         <div class="info-row" id="modalPhone"></div>
         <div class="info-row" id="modalHours"></div>
         <div class="info-row" id="modalPrice"></div>
-        
-        <!-- Google Map Embedded -->
         <div id="modalMap" class="google-map"></div>
-        
         <button id="modalWhatsapp" class="whatsapp-order"><i class="fab fa-whatsapp"></i> 📞 اطلب عبر واتساب</button>
     </div>
 </div>
 
+<!-- FOOTER -->
 <footer class="footer">
     <p>🍽️ <strong>أين ستأكل اليوم؟</strong> - دليلك الشامل للمطاعم في سوريا</p>
     <p style="margin-top:10px;font-size:0.8rem;">📍 جميع المحافظات السورية | أكثر من 700 مطعم موصى به | تحديثات يومية</p>
     <p style="margin-top:10px;font-size:0.7rem;">© 2024 جميع الحقوق محفوظة</p>
 </footer>
 
+<!-- DEVELOPER FOOTER - Kyntrava AI -->
+<div class="developer-footer">
+    <div class="dev-content">
+        <img src="https://imgur.com/QQou6iW.jpg" alt="Kyntrava AI Logo" class="dev-logo" onerror="this.style.display='none'">
+        <div class="dev-text">
+            <h4>🚀 تم تطوير هذا المنتج بواسطة</h4>
+            <p><a href="#" target="_blank">Kyntrava AI</a> - الذكاء الاصطناعي بأيدي عربية</p>
+            <p style="font-size:0.7rem;margin-top:5px;">حلول تقنية مبتكرة | تطوير ويب | تطبيقات موبايل | استشارات رقمية</p>
+        </div>
+    </div>
+</div>
+
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
+    // Initialize AOS
     AOS.init({ duration: 800, once: true });
 
     // Hero Slider
-    new Swiper('.heroSwiper', {
+    const heroSwiper = new Swiper('.heroSwiper', {
         loop: true,
         autoplay: { delay: 4000, disableOnInteraction: false },
         pagination: { el: '.swiper-pagination', clickable: true },
@@ -659,8 +786,9 @@
     for (let i = 0; i < 30; i++) {
         const shape = document.createElement('div');
         shape.className = 'shape';
-        shape.style.width = Math.random() * 100 + 20 + 'px';
-        shape.style.height = shape.style.width;
+        const size = Math.random() * 100 + 20;
+        shape.style.width = size + 'px';
+        shape.style.height = size + 'px';
         shape.style.left = Math.random() * 100 + '%';
         shape.style.top = Math.random() * 100 + '%';
         shape.style.animationDelay = Math.random() * 20 + 's';
@@ -690,7 +818,6 @@
         'https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg'
     ];
 
-    // Generate coordinates for each province (Google Maps compatible)
     const provinceCoords = {
         'دمشق': { lat: 33.5138, lng: 36.2765 },
         'ريف دمشق': { lat: 33.5, lng: 36.3 },
@@ -708,6 +835,23 @@
         'القنيطرة': { lat: 33.124, lng: 35.823 }
     };
 
+    const provinceIcons = {
+        'دمشق': 'landmark',
+        'ريف دمشق': 'tree',
+        'حلب': 'city',
+        'حمص': 'industry',
+        'حماة': 'water',
+        'اللاذقية': 'umbrella-beach',
+        'طرطوس': 'ship',
+        'دير الزور': 'bridge',
+        'الحسكة': 'mountain',
+        'الرقة': 'mosque',
+        'إدلب': 'leaf',
+        'السويداء': 'gem',
+        'درعا': 'fort-awesome',
+        'القنيطرة': 'hill-rockslide'
+    };
+
     function generateRestaurants(province, count = 50) {
         const restaurants = [];
         const coords = provinceCoords[province] || { lat: 33.5, lng: 36.3 };
@@ -718,7 +862,6 @@
             const rating = (3.5 + Math.random() * 1.5).toFixed(1);
             const priceRange = ['$$', '$$$', '$$$$', '$$$$$'][Math.floor(Math.random() * 4)];
             const description = `✨ أحد أرقى مطاعم ${province}، يقدم ألذ المأكولات ${cuisine} بأجواء راقية وخدمة ممتازة.`;
-            // Random offset for map location
             const latOffset = (Math.random() - 0.5) * 0.05;
             const lngOffset = (Math.random() - 0.5) * 0.05;
             
@@ -743,17 +886,84 @@
     const allRestaurants = {};
     provinces.forEach(province => { allRestaurants[province] = generateRestaurants(province, 50); });
 
+    // ============ PROVINCES SLIDER ============
+    let provincesSwiper;
+
     function renderProvinces() {
-        const grid = document.getElementById('provincesGrid');
-        grid.innerHTML = provinces.map(province => `
-            <div class="province-card" onclick="showCityPage('${province}')">
-                <div class="province-icon"><i class="fas fa-${province === 'دمشق' ? 'landmark' : province === 'اللاذقية' ? 'water' : 'city'}"></i></div>
-                <div class="province-name">${province}</div>
-                <div class="restaurant-count">🍽️ ${allRestaurants[province].length} مطعم</div>
-            </div>
-        `).join('');
+        const wrapper = document.getElementById('provincesWrapper');
+        
+        wrapper.innerHTML = provinces.map(province => {
+            const iconClass = provinceIcons[province] || 'city';
+            return `
+                <div class="swiper-slide">
+                    <div class="province-card" onclick="showCityPage('${province}')">
+                        <div class="province-icon"><i class="fas fa-${iconClass}"></i></div>
+                        <div class="province-name">${province}</div>
+                        <div class="restaurant-count">🍽️ ${allRestaurants[province].length} مطعم</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // تدمير السلايدر القديم إذا كان موجوداً
+        if (provincesSwiper) {
+            provincesSwiper.destroy(true, true);
+        }
+        
+        // إنشاء سلايدر جديد
+        provincesSwiper = new Swiper('#provincesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            centeredSlides: false,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            pagination: {
+                el: '#provincePagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: '#provinceNext',
+                prevEl: '#provincePrev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 15,
+                },
+                480: {
+                    slidesPerView: 1.8,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 25,
+                },
+                1024: {
+                    slidesPerView: 3.5,
+                    spaceBetween: 25,
+                },
+                1280: {
+                    slidesPerView: 4.5,
+                    spaceBetween: 30,
+                },
+                1536: {
+                    slidesPerView: 5.5,
+                    spaceBetween: 30,
+                },
+            },
+            speed: 800,
+            grabCursor: true,
+            observer: true,
+            observeParents: true,
+        });
     }
 
+    // ============ FUNCTIONS ============
     window.showCityPage = function(province) {
         document.getElementById('mainPage').style.display = 'none';
         const container = document.getElementById('cityPagesContainer');
@@ -762,7 +972,7 @@
         let restaurantsHTML = '';
         restaurants.forEach(rest => {
             restaurantsHTML += `
-                <div class="restaurant-card" onclick="showRestaurantDetails('${province}', '${rest.id}')">
+                <div class="restaurant-card" onclick="showRestaurantDetails('${province}', '${rest.id}')" data-aos="fade-up">
                     <div class="restaurant-image">
                         <img src="${rest.image}" alt="${rest.name}" loading="lazy" onerror="this.src='https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?w=600'">
                         <div class="rating"><i class="fas fa-star" style="color:#FFD166"></i> ${rest.rating}</div>
@@ -790,12 +1000,22 @@
                 <div class="restaurants-grid">${restaurantsHTML}</div>
             </div>
         `;
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     window.goBack = function() {
         document.getElementById('mainPage').style.display = 'block';
         document.getElementById('cityPagesContainer').innerHTML = '';
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // إعادة تهيئة السلايدر
+        setTimeout(() => {
+            if (provincesSwiper) {
+                provincesSwiper.update();
+                provincesSwiper.autoplay.start();
+            }
+        }, 300);
     };
 
     window.showRestaurantDetails = function(province, restId) {
@@ -806,13 +1026,14 @@
         document.getElementById('modalCuisine').innerHTML = `<i class="fas fa-utensils"></i> ${restaurant.cuisine}`;
         document.getElementById('modalRating').innerHTML = `<i class="fas fa-star" style="color:#FFD166"></i> ${restaurant.rating} / 5 ⭐`;
         document.getElementById('modalImage').src = restaurant.image;
+        document.getElementById('modalImage').style.display = 'block';
         document.getElementById('modalDesc').innerHTML = restaurant.description;
         document.getElementById('modalAddress').innerHTML = `<i class="fas fa-map-marker-alt"></i> 📍 ${restaurant.address}`;
         document.getElementById('modalPhone').innerHTML = `<i class="fas fa-phone"></i> 📞 ${restaurant.phone}`;
         document.getElementById('modalHours').innerHTML = `<i class="fas fa-clock"></i> 🕐 ${restaurant.openingHours}`;
         document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 مستوى السعر: ${restaurant.priceRange}`;
         
-        // Google Map Embed
+        // Google Map
         const mapDiv = document.getElementById('modalMap');
         mapDiv.innerHTML = '';
         const iframe = document.createElement('iframe');
@@ -830,12 +1051,15 @@
         document.getElementById('modalWhatsapp').onclick = () => {
             window.open(`https://wa.me/963${restaurant.phone}?text=${whatsappMsg}`, '_blank');
         };
+        document.getElementById('modalWhatsapp').style.display = 'inline-flex';
         
         document.getElementById('restaurantModal').classList.add('active');
     };
 
     function closeModal() {
         document.getElementById('restaurantModal').classList.remove('active');
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('modalWhatsapp').style.display = 'inline-flex';
     }
 
     window.globalSearch = function() {
@@ -899,8 +1123,12 @@
         }
     });
 
-    renderProvinces();
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // ============ بدء التشغيل ============
+    document.addEventListener('DOMContentLoaded', function() {
+        renderProvinces();
+    });
 </script>
 </body>
 </html>
