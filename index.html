@@ -3,18 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>أين ستأكل اليوم - دليلك السياحي للمطاعم في سوريا | 700+ مطعم</title>
+    <title>أين ستأكل اليوم - دليلك السياحي للمطاعم في سوريا | 7000+ مطعم</title>
     
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     
     <style>
@@ -27,18 +20,11 @@
             --white: #FFFFFF;
             --dark-text: #2D3436;
             --gray-text: #636E72;
-            --gradient-1: linear-gradient(135deg, #FFE8D6, #FFF4E6);
-            --gradient-2: linear-gradient(135deg, #E8F4FD, #D1E8FF);
-            --gradient-3: linear-gradient(135deg, #E8F8F5, #D1F2EB);
             --shadow: 0 20px 40px rgba(0,0,0,0.08);
             --shadow-hover: 0 30px 50px rgba(0,0,0,0.12);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Tajawal', sans-serif;
@@ -49,36 +35,20 @@
         }
 
         .animated-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
             background: linear-gradient(-45deg, #FFE8D6, #FFD6A5, #FDFFB6, #CAFFBF);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
-
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        .floating-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
+        .floating-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
         .shape {
-            position: absolute;
-            background: rgba(255,107,53,0.1);
-            border-radius: 50%;
+            position: absolute; background: rgba(255,107,53,0.1); border-radius: 50%;
             animation: float 20s infinite;
         }
         @keyframes float {
@@ -88,561 +58,167 @@
 
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--secondary); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { 
-            background: var(--primary);
-            border-radius: 10px;
-        }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
         .header {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 10000;
-            box-shadow: var(--shadow);
-            border-bottom: 3px solid var(--primary);
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            position: fixed; width: 100%; top: 0; z-index: 10000;
+            box-shadow: var(--shadow); border-bottom: 3px solid var(--primary);
         }
-
         .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            max-width: 1600px;
-            margin: auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; max-width: 1600px; margin: auto;
         }
-
         .logo h1 {
             font-size: 1.8rem;
             background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: 1px;
+            -webkit-background-clip: text; background-clip: text;
+            color: transparent; letter-spacing: 1px;
         }
-        .logo p {
-            font-size: 0.75rem;
-            color: var(--primary);
-            letter-spacing: 2px;
-        }
+        .logo p { font-size: 0.75rem; color: var(--primary); letter-spacing: 2px; }
 
         .search-bar {
-            display: flex;
-            background: var(--white);
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.1);
+            display: flex; background: var(--white); border-radius: 50px;
+            overflow: hidden; box-shadow: var(--shadow); border: 1px solid rgba(0,0,0,0.1);
         }
-        .search-bar input {
-            padding: 12px 20px;
-            background: transparent;
-            border: none;
-            width: 280px;
-            font-family: 'Tajawal', sans-serif;
+        .search-bar input { padding: 12px 20px; background: transparent; border: none; width: 280px; font-family: 'Tajawal', sans-serif; }
+        .search-bar button { background: var(--primary); border: none; padding: 12px 25px; color: white; cursor: pointer; transition: 0.3s; }
+        .search-bar button:hover { background: var(--primary-light); }
+
+        .menu-toggle { display: none; font-size: 1.8rem; color: var(--primary); background: none; border: none; cursor: pointer; }
+
+        .hero { margin-top: 85px; min-height: 100vh; position: relative; }
+        .hero-slider { position: relative; height: 70vh; min-height: 500px; overflow: hidden; border-radius: 0 0 30px 30px; }
+        .heroSwiper { width: 100%; height: 100%; }
+        .hero-slide { position: relative; display: flex; align-items: center; justify-content: center; }
+        .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1)); }
+        .hero-content { position: absolute; z-index: 2; text-align: center; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; }
+        .hero-content h1 span { color: var(--secondary); }
+
+        /* BIG STAT BANNER */
+        .big-stat-banner {
+            display: flex; justify-content: center; align-items: center;
+            margin: -50px auto 40px; position: relative; z-index: 10; padding: 0 20px;
         }
-        .search-bar button {
-            background: var(--primary);
-            border: none;
-            padding: 12px 25px;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
+        .big-stat-card {
+            background: linear-gradient(135deg, var(--primary), #e55a2b);
+            padding: 35px 60px; border-radius: 25px; text-align: center;
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.35);
+            transition: all 0.4s; color: white;
+            display: flex; align-items: center; gap: 25px; flex-wrap: wrap; justify-content: center;
         }
-        .search-bar button:hover {
-            background: var(--primary-light);
+        .big-stat-card:hover { transform: translateY(-8px); box-shadow: 0 35px 60px rgba(255, 107, 53, 0.45); }
+        .big-stat-icon { font-size: 4rem; animation: bounceIcon 2s ease-in-out infinite; }
+        @keyframes bounceIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .big-stat-number { font-size: 4.5rem; font-weight: 900; line-height: 1; text-shadow: 0 3px 15px rgba(0,0,0,0.2); }
+        .big-stat-label { font-size: 1.4rem; font-weight: 700; opacity: 0.95; }
+        .big-stat-sub { font-size: 0.9rem; opacity: 0.8; margin-top: 5px; }
+
+        @media (max-width: 600px) {
+            .big-stat-card { padding: 25px 30px; gap: 15px; }
+            .big-stat-number { font-size: 3rem; }
+            .big-stat-icon { font-size: 2.8rem; }
+            .big-stat-label { font-size: 1.1rem; }
         }
 
-        .menu-toggle {
-            display: none;
-            font-size: 1.8rem;
-            color: var(--primary);
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
+        .section-title { text-align: center; font-size: 2rem; margin: 50px 0 30px; color: var(--primary); }
 
-        .hero {
-            margin-top: 85px;
-            min-height: 100vh;
-            position: relative;
-        }
-
-        .hero-slider {
-            position: relative;
-            height: 70vh;
-            min-height: 500px;
-            overflow: hidden;
-            border-radius: 0 0 30px 30px;
-        }
-        .heroSwiper {
-            width: 100%;
-            height: 100%;
-        }
-        .hero-slide {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
-        }
-        .hero-content {
-            position: absolute;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-        }
-        .hero-content h1 span {
-            color: var(--secondary);
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: -50px auto 40px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 10;
-            padding: 0 20px;
-        }
-        .stat-card {
-            background: var(--white);
-            padding: 25px 40px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            border-bottom: 4px solid var(--primary);
-        }
-        .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--primary);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin: 50px 0 30px;
-            color: var(--primary);
-        }
-
-        /* ============ PROVINCES SLIDER ============ */
-        .provinces-slider-container {
-            position: relative;
-            padding: 20px 60px;
-            max-width: 1400px;
-            margin: 0 auto 40px;
-        }
-
-        .provincesSwiper {
-            width: 100%;
-            padding: 15px 10px;
-            overflow: hidden;
-        }
+        /* PROVINCES SLIDER */
+        .provinces-slider-container { position: relative; padding: 20px 60px; max-width: 1400px; margin: 0 auto 40px; }
+        .provincesSwiper { width: 100%; padding: 15px 10px; overflow: hidden; }
 
         .province-card {
-            background: var(--white);
-            padding: 30px 20px;
-            border-radius: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(255,107,53,0.2);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 180px;
+            background: var(--white); border-radius: 20px; text-align: center;
+            cursor: pointer; transition: all 0.4s; box-shadow: var(--shadow);
+            border: 1px solid rgba(255,107,53,0.2); height: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: flex-start; min-height: 300px; overflow: hidden;
         }
-        .province-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-hover);
-            background: linear-gradient(135deg, #FFF5EE, #FFF0E6);
-        }
-        .province-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            transition: transform 0.3s;
-        }
-        .province-card:hover .province-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-        .province-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .restaurant-count {
-            color: var(--gray-text);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+        .province-card:hover { transform: translateY(-10px) scale(1.03); border-color: var(--primary); box-shadow: var(--shadow-hover); }
+        .province-image { width: 100%; height: 180px; object-fit: cover; transition: transform 0.4s; }
+        .province-card:hover .province-image { transform: scale(1.08); }
+        .province-card-body { padding: 20px; display: flex; flex-direction: column; align-items: center; flex: 1; justify-content: center; }
+        .province-icon { font-size: 1.8rem; color: var(--primary); margin-bottom: 8px; transition: transform 0.3s; }
+        .province-card:hover .province-icon { transform: scale(1.2) rotate(5deg); }
+        .province-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 5px; }
+        .restaurant-count { color: var(--gray-text); font-size: 0.9rem; font-weight: 500; }
 
-        .province-nav-prev,
-        .province-nav-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: var(--white);
-            border-radius: 50%;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 1.3rem;
-            transition: all 0.3s;
-            border: 2px solid var(--primary);
+        .province-nav-prev, .province-nav-next {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 50px; height: 50px; background: var(--white); border-radius: 50%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2); cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 1.3rem; transition: all 0.3s; border: 2px solid var(--primary);
         }
-        .province-nav-prev:hover,
-        .province-nav-next:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-50%) scale(1.1);
-        }
-        .province-nav-prev {
-            right: 5px;
-        }
-        .province-nav-next {
-            left: 5px;
-        }
+        .province-nav-prev:hover, .province-nav-next:hover { background: var(--primary); color: white; transform: translateY(-50%) scale(1.1); }
+        .province-nav-prev { right: 5px; }
+        .province-nav-next { left: 5px; }
 
-        .province-pagination {
-            position: relative;
-            margin-top: 20px;
-            text-align: center;
-        }
-        .province-pagination .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-            background: var(--primary);
-            opacity: 0.3;
-        }
-        .province-pagination .swiper-pagination-bullet-active {
-            opacity: 1;
-            background: var(--primary);
-            transform: scale(1.3);
-        }
+        .province-pagination { position: relative; margin-top: 20px; text-align: center; }
+        .province-pagination .swiper-pagination-bullet { width: 12px; height: 12px; background: var(--primary); opacity: 0.3; }
+        .province-pagination .swiper-pagination-bullet-active { opacity: 1; background: var(--primary); transform: scale(1.3); }
 
-        /* ============ CITY PAGE ============ */
-        .city-page {
-            display: none;
-            min-height: 100vh;
-            padding: 100px 5% 60px;
-        }
-        .city-page.active {
-            display: block;
-        }
-        .city-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        .city-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-        .back-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .back-btn:hover {
-            background: var(--primary-light);
-            transform: translateX(-8px);
-        }
+        /* CITY PAGE */
+        .city-page { display: none; min-height: 100vh; padding: 100px 5% 60px; }
+        .city-page.active { display: block; }
+        .city-header { text-align: center; margin-bottom: 40px; }
+        .city-header h2 { font-size: 2.5rem; color: var(--primary); }
+        .back-btn { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-size: 1rem; margin-bottom: 20px; transition: 0.3s; display: inline-block; }
+        .back-btn:hover { background: var(--primary-light); transform: translateX(-8px); }
 
-        /* ============ RESTAURANTS GRID ============ */
-        .restaurants-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .restaurant-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-        }
-        .restaurant-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
-        .restaurant-image {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-        .restaurant-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .restaurant-card:hover .restaurant-image img {
-            transform: scale(1.08);
-        }
-        .rating {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(0,0,0,0.7);
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: var(--secondary);
-        }
-        .restaurant-info {
-            padding: 20px;
-        }
-        .restaurant-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-        .restaurant-cuisine {
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-        }
-        .restaurant-desc {
-            font-size: 0.85rem;
-            color: var(--gray-text);
-            margin-bottom: 15px;
-        }
-        .restaurant-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-        .price-range {
-            color: var(--primary);
-            font-weight: 700;
-        }
-        .btn-details {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-details:hover {
-            background: var(--primary-light);
-            transform: scale(1.05);
-        }
+        /* RESTAURANTS GRID */
+        .restaurants-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .restaurant-card { background: var(--white); border-radius: 20px; overflow: hidden; transition: all 0.4s; cursor: pointer; box-shadow: var(--shadow); }
+        .restaurant-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+        .restaurant-image { height: 220px; overflow: hidden; position: relative; }
+        .restaurant-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .restaurant-card:hover .restaurant-image img { transform: scale(1.08); }
+        .rating { position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.7); padding: 5px 12px; border-radius: 50px; font-size: 0.8rem; color: var(--secondary); }
+        .restaurant-info { padding: 20px; }
+        .restaurant-info h3 { font-size: 1.3rem; margin-bottom: 5px; color: var(--primary); }
+        .restaurant-cuisine { color: var(--accent); font-size: 0.85rem; margin-bottom: 10px; }
+        .restaurant-desc { font-size: 0.85rem; color: var(--gray-text); margin-bottom: 15px; }
+        .restaurant-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee; }
+        .price-range { color: var(--primary); font-weight: 700; }
+        .btn-details { background: var(--primary); color: white; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+        .btn-details:hover { background: var(--primary-light); transform: scale(1.05); }
 
-        /* ============ MODAL ============ */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 99999;
-            align-items: center;
-            justify-content: center;
-            overflow-y: auto;
-        }
-        .modal.active {
-            display: flex;
-        }
-        .modal-content {
-            background: var(--white);
-            max-width: 900px;
-            width: 90%;
-            border-radius: 30px;
-            padding: 30px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        .modal-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin: 20px 0;
-        }
-        .google-map {
-            width: 100%;
-            height: 300px;
-            border-radius: 20px;
-            margin: 15px 0;
-            border: 2px solid var(--primary);
-        }
-        .whatsapp-order {
-            background: #25D366;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-            margin-top: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
-        .info-row {
-            margin: 12px 0;
-            padding: 8px;
-            background: #f8f9fa;
-            border-radius: 12px;
-        }
+        /* MODAL */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99999; align-items: center; justify-content: center; overflow-y: auto; }
+        .modal.active { display: flex; }
+        .modal-content { background: var(--white); max-width: 900px; width: 90%; border-radius: 30px; padding: 30px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .modal-close { position: absolute; top: 20px; left: 20px; background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; }
+        .modal-img { width: 100%; height: 250px; object-fit: cover; border-radius: 20px; margin: 20px 0; }
+        .google-map { width: 100%; height: 300px; border-radius: 20px; margin: 15px 0; border: 2px solid var(--primary); }
+        .whatsapp-order { background: #25D366; color: white; padding: 12px 25px; border-radius: 50px; border: none; cursor: pointer; margin-top: 15px; display: inline-flex; align-items: center; gap: 10px; font-size: 1rem; }
+        .info-row { margin: 12px 0; padding: 8px; background: #f8f9fa; border-radius: 12px; }
 
-        /* ============ FOOTER ============ */
-        .footer {
-            background: var(--white);
-            padding: 40px 5% 25px;
-            text-align: center;
-            margin-top: 50px;
-            border-top: 3px solid var(--primary);
-            box-shadow: var(--shadow);
-        }
+        /* FOOTER */
+        .footer { background: var(--white); padding: 40px 5% 25px; text-align: center; margin-top: 50px; border-top: 3px solid var(--primary); box-shadow: var(--shadow); }
 
-        /* ============ DEVELOPER FOOTER ============ */
-        .developer-footer {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: white;
-            text-align: center;
-            padding: 25px 5%;
-            border-top: 3px solid var(--primary);
-        }
-        .developer-footer .dev-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .developer-footer .dev-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            object-fit: contain;
-            background: white;
-            padding: 5px;
-        }
-        .developer-footer .dev-text {
-            text-align: right;
-        }
-        .developer-footer .dev-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 3px;
-            color: var(--secondary);
-        }
-        .developer-footer .dev-text p {
-            font-size: 0.8rem;
-            color: #ccc;
-        }
-        .developer-footer .dev-text a {
-            color: var(--primary-light);
-            text-decoration: none;
-            font-weight: 700;
-        }
+        .developer-footer { background: linear-gradient(135deg, #1a1a2e, #16213e); color: white; text-align: center; padding: 25px 5%; border-top: 3px solid var(--primary); }
+        .developer-footer .dev-content { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .developer-footer .dev-logo { width: 60px; height: 60px; border-radius: 15px; object-fit: contain; background: white; padding: 5px; }
+        .developer-footer .dev-text { text-align: right; }
+        .developer-footer .dev-text h4 { font-size: 1.1rem; margin-bottom: 3px; color: var(--secondary); }
+        .developer-footer .dev-text p { font-size: 0.8rem; color: #ccc; }
+        .developer-footer .dev-text a { color: var(--primary-light); text-decoration: none; font-weight: 700; }
 
         @media (max-width: 768px) {
-            .search-bar {
-                display: none;
-            }
-            .menu-toggle {
-                display: block;
-            }
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            .restaurants-grid {
-                grid-template-columns: 1fr;
-            }
-            .stats {
-                gap: 15px;
-            }
-            .stat-card {
-                padding: 15px 25px;
-            }
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            .provinces-slider-container {
-                padding: 20px 45px;
-            }
-            .province-card {
-                min-height: 150px;
-                padding: 20px 15px;
-            }
-            .province-icon {
-                font-size: 2.2rem;
-            }
-            .province-name {
-                font-size: 1.1rem;
-            }
-            .province-nav-prev,
-            .province-nav-next {
-                width: 38px;
-                height: 38px;
-            }
+            .search-bar { display: none; }
+            .menu-toggle { display: block; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .restaurants-grid { grid-template-columns: 1fr; }
+            .provinces-slider-container { padding: 20px 45px; }
+            .province-card { min-height: 270px; }
+            .province-image { height: 140px; }
+            .province-name { font-size: 1.1rem; }
+            .province-nav-prev, .province-nav-next { width: 38px; height: 38px; }
         }
     </style>
 </head>
@@ -651,7 +227,6 @@
 <div class="animated-bg"></div>
 <div class="floating-shapes" id="shapes"></div>
 
-<!-- HEADER -->
 <header class="header">
     <div class="nav-container">
         <div class="logo">
@@ -666,7 +241,6 @@
     </div>
 </header>
 
-<!-- HERO -->
 <div id="mainPage">
     <div class="hero">
         <div class="hero-slider">
@@ -684,7 +258,7 @@
                         <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="مطبخ سوري">
                         <div class="hero-overlay"></div>
                         <div class="hero-content">
-                            <h1>أكثر من <span>700</span> مطعم</h1>
+                            <h1>أكثر من <span>7,000</span> مطعم</h1>
                             <p>دليلك الشامل لأفضل الأكلات في سوريا</p>
                         </div>
                     </div>
@@ -703,16 +277,19 @@
             </div>
         </div>
 
-        <div class="stats">
-            <div class="stat-card"><div class="stat-number">14</div><div>محافظة</div></div>
-            <div class="stat-card"><div class="stat-number">700+</div><div>مطعم</div></div>
-            <div class="stat-card"><div class="stat-number">5000+</div><div>صورة</div></div>
-            <div class="stat-card"><div class="stat-number">4.8</div><div>⭐ تقييم</div></div>
+        <div class="big-stat-banner" data-aos="fade-up">
+            <div class="big-stat-card">
+                <div class="big-stat-icon">🍽️</div>
+                <div>
+                    <div class="big-stat-number">+7,000</div>
+                    <div class="big-stat-label">مطعم في سوريا</div>
+                    <div class="big-stat-sub">دليلك الشامل لـ 14 محافظة</div>
+                </div>
+            </div>
         </div>
 
         <h2 class="section-title">📍 اختر محافظتك</h2>
         
-        <!-- PROVINCES SLIDER -->
         <div class="provinces-slider-container">
             <div class="swiper provincesSwiper" id="provincesSwiper">
                 <div class="swiper-wrapper" id="provincesWrapper"></div>
@@ -724,10 +301,8 @@
     </div>
 </div>
 
-<!-- City Pages Container -->
 <div id="cityPagesContainer"></div>
 
-<!-- RESTAURANT MODAL -->
 <div id="restaurantModal" class="modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -745,14 +320,12 @@
     </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
     <p>🍽️ <strong>أين ستأكل اليوم؟</strong> - دليلك الشامل للمطاعم في سوريا</p>
-    <p style="margin-top:10px;font-size:0.8rem;">📍 جميع المحافظات السورية | أكثر من 700 مطعم موصى به | تحديثات يومية</p>
+    <p style="margin-top:10px;font-size:0.8rem;">📍 جميع المحافظات السورية | أكثر من 7,000 مطعم موصى به | تحديثات يومية</p>
     <p style="margin-top:10px;font-size:0.7rem;">© 2024 جميع الحقوق محفوظة</p>
 </footer>
 
-<!-- DEVELOPER FOOTER - Kyntrava AI -->
 <div class="developer-footer">
     <div class="dev-content">
         <img src="https://imgur.com/QQou6iW.jpg" alt="Kyntrava AI Logo" class="dev-logo" onerror="this.style.display='none'">
@@ -764,15 +337,12 @@
     </div>
 </div>
 
-<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script>
-    // Initialize AOS
     AOS.init({ duration: 800, once: true });
 
-    // Hero Slider
     const heroSwiper = new Swiper('.heroSwiper', {
         loop: true,
         autoplay: { delay: 4000, disableOnInteraction: false },
@@ -782,7 +352,6 @@
         speed: 1000,
     });
 
-    // Floating shapes
     for (let i = 0; i < 30; i++) {
         const shape = document.createElement('div');
         shape.className = 'shape';
@@ -852,6 +421,24 @@
         'القنيطرة': 'hill-rockslide'
     };
 
+    // ============ صور المحافظات (روابطك + صورتين من عندي) ============
+    const provinceImages = {
+        'دمشق': 'https://imgur.com/qxbKmUp.jpg',
+        'ريف دمشق': 'https://imgur.com/JuyiJQI.jpg',
+        'حلب': 'https://imgur.com/CIQfzQe.jpg',
+        'حمص': 'https://imgur.com/OSJci2j.jpg',
+        'حماة': 'https://imgur.com/8bAdiEp.jpg',
+        'اللاذقية': 'https://imgur.com/nvTadsG.jpg',
+        'طرطوس': 'https://imgur.com/tzXN4rF.jpg',
+        'دير الزور': 'https://imgur.com/PAywOu1.jpg',
+        'الحسكة': 'https://imgur.com/xhhxnjH.jpg',
+        'الرقة': 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop',
+        'إدلب': 'https://imgur.com/J6rg244.jpg',
+        'السويداء': 'https://imgur.com/iEa5b0S.jpg',
+        'درعا': 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop',
+        'القنيطرة': 'https://imgur.com/QlsJK5A.jpg'
+    };
+
     function generateRestaurants(province, count = 50) {
         const restaurants = [];
         const coords = provinceCoords[province] || { lat: 33.5, lng: 36.3 };
@@ -886,7 +473,6 @@
     const allRestaurants = {};
     provinces.forEach(province => { allRestaurants[province] = generateRestaurants(province, 50); });
 
-    // ============ PROVINCES SLIDER ============
     let provincesSwiper;
 
     function renderProvinces() {
@@ -894,76 +480,46 @@
         
         wrapper.innerHTML = provinces.map(province => {
             const iconClass = provinceIcons[province] || 'city';
+            const imgSrc = provinceImages[province];
             return `
                 <div class="swiper-slide">
                     <div class="province-card" onclick="showCityPage('${province}')">
-                        <div class="province-icon"><i class="fas fa-${iconClass}"></i></div>
-                        <div class="province-name">${province}</div>
-                        <div class="restaurant-count">🍽️ ${allRestaurants[province].length} مطعم</div>
+                        <img src="${imgSrc}" alt="${province}" class="province-image" loading="lazy">
+                        <div class="province-card-body">
+                            <div class="province-icon"><i class="fas fa-${iconClass}"></i></div>
+                            <div class="province-name">${province}</div>
+                            <div class="restaurant-count">🍽️ ${allRestaurants[province].length} مطعم</div>
+                        </div>
                     </div>
                 </div>
             `;
         }).join('');
 
-        // تدمير السلايدر القديم إذا كان موجوداً
-        if (provincesSwiper) {
-            provincesSwiper.destroy(true, true);
-        }
+        if (provincesSwiper) { provincesSwiper.destroy(true, true); }
         
-        // إنشاء سلايدر جديد
         provincesSwiper = new Swiper('#provincesSwiper', {
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
             centeredSlides: false,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-            pagination: {
-                el: '#provincePagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: '#provinceNext',
-                prevEl: '#provincePrev',
-            },
+            autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+            pagination: { el: '#provincePagination', clickable: true, dynamicBullets: true },
+            navigation: { nextEl: '#provinceNext', prevEl: '#provincePrev' },
             breakpoints: {
-                320: {
-                    slidesPerView: 1.2,
-                    spaceBetween: 15,
-                },
-                480: {
-                    slidesPerView: 1.8,
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 2.5,
-                    spaceBetween: 25,
-                },
-                1024: {
-                    slidesPerView: 3.5,
-                    spaceBetween: 25,
-                },
-                1280: {
-                    slidesPerView: 4.5,
-                    spaceBetween: 30,
-                },
-                1536: {
-                    slidesPerView: 5.5,
-                    spaceBetween: 30,
-                },
+                320: { slidesPerView: 1.2, spaceBetween: 15 },
+                480: { slidesPerView: 1.8, spaceBetween: 20 },
+                768: { slidesPerView: 2.5, spaceBetween: 25 },
+                1024: { slidesPerView: 3.5, spaceBetween: 25 },
+                1280: { slidesPerView: 4.5, spaceBetween: 30 },
+                1536: { slidesPerView: 5.5, spaceBetween: 30 }
             },
             speed: 800,
             grabCursor: true,
             observer: true,
-            observeParents: true,
+            observeParents: true
         });
     }
 
-    // ============ FUNCTIONS ============
     window.showCityPage = function(province) {
         document.getElementById('mainPage').style.display = 'none';
         const container = document.getElementById('cityPagesContainer');
@@ -1008,14 +564,7 @@
         document.getElementById('mainPage').style.display = 'block';
         document.getElementById('cityPagesContainer').innerHTML = '';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        
-        // إعادة تهيئة السلايدر
-        setTimeout(() => {
-            if (provincesSwiper) {
-                provincesSwiper.update();
-                provincesSwiper.autoplay.start();
-            }
-        }, 300);
+        setTimeout(() => { if (provincesSwiper) { provincesSwiper.update(); provincesSwiper.autoplay.start(); } }, 300);
     };
 
     window.showRestaurantDetails = function(province, restId) {
@@ -1033,24 +582,17 @@
         document.getElementById('modalHours').innerHTML = `<i class="fas fa-clock"></i> 🕐 ${restaurant.openingHours}`;
         document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 مستوى السعر: ${restaurant.priceRange}`;
         
-        // Google Map
         const mapDiv = document.getElementById('modalMap');
         mapDiv.innerHTML = '';
         const iframe = document.createElement('iframe');
-        iframe.width = '100%';
-        iframe.height = '300';
-        iframe.style.border = '0';
-        iframe.style.borderRadius = '15px';
-        iframe.loading = 'lazy';
-        iframe.allowFullscreen = true;
+        iframe.width = '100%'; iframe.height = '300'; iframe.style.border = '0';
+        iframe.style.borderRadius = '15px'; iframe.loading = 'lazy'; iframe.allowFullscreen = true;
         iframe.referrerPolicy = 'no-referrer-when-downgrade';
         iframe.src = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${restaurant.lat},${restaurant.lng}&zoom=15&language=ar`;
         mapDiv.appendChild(iframe);
         
         const whatsappMsg = `مرحباً، أرغب بالطلب من مطعم ${restaurant.name} في ${province}%0Aالاسم: [اكتب اسمك]%0Aالطلب: [اكتب طلبك]%0Aالعنوان: ${restaurant.address}`;
-        document.getElementById('modalWhatsapp').onclick = () => {
-            window.open(`https://wa.me/963${restaurant.phone}?text=${whatsappMsg}`, '_blank');
-        };
+        document.getElementById('modalWhatsapp').onclick = () => { window.open(`https://wa.me/963${restaurant.phone}?text=${whatsappMsg}`, '_blank'); };
         document.getElementById('modalWhatsapp').style.display = 'inline-flex';
         
         document.getElementById('restaurantModal').classList.add('active');
@@ -1065,18 +607,12 @@
     window.globalSearch = function() {
         const searchTerm = document.getElementById('globalSearch').value.toLowerCase();
         if (!searchTerm) return;
-        
         let results = [];
         for (const province in allRestaurants) {
             const found = allRestaurants[province].filter(r => r.name.toLowerCase().includes(searchTerm) || r.cuisine.toLowerCase().includes(searchTerm));
             results.push(...found.map(r => ({...r, province})));
         }
-        
-        if (results.length === 0) {
-            alert('😢 لا توجد نتائج مطابقة للبحث');
-            return;
-        }
-        
+        if (results.length === 0) { alert('😢 لا توجد نتائج مطابقة للبحث'); return; }
         let resultsHTML = `<h2 style="color:var(--primary)">🔍 نتائج البحث عن: "${searchTerm}"</h2><div style="max-height:500px;overflow-y:auto;">`;
         results.forEach(r => {
             resultsHTML += `
@@ -1088,7 +624,6 @@
             `;
         });
         resultsHTML += `</div>`;
-        
         document.getElementById('modalTitle').innerHTML = 'نتائج البحث';
         document.getElementById('modalCuisine').innerHTML = '';
         document.getElementById('modalRating').innerHTML = '';
@@ -1103,32 +638,23 @@
         document.getElementById('restaurantModal').classList.add('active');
     };
 
-    // Mobile menu
     const menuToggle = document.getElementById('menuToggle');
     let mobileMenuShowing = false;
     menuToggle.addEventListener('click', () => {
         const searchBar = document.querySelector('.search-bar');
         if (!mobileMenuShowing) {
-            searchBar.style.display = 'flex';
-            searchBar.style.position = 'fixed';
-            searchBar.style.top = '80px';
-            searchBar.style.right = '5%';
-            searchBar.style.zIndex = '9999';
-            searchBar.style.background = 'white';
+            searchBar.style.display = 'flex'; searchBar.style.position = 'fixed';
+            searchBar.style.top = '80px'; searchBar.style.right = '5%';
+            searchBar.style.zIndex = '9999'; searchBar.style.background = 'white';
             searchBar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
             mobileMenuShowing = true;
         } else {
-            searchBar.style.display = 'none';
-            mobileMenuShowing = false;
+            searchBar.style.display = 'none'; mobileMenuShowing = false;
         }
     });
 
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-    // ============ بدء التشغيل ============
-    document.addEventListener('DOMContentLoaded', function() {
-        renderProvinces();
-    });
+    document.addEventListener('DOMContentLoaded', function() { renderProvinces(); });
 </script>
 </body>
 </html>
