@@ -48,18 +48,18 @@
             --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
             --shadow-primary: 0 15px 35px rgba(255, 107, 53, 0.3);
             --info-bg: #f8f9fa;
-            --header-bg: rgba(255,255,255,0.92);
+            --header-bg: rgba(255,255,255,0.95);
             --radius-sm: 12px;
             --radius: 20px;
             --radius-lg: 25px;
             --radius-xl: 30px;
-            --header-height: 70px;
+            --header-height: 64px;
+            --header-height-desktop: 76px;
             --favorite-color: #e74c3c;
             --star-color: #f39c12;
             --gradient-bg: linear-gradient(-45deg, #FFE8D6, #FFD6A5, #FDFFB6, #CAFFBF);
         }
 
-        /* Dark Mode */
         [data-theme="dark"] {
             --bg: #1a1a2e;
             --bg-card: #16213e;
@@ -103,7 +103,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating shapes - reduced in dark mode */
         .floating-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
         .shape {
             position: absolute; border-radius: 50%;
@@ -118,101 +117,161 @@
             75% { transform: translateX(-15px); }
         }
 
-        /* ============ HEADER ============ */
+        /* ============ HEADER - MOBILE OPTIMIZED ============ */
         .header {
             background: var(--header-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             position: fixed; width: 100%; top: 0; z-index: 10000;
-            box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
+            box-shadow: 0 1px 0 var(--border);
             border-bottom: 2px solid transparent;
             transition: all 0.4s;
+            height: var(--header-height);
         }
-        .header.scrolled { border-bottom-color: var(--primary); }
+        .header.scrolled {
+            border-bottom-color: var(--primary);
+            box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
+        }
 
         .nav-container {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 16px; max-width: 1400px; margin: auto; height: var(--header-height);
+            padding: 0 10px; max-width: 1400px; margin: auto;
+            height: 100%; gap: 6px;
         }
 
-        .logo { display: flex; flex-direction: column; gap: 0; cursor: pointer; }
+        /* Logo - compact on mobile */
+        .logo {
+            display: flex; flex-direction: column; gap: 0; cursor: pointer;
+            flex-shrink: 0; min-width: 0;
+        }
         .logo h1 {
-            font-size: 1.1rem; font-weight: 800;
+            font-size: 0.95rem; font-weight: 800; white-space: nowrap;
             background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text; background-clip: text;
-            color: transparent; line-height: 1.3;
+            color: transparent; line-height: 1.2;
         }
-        .logo p { font-size: 0.6rem; color: var(--primary); letter-spacing: 1.5px; opacity: 0.8; }
+        .logo p {
+            font-size: 0.55rem; color: var(--primary); letter-spacing: 1.5px;
+            opacity: 0.8; white-space: nowrap;
+        }
 
+        /* Desktop Search - hidden on mobile */
         .search-bar-desktop { display: none; }
-        .header-actions { display: flex; align-items: center; gap: 6px; }
+
+        /* Header Actions - compact row */
+        .header-actions {
+            display: flex; align-items: center; gap: 2px; flex-shrink: 0;
+        }
         
         .icon-btn {
-            width: 38px; height: 38px; border-radius: 50%; border: none;
-            background: var(--bg-input); color: var(--text); font-size: 1rem;
-            cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center;
+            width: 34px; height: 34px; border-radius: 50%; border: none;
+            background: transparent; color: var(--text); font-size: 0.95rem;
+            cursor: pointer; transition: all 0.25s;
+            display: flex; align-items: center; justify-content: center;
             position: relative;
         }
-        .icon-btn:active { transform: scale(0.92); }
-        
-        /* Dark Mode Toggle */
+        .icon-btn:active { transform: scale(0.88); background: var(--bg-input); }
+
         .dark-toggle {
-            background: none; border: none; cursor: pointer; font-size: 1.2rem;
-            padding: 8px; transition: transform 0.5s; color: var(--text);
+            background: transparent; border: none; cursor: pointer;
+            font-size: 1rem; padding: 6px; transition: transform 0.5s;
+            color: var(--text); width: 34px; height: 34px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%;
         }
-        .dark-toggle:active { transform: rotate(180deg) scale(1.1); }
+        .dark-toggle:active { transform: rotate(180deg) scale(1.1); background: var(--bg-input); }
         .dark-toggle .fa-sun { display: none; }
         [data-theme="dark"] .dark-toggle .fa-moon { display: none; }
         [data-theme="dark"] .dark-toggle .fa-sun { display: inline; color: var(--secondary); }
 
         .lang-toggle {
-            background: var(--bg-input); border: none; padding: 6px 10px;
-            border-radius: 50px; cursor: pointer; font-size: 0.7rem;
-            font-family: 'Tajawal', sans-serif; transition: 0.3s;
-            color: var(--text); white-space: nowrap;
+            background: transparent; border: none; padding: 4px 7px;
+            border-radius: 50px; cursor: pointer; font-size: 0.65rem;
+            font-family: 'Tajawal', sans-serif; transition: 0.25s;
+            color: var(--text); white-space: nowrap; font-weight: 700;
+            display: flex; align-items: center; gap: 3px;
         }
+        .lang-toggle:active { background: var(--bg-input); }
+
         .favorites-badge { position: relative; }
         .fav-count {
-            position: absolute; top: -4px; right: -4px;
-            background: var(--favorite-color); color: white; font-size: 0.6rem;
-            width: 18px; height: 18px; border-radius: 50%;
+            position: absolute; top: -2px; right: -2px;
+            background: var(--favorite-color); color: white; font-size: 0.55rem;
+            width: 16px; height: 16px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center; font-weight: 700;
+            line-height: 1;
         }
+
+        /* Action Divider */
+        .action-divider {
+            width: 1px; height: 20px; background: var(--border);
+            margin: 0 4px; display: none;
+        }
+
+        /* Bottom Nav Bar - Mobile Quick Links */
+        .bottom-nav {
+            display: flex; position: fixed; bottom: 0; left: 0; width: 100%;
+            background: var(--header-bg); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 9999; border-top: 1px solid var(--border);
+            padding: 6px 8px; padding-bottom: max(6px, env(safe-area-inset-bottom));
+            justify-content: space-around; align-items: center;
+            box-shadow: 0 -2px 15px rgba(0,0,0,0.05);
+        }
+        .bottom-nav-item {
+            display: flex; flex-direction: column; align-items: center; gap: 2px;
+            cursor: pointer; padding: 5px 10px; border-radius: 12px;
+            transition: all 0.25s; color: var(--text-secondary); border: none;
+            background: transparent; font-family: 'Tajawal', sans-serif;
+            font-size: 0.6rem; font-weight: 500; min-width: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .bottom-nav-item i { font-size: 1.1rem; transition: 0.25s; }
+        .bottom-nav-item:active { color: var(--primary); background: rgba(255,107,53,0.08); }
+        .bottom-nav-item:active i { transform: scale(1.15); }
+        .bottom-nav-item.active { color: var(--primary); font-weight: 700; }
+        .bottom-nav-item.active i { color: var(--primary); }
 
         /* Mobile Search Overlay */
         .mobile-search-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg); z-index: 10001;
-            display: flex; flex-direction: column; padding: 20px;
+            display: flex; flex-direction: column; padding: 15px;
             transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: calc(var(--header-height) + 10px);
         }
         .mobile-search-overlay.active { transform: translateY(0); }
+        .mobile-search-overlay .search-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+        }
         .mobile-search-overlay .search-input-wrap {
             flex: 1; display: flex; background: var(--bg-input); border-radius: 50px;
             border: 2px solid transparent; transition: 0.3s; overflow: hidden;
         }
-        .mobile-search-overlay .search-input-wrap:focus-within { border-color: var(--primary); }
+        .mobile-search-overlay .search-input-wrap:focus-within { border-color: var(--primary); background: var(--bg-card); }
         .mobile-search-overlay input {
-            flex: 1; padding: 14px 18px; border: none; background: transparent;
-            font-family: 'Tajawal', sans-serif; font-size: 1rem; color: var(--text);
+            flex: 1; padding: 13px 16px; border: none; background: transparent;
+            font-family: 'Tajawal', sans-serif; font-size: 0.95rem; color: var(--text);
         }
+        .mobile-search-overlay input:focus { outline: none; }
         .mobile-search-overlay .search-submit {
             background: var(--primary); color: white; border: none;
-            padding: 14px 22px; cursor: pointer; font-size: 1.1rem;
+            padding: 13px 20px; cursor: pointer; font-size: 1rem;
         }
         .mobile-search-overlay .close-search {
-            width: 42px; height: 42px; border-radius: 50%; border: none;
-            background: var(--bg-input); font-size: 1.3rem; cursor: pointer; color: var(--text);
+            width: 38px; height: 38px; border-radius: 50%; border: none;
+            background: var(--bg-input); font-size: 1.2rem; cursor: pointer; color: var(--text);
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
         }
         .mobile-search-overlay .quick-links { display: flex; flex-wrap: wrap; gap: 8px; }
         .mobile-search-overlay .quick-link {
-            padding: 8px 16px; background: var(--bg-input); border-radius: 50px;
+            padding: 9px 16px; background: var(--bg-input); border-radius: 50px;
             font-size: 0.8rem; cursor: pointer; border: none; font-family: 'Tajawal', sans-serif;
-            color: var(--text); transition: 0.3s;
+            color: var(--text); transition: 0.25s;
         }
         .mobile-search-overlay .quick-link:active { background: var(--primary); color: white; }
 
-        /* Mobile Menu */
+        /* Mobile Menu Sidebar */
         .mobile-menu-backdrop {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5); z-index: 10000; opacity: 0; visibility: hidden;
@@ -220,398 +279,386 @@
         }
         .mobile-menu-backdrop.active { opacity: 1; visibility: visible; }
         .mobile-menu-sidebar {
-            position: fixed; top: 0; right: -300px; width: 280px; height: 100%;
-            background: var(--bg-card); z-index: 10001; transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed; top: 0; right: -290px; width: 275px; height: 100%;
+            background: var(--bg-card); z-index: 10001;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: -5px 0 30px rgba(0,0,0,0.15); overflow-y: auto;
             display: flex; flex-direction: column;
+            padding-bottom: 100px;
         }
         .mobile-menu-sidebar.active { right: 0; }
-        .mobile-menu-sidebar .menu-link {
-            display: flex; align-items: center; gap: 12px; padding: 14px;
-            border-radius: var(--radius-sm); cursor: pointer; transition: 0.3s;
-            font-weight: 500; font-size: 0.95rem; color: var(--text);
+        .mobile-menu-sidebar .menu-header {
+            padding: 18px; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
         }
-        .mobile-menu-sidebar .menu-link:active { background: rgba(255,107,53,0.1); color: var(--primary); }
+        .mobile-menu-sidebar .menu-header h3 { font-size: 1rem; color: var(--primary); }
+        .mobile-menu-sidebar .menu-header .close-menu-btn {
+            width: 34px; height: 34px; border-radius: 50%; border: none;
+            background: var(--bg-input); cursor: pointer; font-size: 1.1rem;
+            color: var(--text); display: flex; align-items: center; justify-content: center;
+        }
+        .mobile-menu-sidebar .menu-link {
+            display: flex; align-items: center; gap: 12px; padding: 13px 18px;
+            border-radius: var(--radius-sm); cursor: pointer; transition: 0.2s;
+            font-weight: 500; font-size: 0.9rem; color: var(--text);
+            margin: 3px 10px;
+        }
+        .mobile-menu-sidebar .menu-link:active { background: rgba(255,107,53,0.08); color: var(--primary); }
+        .mobile-menu-sidebar .menu-link i { width: 20px; text-align: center; font-size: 0.95rem; }
+        .mobile-menu-sidebar .menu-divider {
+            height: 1px; background: var(--border); margin: 8px 18px;
+        }
 
         /* ============ HERO ============ */
         .hero { margin-top: var(--header-height); }
         .hero-slider {
-            position: relative; height: 45vh; min-height: 320px; overflow: hidden;
+            position: relative; height: 38vh; min-height: 260px; overflow: hidden;
             border-radius: 0 0 var(--radius) var(--radius);
         }
         .heroSwiper { width: 100%; height: 100%; }
-        .hero-slide { position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 30px; }
+        .hero-slide { position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 25px; }
         .hero-slide img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%);
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
         }
         .hero-content {
             position: relative; z-index: 2; text-align: center; color: white;
-            padding: 0 20px 20px;
+            padding: 0 16px 15px;
         }
-        .hero-content h1 { font-size: 2rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+        .hero-content h1 { font-size: 1.6rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.3); line-height: 1.3; }
         .hero-content h1 span { color: var(--secondary); }
+        .hero-content p { font-size: 0.8rem; opacity: 0.9; margin-top: 3px; }
 
         /* Big Stat Banner */
-        .big-stat-banner { padding: 0 16px; margin: -30px auto 30px; position: relative; z-index: 10; }
+        .big-stat-banner { padding: 0 12px; margin: -25px auto 25px; position: relative; z-index: 10; }
         .big-stat-card {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 22px 25px; border-radius: var(--radius); text-align: center;
+            padding: 18px 20px; border-radius: var(--radius); text-align: center;
             box-shadow: var(--shadow-primary); color: white;
-            display: flex; align-items: center; gap: 15px; justify-content: center; flex-wrap: wrap;
-            transform: translateY(0); transition: transform 0.3s, box-shadow 0.3s;
+            display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap;
         }
-        .big-stat-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(255, 107, 53, 0.4); }
-        .big-stat-icon { font-size: 2.5rem; animation: bounceIcon 2s ease-in-out infinite; }
-        @keyframes bounceIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .big-stat-number { font-size: 2.8rem; font-weight: 900; line-height: 1; }
-        .big-stat-label { font-size: 1rem; font-weight: 700; }
-        .big-stat-sub { font-size: 0.7rem; opacity: 0.85; margin-top: 3px; }
+        .big-stat-icon { font-size: 2rem; animation: bounceIcon 2s ease-in-out infinite; }
+        @keyframes bounceIcon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+        .big-stat-number { font-size: 2.2rem; font-weight: 900; line-height: 1; }
+        .big-stat-label { font-size: 0.9rem; font-weight: 700; }
+        .big-stat-sub { font-size: 0.65rem; opacity: 0.85; }
 
         .section-title {
-            text-align: center; font-size: 1.3rem; margin: 30px 0 20px;
+            text-align: center; font-size: 1.15rem; margin: 25px 0 18px;
             color: var(--primary); font-weight: 700; padding: 0 16px;
-            position: relative;
         }
         .section-title::after {
-            content: ''; display: block; width: 50px; height: 3px;
-            background: var(--primary); margin: 8px auto 0; border-radius: 3px;
+            content: ''; display: block; width: 45px; height: 3px;
+            background: var(--primary); margin: 6px auto 0; border-radius: 3px;
         }
 
-        /* Nearby Button */
-        .nearby-btn-container { text-align: center; margin: 15px 0; }
+        .nearby-btn-container { text-align: center; margin: 12px 0; }
         .nearby-btn {
-            background: var(--accent); color: white; border: none; padding: 12px 28px;
+            background: var(--accent); color: white; border: none; padding: 10px 22px;
             border-radius: 50px; cursor: pointer; font-family: 'Tajawal', sans-serif;
-            font-size: 0.9rem; font-weight: 700; transition: all 0.3s;
-            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.8rem; font-weight: 700; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 6px;
         }
         .nearby-btn:active { transform: scale(0.95); }
         .nearby-btn.loading { opacity: 0.7; pointer-events: none; }
         .nearby-btn i { animation: pulse 1.5s infinite; }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
         /* ============ PROVINCES SLIDER ============ */
-        .provinces-slider-container {
-            position: relative; padding: 0 12px; max-width: 1200px; margin: 0 auto 30px;
-        }
-        .provincesSwiper { width: 100%; padding: 10px 5px; overflow: hidden; }
+        .provinces-slider-container { position: relative; padding: 0 10px; max-width: 1200px; margin: 0 auto 25px; }
+        .provincesSwiper { width: 100%; padding: 8px 3px 30px; overflow: hidden; }
         .province-card {
             background: var(--bg-card); border-radius: var(--radius); text-align: center;
-            cursor: pointer; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-sm); border: 1px solid var(--border); overflow: hidden;
-            display: flex; flex-direction: column; min-height: 220px;
-            transform: translateY(0);
+            cursor: pointer; transition: all 0.3s; box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border); overflow: hidden;
+            display: flex; flex-direction: column; min-height: 200px;
         }
         .province-card:active { transform: scale(0.96); }
-        .province-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
-        .province-image { width: 100%; height: 130px; object-fit: cover; transition: transform 0.5s; }
-        .province-card:hover .province-image { transform: scale(1.05); }
-        .province-card-body { padding: 14px 12px; display: flex; flex-direction: column; align-items: center; flex: 1; justify-content: center; gap: 3px; }
-        .province-icon { font-size: 1.4rem; color: var(--primary); transition: transform 0.3s; }
-        .province-card:hover .province-icon { transform: scale(1.2) rotate(5deg); }
-        .province-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-        .restaurant-count { color: var(--text-secondary); font-size: 0.7rem; }
+        .province-image { width: 100%; height: 120px; object-fit: cover; }
+        .province-card-body { padding: 12px 10px; display: flex; flex-direction: column; align-items: center; flex: 1; justify-content: center; gap: 2px; }
+        .province-icon { font-size: 1.2rem; color: var(--primary); }
+        .province-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+        .restaurant-count { color: var(--text-secondary); font-size: 0.65rem; }
 
         .province-nav-prev, .province-nav-next { display: none; }
-        .province-pagination { position: relative; margin-top: 15px; text-align: center; }
-        .province-pagination .swiper-pagination-bullet { width: 8px; height: 8px; background: var(--primary); opacity: 0.3; }
-        .province-pagination .swiper-pagination-bullet-active { opacity: 1; transform: scale(1.4); }
+        .province-pagination { margin-top: 10px; }
 
         /* ============ CITY PAGE ============ */
-        .city-page { display: none; min-height: 100vh; padding: calc(var(--header-height) + 15px) 12px 40px; }
-        .city-page.active { display: block; animation: fadeInUp 0.4s ease; }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .city-page {
+            display: none; min-height: 100vh;
+            padding: calc(var(--header-height) + 12px) 10px 100px;
         }
-        .city-header { text-align: center; margin-bottom: 25px; }
-        .city-header h2 { font-size: 1.6rem; color: var(--primary); }
+        .city-page.active { display: block; animation: fadeInUp 0.4s ease; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .city-header { text-align: center; margin-bottom: 20px; }
+        .city-header h2 { font-size: 1.4rem; color: var(--primary); }
+        .city-header p { font-size: 0.75rem; color: var(--text-secondary); }
         .back-btn {
             background: var(--primary); color: white; border: none;
-            padding: 10px 22px; border-radius: 50px; cursor: pointer;
-            font-size: 0.85rem; margin-bottom: 15px; transition: all 0.3s;
-            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 18px; border-radius: 50px; cursor: pointer;
+            font-size: 0.8rem; margin-bottom: 12px; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 5px;
             font-family: 'Tajawal', sans-serif;
         }
-        .back-btn:hover { transform: translateX(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 
-        /* ============ FILTER BAR ============ */
+        /* Filter Bar */
         .filter-bar {
-            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;
-            padding: 0 5px; justify-content: center;
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
+            padding: 0 3px; justify-content: center;
         }
         .filter-select, .filter-btn {
-            padding: 8px 14px; border-radius: 50px; border: 1px solid var(--border);
+            padding: 7px 11px; border-radius: 50px; border: 1px solid var(--border);
             background: var(--bg-card); font-family: 'Tajawal', sans-serif;
-            font-size: 0.78rem; cursor: pointer; transition: 0.3s; color: var(--text);
+            font-size: 0.7rem; cursor: pointer; transition: 0.3s; color: var(--text);
             -webkit-appearance: none; appearance: none;
         }
-        .filter-select:focus, .filter-btn:focus { outline: none; border-color: var(--primary); }
         .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .filter-btn.reset { background: var(--bg-input); color: var(--text-secondary); }
-        .filter-select.sort { background: var(--accent); color: white; border-color: var(--accent); }
 
-        /* ============ RESTAURANTS GRID ============ */
-        .restaurants-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 1200px; margin: 0 auto; }
+        /* Restaurants Grid */
+        .restaurants-grid { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 1200px; margin: 0 auto; }
         .restaurant-card {
             background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer; box-shadow: var(--shadow-sm); position: relative;
-            border: 1px solid var(--border);
+            transition: all 0.3s; cursor: pointer; box-shadow: var(--shadow-sm);
+            position: relative; border: 1px solid var(--border);
         }
         .restaurant-card:active { transform: scale(0.97); }
-        .restaurant-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-        .restaurant-image { height: 180px; overflow: hidden; position: relative; background: var(--bg-input); }
-        .restaurant-image img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s, opacity 0.3s;
-            opacity: 0;
-        }
+        .restaurant-image { height: 160px; overflow: hidden; position: relative; background: var(--bg-input); }
+        .restaurant-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s; }
         .restaurant-image img.loaded { opacity: 1; }
-        .restaurant-card:hover .restaurant-image img { transform: scale(1.06); }
         .rating {
-            position: absolute; top: 10px; right: 10px;
-            background: rgba(0,0,0,0.7); padding: 4px 10px;
-            border-radius: 50px; font-size: 0.7rem; color: var(--secondary);
-            backdrop-filter: blur(5px);
+            position: absolute; top: 8px; right: 8px;
+            background: rgba(0,0,0,0.7); padding: 3px 8px;
+            border-radius: 50px; font-size: 0.65rem; color: var(--secondary);
         }
         .favorite-btn {
-            position: absolute; top: 10px; left: 10px; z-index: 2;
+            position: absolute; top: 8px; left: 8px; z-index: 2;
             background: var(--bg-card); border: none;
-            width: 34px; height: 34px; border-radius: 50%;
-            cursor: pointer; font-size: 1rem; transition: 0.3s;
+            width: 30px; height: 30px; border-radius: 50%;
+            cursor: pointer; font-size: 0.9rem; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
             box-shadow: var(--shadow-sm);
         }
         .favorite-btn.liked { color: var(--favorite-color); animation: heartBeat 0.4s ease; }
-        .favorite-btn.liked i { font-weight: 900; }
-        @keyframes heartBeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.3); }
-            50% { transform: scale(0.95); }
-        }
-        .restaurant-info { padding: 15px; }
-        .restaurant-info h3 { font-size: 1.05rem; margin-bottom: 3px; color: var(--primary); }
-        .restaurant-cuisine { color: var(--accent); font-size: 0.75rem; margin-bottom: 6px; }
-        .restaurant-desc { font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 10px; }
-        .restaurant-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 1px solid var(--border); }
-        .price-range { color: var(--primary); font-weight: 700; font-size: 0.9rem; }
+        @keyframes heartBeat { 0%,100%{transform:scale(1)} 25%{transform:scale(1.3)} 50%{transform:scale(0.95)} }
+        .restaurant-info { padding: 12px; }
+        .restaurant-info h3 { font-size: 0.95rem; margin-bottom: 2px; color: var(--primary); }
+        .restaurant-cuisine { color: var(--accent); font-size: 0.7rem; margin-bottom: 5px; }
+        .restaurant-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid var(--border); }
+        .price-range { color: var(--primary); font-weight: 700; font-size: 0.8rem; }
         .btn-details {
             background: var(--primary); color: white; border: none;
-            padding: 7px 16px; border-radius: 50px; cursor: pointer;
-            font-size: 0.8rem; font-family: 'Tajawal', sans-serif; transition: 0.3s;
+            padding: 6px 14px; border-radius: 50px; cursor: pointer;
+            font-size: 0.72rem; font-family: 'Tajawal', sans-serif;
         }
-        .btn-details:hover { background: var(--primary-dark); transform: scale(1.05); }
-
-        .star-rating-small { color: var(--star-color); font-size: 0.8rem; }
         .distance-badge {
-            background: rgba(6,214,160,0.15); color: var(--accent); padding: 3px 8px;
-            border-radius: 50px; font-size: 0.65rem; font-weight: 700;
-            display: inline-flex; align-items: center; gap: 3px;
+            background: rgba(6,214,160,0.15); color: var(--accent); padding: 2px 7px;
+            border-radius: 50px; font-size: 0.6rem; font-weight: 700;
+            display: inline-flex; align-items: center; gap: 2px;
         }
+        .star-rating-small { color: var(--star-color); font-size: 0.7rem; }
 
         /* ============ MODAL ============ */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 99999; align-items: flex-end;
-            justify-content: center; backdrop-filter: blur(5px);
+            justify-content: center; backdrop-filter: blur(3px);
         }
         .modal.active { display: flex; }
         .modal-content {
             background: var(--bg-card); width: 100%; max-width: 600px;
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 25px 20px;
-            position: relative; max-height: 85vh; overflow-y: auto;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0; padding: 22px 16px;
+            position: relative; max-height: 80vh; overflow-y: auto;
             animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--text);
+            color: var(--text); padding-bottom: 100px;
         }
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
+        @keyframes slideUp { from{transform:translateY(100%)} to{transform:translateY(0)} }
         .modal-close {
             position: sticky; top: 0; float: left; z-index: 2;
             background: var(--bg-input); color: var(--text); border: none;
-            width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem;
+            width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1rem;
         }
-        .modal-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); margin: 15px 0; }
-        .google-map { width: 100%; height: 200px; border-radius: var(--radius); margin: 12px 0; border: 1px solid var(--border); }
+        .modal-img { width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius); margin: 12px 0; }
+        .google-map { width: 100%; height: 180px; border-radius: var(--radius); margin: 10px 0; border: 1px solid var(--border); }
         .whatsapp-order {
-            background: #25D366; color: white; padding: 12px 20px; border-radius: 50px;
-            border: none; cursor: pointer; margin-top: 12px; display: inline-flex;
-            align-items: center; gap: 8px; font-size: 0.9rem; width: 100%;
-            justify-content: center; font-family: 'Tajawal', sans-serif; transition: 0.3s;
+            background: #25D366; color: white; padding: 11px 18px; border-radius: 50px;
+            border: none; cursor: pointer; margin-top: 10px; display: inline-flex;
+            align-items: center; gap: 6px; font-size: 0.85rem; width: 100%;
+            justify-content: center; font-family: 'Tajawal', sans-serif;
         }
-        .whatsapp-order:hover { transform: scale(1.02); }
-        .info-row { margin: 8px 0; padding: 10px; background: var(--info-bg); border-radius: var(--radius-sm); font-size: 0.85rem; }
-
-        .share-buttons { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+        .info-row { margin: 6px 0; padding: 8px; background: var(--info-bg); border-radius: var(--radius-sm); font-size: 0.8rem; }
+        .share-buttons { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
         .share-btn {
-            flex: 1; min-width: 60px; padding: 10px; border: none; border-radius: 50px;
-            cursor: pointer; font-size: 0.8rem; color: white; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 5px;
+            flex: 1; min-width: 55px; padding: 9px; border: none; border-radius: 50px;
+            cursor: pointer; font-size: 0.72rem; color: white; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
             font-family: 'Tajawal', sans-serif;
         }
-        .share-btn:hover { transform: translateY(-2px); }
         .share-btn.whatsapp { background: #25D366; }
         .share-btn.facebook { background: #1877F2; }
         .share-btn.telegram { background: #0088cc; }
-
-        .review-section { margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--border); }
-        .review-section h4 { font-size: 1rem; color: var(--primary); margin-bottom: 12px; }
-        .star-input { display: flex; gap: 4px; margin-bottom: 10px; direction: ltr; justify-content: flex-end; }
-        .star-input i { font-size: 1.5rem; color: #ddd; cursor: pointer; transition: 0.2s; }
+        .review-section { margin-top: 18px; padding-top: 18px; border-top: 2px solid var(--border); }
+        .review-section h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 10px; }
+        .star-input { display: flex; gap: 3px; margin-bottom: 8px; direction: ltr; justify-content: flex-end; }
+        .star-input i { font-size: 1.3rem; color: #ddd; cursor: pointer; transition: 0.2s; }
         .star-input i.active, .star-input i:hover { color: var(--star-color); }
         .review-textarea {
-            width: 100%; padding: 12px; border-radius: var(--radius-sm);
+            width: 100%; padding: 10px; border-radius: var(--radius-sm);
             border: 1px solid var(--border); font-family: 'Tajawal', sans-serif;
-            resize: vertical; min-height: 70px; font-size: 0.85rem;
-            margin-bottom: 10px; background: var(--bg-input); color: var(--text);
+            resize: vertical; min-height: 60px; font-size: 0.8rem;
+            margin-bottom: 8px; background: var(--bg-input); color: var(--text);
         }
         .review-submit {
             background: var(--primary); color: white; border: none;
-            padding: 10px 25px; border-radius: 50px; cursor: pointer;
-            font-family: 'Tajawal', sans-serif; font-size: 0.85rem; transition: 0.3s;
+            padding: 9px 22px; border-radius: 50px; cursor: pointer;
+            font-family: 'Tajawal', sans-serif; font-size: 0.8rem;
         }
-        .existing-reviews { margin-top: 15px; max-height: 200px; overflow-y: auto; }
-        .review-item { background: var(--info-bg); padding: 10px; border-radius: var(--radius-sm); margin-bottom: 8px; font-size: 0.8rem; }
+        .existing-reviews { margin-top: 12px; max-height: 180px; overflow-y: auto; }
+        .review-item { background: var(--info-bg); padding: 8px; border-radius: var(--radius-sm); margin-bottom: 6px; font-size: 0.72rem; }
         .review-item .review-stars { color: var(--star-color); }
 
-        /* Toast */
-        .toast {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: #333; color: white; padding: 12px 25px; border-radius: 50px;
-            font-size: 0.85rem; z-index: 99999; opacity: 0; transition: opacity 0.3s;
-            pointer-events: none; font-family: 'Tajawal', sans-serif;
-        }
-        .toast.show { opacity: 1; }
-
         /* ============ ABOUT SYRIA PAGE ============ */
-        .about-page { padding: calc(var(--header-height) + 20px) 16px 40px; max-width: 1000px; margin: 0 auto; }
-        .about-hero {
-            text-align: center; padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(6,214,160,0.1));
-            border-radius: var(--radius-xl); margin-bottom: 30px;
+        .about-page {
+            padding: calc(var(--header-height) + 16px) 12px 100px;
+            max-width: 1000px; margin: 0 auto;
         }
-        .about-hero h1 { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
-        .about-hero p { color: var(--text-secondary); font-size: 1rem; }
-        .about-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 40px; }
+        .about-hero {
+            text-align: center; padding: 30px 16px;
+            background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(6,214,160,0.08));
+            border-radius: var(--radius-xl); margin-bottom: 25px;
+        }
+        .about-hero h1 { font-size: 1.6rem; color: var(--primary); margin-bottom: 8px; }
+        .about-hero p { color: var(--text-secondary); font-size: 0.85rem; }
+        .about-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 30px; }
         .about-card {
-            background: var(--bg-card); border-radius: var(--radius); padding: 25px;
+            background: var(--bg-card); border-radius: var(--radius); padding: 20px;
             box-shadow: var(--shadow-sm); border: 1px solid var(--border);
             transition: all 0.3s;
         }
-        .about-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-        .about-card h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
-        .about-card p, .about-card li { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.8; }
+        .about-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1rem; display: flex; align-items: center; gap: 6px; }
+        .about-card p, .about-card li { color: var(--text-secondary); font-size: 0.78rem; line-height: 1.7; }
         .about-card ul { list-style: none; padding: 0; }
-        .about-card ul li { padding: 4px 0; }
+        .about-card ul li { padding: 3px 0; }
         .about-card ul li::before { content: '• '; color: var(--primary); }
-        .province-detail-grid { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .province-detail-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
         .province-detail-card {
             background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
             box-shadow: var(--shadow-sm); border: 1px solid var(--border);
-            transition: all 0.3s;
+            transition: all 0.3s; cursor: pointer;
         }
-        .province-detail-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
-        .province-detail-card img { width: 100%; height: 150px; object-fit: cover; }
-        .province-detail-card .detail-body { padding: 15px; }
-        .province-detail-card h4 { color: var(--primary); font-size: 0.95rem; margin-bottom: 5px; }
-        .province-detail-card p { color: var(--text-secondary); font-size: 0.75rem; line-height: 1.6; }
+        .province-detail-card:active { transform: scale(0.97); }
+        .province-detail-card img { width: 100%; height: 130px; object-fit: cover; }
+        .province-detail-card .detail-body { padding: 12px; }
+        .province-detail-card h4 { color: var(--primary); font-size: 0.85rem; margin-bottom: 4px; }
+        .province-detail-card p { color: var(--text-secondary); font-size: 0.7rem; line-height: 1.5; }
 
         /* Scroll to Top */
         .scroll-top {
-            position: fixed; bottom: 20px; right: 20px; z-index: 999;
-            width: 45px; height: 45px; border-radius: 50%; background: var(--primary);
-            color: white; border: none; cursor: pointer; font-size: 1.2rem;
-            box-shadow: var(--shadow); opacity: 0; transform: translateY(20px);
+            position: fixed; bottom: 80px; right: 12px; z-index: 999;
+            width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+            color: white; border: none; cursor: pointer; font-size: 1rem;
+            box-shadow: var(--shadow); opacity: 0; transform: translateY(15px);
             transition: all 0.3s; pointer-events: none;
             display: flex; align-items: center; justify-content: center;
         }
         .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .scroll-top:hover { transform: translateY(-5px) scale(1.1); }
 
-        /* Skeleton Loading */
-        .skeleton {
-            background: linear-gradient(90deg, var(--bg-input) 25%, var(--border) 50%, var(--bg-input) 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: var(--radius-sm);
+        /* Toast */
+        .toast {
+            position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+            background: #333; color: white; padding: 10px 22px; border-radius: 50px;
+            font-size: 0.8rem; z-index: 99999; opacity: 0; transition: opacity 0.3s;
+            pointer-events: none; font-family: 'Tajawal', sans-serif;
         }
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
+        .toast.show { opacity: 1; }
 
         /* ============ FOOTER ============ */
         .footer {
-            background: var(--bg-card); padding: 25px 16px; text-align: center;
-            border-top: 2px solid var(--primary); font-size: 0.8rem; color: var(--text);
+            background: var(--bg-card); padding: 20px 12px;
+            text-align: center; border-top: 2px solid var(--primary);
+            font-size: 0.72rem; color: var(--text); margin-bottom: 70px;
         }
         .developer-footer {
             background: linear-gradient(135deg, #1a1a2e, #16213e); color: white;
-            text-align: center; padding: 20px 16px; border-top: 2px solid var(--primary);
-            font-size: 0.75rem;
+            text-align: center; padding: 18px 12px; border-top: 2px solid var(--primary);
+            font-size: 0.7rem; margin-bottom: 70px;
         }
-        .developer-footer .dev-content { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .developer-footer .dev-logo { width: 45px; height: 45px; border-radius: 12px; object-fit: contain; background: white; padding: 4px; }
-        .developer-footer .dev-text h4 { font-size: 0.9rem; color: var(--secondary); }
+        .developer-footer .dev-content { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .developer-footer .dev-logo { width: 40px; height: 40px; border-radius: 10px; object-fit: contain; background: white; padding: 3px; }
+        .developer-footer .dev-text h4 { font-size: 0.8rem; color: var(--secondary); }
         .developer-footer .dev-text a { color: var(--primary-light); text-decoration: none; font-weight: 700; }
 
         /* ============ RESPONSIVE ============ */
         @media (min-width: 640px) {
-            .hero-slider { height: 55vh; min-height: 380px; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .restaurants-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            :root { --header-height: 70px; }
+            .nav-container { padding: 0 16px; }
+            .logo h1 { font-size: 1.2rem; }
+            .logo p { font-size: 0.6rem; }
+            .icon-btn { width: 38px; height: 38px; font-size: 1rem; }
+            .action-divider { display: block; }
+            .hero-slider { height: 50vh; min-height: 350px; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content p { font-size: 0.9rem; }
+            .big-stat-card { padding: 22px 30px; }
+            .big-stat-icon { font-size: 2.5rem; }
+            .big-stat-number { font-size: 2.8rem; }
+            .restaurants-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
             .province-detail-grid { grid-template-columns: repeat(2, 1fr); }
             .about-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (min-width: 1024px) {
-            :root { --header-height: 80px; }
-            .search-bar-desktop { display: flex; align-items: center; gap: 8px; }
-            .search-bar-desktop input {
-                padding: 10px 18px; background: var(--bg-input); border: 1px solid var(--border);
-                border-radius: 50px; width: 220px; font-family: 'Tajawal', sans-serif;
-                font-size: 0.85rem; transition: 0.3s; color: var(--text);
+            :root { --header-height: var(--header-height-desktop); }
+            .search-bar-desktop {
+                display: flex; align-items: center; gap: 8px;
             }
-            .search-bar-desktop input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(255,107,53,0.1); }
+            .search-bar-desktop input {
+                padding: 10px 16px; background: var(--bg-input); border: 1px solid var(--border);
+                border-radius: 50px; width: 200px; font-family: 'Tajawal', sans-serif;
+                font-size: 0.8rem; transition: 0.3s; color: var(--text);
+            }
+            .search-bar-desktop input:focus { outline: none; border-color: var(--primary); }
             .header-actions .icon-btn.search-btn-mobile { display: none; }
             .header-actions .icon-btn.menu-btn { display: none; }
-            .nav-container { padding: 0 30px; }
-            .hero-slider { height: 65vh; min-height: 480px; border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
-            .hero-content h1 { font-size: 3.5rem; }
-            .restaurants-grid { grid-template-columns: repeat(3, 1fr); gap: 25px; }
+            .nav-container { padding: 0 25px; gap: 12px; }
+            .logo h1 { font-size: 1.4rem; }
+            .icon-btn { width: 40px; height: 40px; }
+            .bottom-nav { display: none; }
+            .hero-slider { height: 60vh; min-height: 420px; border-radius: 0 0 var(--radius-xl) var(--radius-xl); }
+            .hero-content h1 { font-size: 3.2rem; }
+            .restaurants-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+            .restaurant-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+            .restaurant-card:active { transform: scale(1); }
             .province-detail-grid { grid-template-columns: repeat(3, 1fr); }
+            .province-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+            .province-card:active { transform: scale(1); }
             .province-nav-prev, .province-nav-next {
-                display: flex; width: 44px; height: 44px;
+                display: flex; width: 40px; height: 40px;
                 position: absolute; top: 50%; transform: translateY(-50%);
                 background: var(--bg-card); border-radius: 50%; box-shadow: var(--shadow);
                 cursor: pointer; z-index: 10; align-items: center; justify-content: center;
-                color: var(--primary); font-size: 1.1rem; border: 2px solid var(--primary);
+                color: var(--primary); font-size: 1rem; border: 2px solid var(--primary);
                 transition: all 0.3s;
             }
             .province-nav-prev:hover, .province-nav-next:hover { background: var(--primary); color: white; }
             .province-nav-prev { right: 5px; }
             .province-nav-next { left: 5px; }
             .modal { align-items: center; }
-            .modal-content { border-radius: var(--radius-xl); max-width: 750px; }
-            .modal-img { height: 300px; }
-            .google-map { height: 300px; }
+            .modal-content { border-radius: var(--radius-xl); max-width: 720px; }
+            .modal-img { height: 280px; }
+            .google-map { height: 280px; }
             .whatsapp-order { width: auto; }
-            .about-page { padding: calc(var(--header-height) + 40px) 40px 60px; }
+            .about-page { padding: calc(var(--header-height) + 30px) 30px 60px; }
+            .footer, .developer-footer { margin-bottom: 0; }
+            .toast { bottom: 24px; }
+            .scroll-top { bottom: 24px; right: 20px; }
+            .city-page { padding-bottom: 60px; }
         }
 
         @media (min-width: 1280px) {
             .restaurants-grid { grid-template-columns: repeat(4, 1fr); }
             .province-detail-grid { grid-template-columns: repeat(4, 1fr); }
+            .search-bar-desktop input { width: 260px; }
         }
     </style>
 </head>
@@ -626,47 +673,100 @@
     <i class="fas fa-chevron-up"></i>
 </button>
 
-<!-- HEADER -->
+<!-- ============ HEADER - Redesigned for Mobile ============ -->
 <header class="header" id="header">
     <div class="nav-container">
+        <!-- Logo -->
         <div class="logo" onclick="goBack()">
             <h1>🍽️ أين ستأكل اليوم؟</h1>
             <p data-i18n="subtitle">دليل المطاعم في سوريا</p>
         </div>
+        
+        <!-- Desktop Search (hidden on mobile) -->
         <div class="search-bar-desktop">
-            <input type="text" id="desktopSearch" data-i18n-placeholder="search_placeholder" placeholder="🔍 ابحث عن مطعم...">
+            <input type="text" id="desktopSearch" data-i18n-placeholder="search_placeholder" placeholder="🔍 ابحث...">
         </div>
+        
+        <!-- Header Actions -->
         <div class="header-actions">
-            <button class="dark-toggle" onclick="toggleDarkMode()" title="الوضع الليلي">
+            <!-- Dark Mode -->
+            <button class="dark-toggle" onclick="toggleDarkMode()" aria-label="الوضع الليلي">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
             </button>
+            
+            <!-- Language -->
             <button class="lang-toggle" onclick="toggleLanguage()">
-                <i class="fas fa-globe"></i> <span id="langLabel">EN</span>
+                <span id="langLabel">EN</span>
             </button>
-            <button class="icon-btn" onclick="showAboutSyria()" title="عن سوريا">
+            
+            <!-- Info -->
+            <button class="icon-btn" onclick="showAboutSyria()" aria-label="عن سوريا">
                 <i class="fas fa-info-circle"></i>
             </button>
-            <button class="icon-btn favorites-badge" onclick="showFavorites()">
+            
+            <!-- Favorites -->
+            <button class="icon-btn favorites-badge" onclick="showFavorites()" aria-label="المفضلة">
                 <i class="fas fa-heart" style="color:var(--favorite-color);"></i>
                 <span class="fav-count" id="favCount" style="display:none;">0</span>
             </button>
-            <button class="icon-btn search-btn-mobile" onclick="openMobileSearch()"><i class="fas fa-search"></i></button>
-            <button class="icon-btn menu-btn" onclick="openMobileMenu()"><i class="fas fa-bars"></i></button>
+            
+            <span class="action-divider"></span>
+            
+            <!-- Search (mobile only) -->
+            <button class="icon-btn search-btn-mobile" onclick="openMobileSearch()" aria-label="بحث">
+                <i class="fas fa-search"></i>
+            </button>
+            
+            <!-- Menu (mobile only) -->
+            <button class="icon-btn menu-btn" onclick="openMobileMenu()" aria-label="قائمة">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </div>
 </header>
 
+<!-- ============ BOTTOM NAV BAR (Mobile Only) ============ -->
+<nav class="bottom-nav" id="bottomNav">
+    <button class="bottom-nav-item active" onclick="goBack(); setActiveNav(this)">
+        <i class="fas fa-home"></i>
+        <span data-i18n="home">الرئيسية</span>
+    </button>
+    <button class="bottom-nav-item" onclick="showAboutSyria(); setActiveNav(this)">
+        <i class="fas fa-info-circle"></i>
+        <span data-i18n="about_syria">عن سوريا</span>
+    </button>
+    <button class="bottom-nav-item" onclick="openMobileSearch(); setActiveNav(this)">
+        <i class="fas fa-search"></i>
+        <span data-i18n="search">بحث</span>
+    </button>
+    <button class="bottom-nav-item" onclick="showFavorites(); setActiveNav(this)">
+        <i class="fas fa-heart"></i>
+        <span data-i18n="favorites">مفضلة</span>
+    </button>
+    <button class="bottom-nav-item" onclick="openMobileMenu(); setActiveNav(this)">
+        <i class="fas fa-ellipsis-h"></i>
+        <span>المزيد</span>
+    </button>
+</nav>
+
+<script>
+function setActiveNav(el) {
+    document.querySelectorAll('.bottom-nav-item').forEach(item => item.classList.remove('active'));
+    el.classList.add('active');
+}
+</script>
+
 <!-- MOBILE SEARCH OVERLAY -->
 <div class="mobile-search-overlay" id="mobileSearchOverlay">
-    <div class="search-header" style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+    <div class="search-header">
         <div class="search-input-wrap">
             <input type="text" id="mobileSearchInput" data-i18n-placeholder="search_placeholder" placeholder="🔍 ابحث عن مطعم...">
             <button class="search-submit" onclick="globalSearch(document.getElementById('mobileSearchInput').value)"><i class="fas fa-search"></i></button>
         </div>
         <button class="close-search" onclick="closeMobileSearch()"><i class="fas fa-times"></i></button>
     </div>
-    <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:12px;" data-i18n="quick_suggestions">اقتراحات سريعة:</p>
+    <p style="font-size:0.78rem;color:var(--text-secondary);margin-bottom:12px;" data-i18n="quick_suggestions">اقتراحات سريعة:</p>
     <div class="quick-links">
         <button class="quick-link" onclick="quickSearch('مشاوي')">🍖 مشاوي</button>
         <button class="quick-link" onclick="quickSearch('بيتزا')">🍕 بيتزا</button>
@@ -679,15 +779,27 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu-sidebar" id="mobileMenuSidebar">
-    <div class="menu-header" style="padding:20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;">
-        <h3 style="color:var(--primary);">🍽️ القائمة</h3>
-        <button onclick="closeMobileMenu()" style="width:36px;height:36px;border-radius:50%;border:none;background:var(--bg-input);cursor:pointer;font-size:1.2rem;color:var(--text);"><i class="fas fa-times"></i></button>
+    <div class="menu-header">
+        <h3>🍽️ القائمة</h3>
+        <button class="close-menu-btn" onclick="closeMobileMenu()"><i class="fas fa-times"></i></button>
     </div>
-    <div style="padding:15px;flex:1;">
-        <div class="menu-link" onclick="closeMobileMenu(); goBack();"><i class="fas fa-home"></i> <span data-i18n="home">الرئيسية</span></div>
-        <div class="menu-link" onclick="closeMobileMenu(); showAboutSyria();"><i class="fas fa-info-circle"></i> <span data-i18n="about_syria">عن سوريا</span></div>
-        <div class="menu-link" onclick="closeMobileMenu(); showFavorites();"><i class="fas fa-heart" style="color:var(--favorite-color);"></i> <span data-i18n="favorites">المفضلة</span></div>
-        <div class="menu-link" onclick="closeMobileMenu(); toggleDarkMode();"><i class="fas fa-moon"></i> <span data-i18n="dark_mode">الوضع الليلي</span></div>
+    <div style="padding:12px 0;">
+        <div class="menu-link" onclick="closeMobileMenu(); goBack(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[0]);">
+            <i class="fas fa-home"></i> <span data-i18n="home">الرئيسية</span>
+        </div>
+        <div class="menu-link" onclick="closeMobileMenu(); showAboutSyria(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[1]);">
+            <i class="fas fa-info-circle"></i> <span data-i18n="about_syria">عن سوريا</span>
+        </div>
+        <div class="menu-link" onclick="closeMobileMenu(); showFavorites(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[3]);">
+            <i class="fas fa-heart" style="color:var(--favorite-color);"></i> <span data-i18n="favorites">المفضلة</span>
+        </div>
+        <div class="menu-divider"></div>
+        <div class="menu-link" onclick="closeMobileMenu(); toggleDarkMode();">
+            <i class="fas fa-moon"></i> <span data-i18n="dark_mode">الوضع الليلي</span>
+        </div>
+        <div class="menu-link" onclick="closeMobileMenu(); toggleLanguage();">
+            <i class="fas fa-globe"></i> English / العربية
+        </div>
     </div>
 </div>
 
@@ -763,11 +875,11 @@
 <div id="restaurantModal" class="modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
-        <h2 id="modalTitle" style="color:var(--primary);margin-bottom:5px;font-size:1.3rem;"></h2>
-        <div id="modalCuisine" style="color:var(--accent);margin-bottom:3px;font-size:0.85rem;"></div>
-        <div id="modalRating" style="margin-bottom:10px;font-size:0.85rem;"></div>
+        <h2 id="modalTitle" style="color:var(--primary);margin-bottom:5px;font-size:1.2rem;"></h2>
+        <div id="modalCuisine" style="color:var(--accent);margin-bottom:3px;font-size:0.8rem;"></div>
+        <div id="modalRating" style="margin-bottom:8px;font-size:0.8rem;"></div>
         <img id="modalImage" class="modal-img" src="" alt="">
-        <p id="modalDesc" style="margin:15px 0;font-size:0.9rem;"></p>
+        <p id="modalDesc" style="margin:12px 0;font-size:0.85rem;"></p>
         <div class="info-row" id="modalAddress"></div>
         <div class="info-row" id="modalPhone"></div>
         <div class="info-row" id="modalHours"></div>
@@ -798,7 +910,7 @@
 <!-- FOOTER -->
 <footer class="footer">
     <p>🍽️ <strong>أين ستأكل اليوم؟</strong> - <span data-i18n="footer_text">دليلك الشامل للمطاعم في سوريا</span></p>
-    <p style="margin-top:6px;font-size:0.7rem;opacity:0.7;">📍 جميع المحافظات السورية | أكثر من 7,000 مطعم | تحديثات يومية</p>
+    <p style="margin-top:4px;font-size:0.65rem;opacity:0.7;">📍 جميع المحافظات | 7000+ مطعم | تحديثات يومية</p>
 </footer>
 <div class="developer-footer">
     <div class="dev-content">
@@ -810,6 +922,7 @@
     </div>
 </div>
 
+<!-- ============ SCRIPTS ============ -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
@@ -822,15 +935,13 @@ const heroSwiper = new Swiper('.heroSwiper', {
     effect: 'fade', speed: 800,
 });
 
-// Scroll to top button
 const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+    scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
 });
 
 // Floating shapes
-const shapesContainer = document.getElementById('shapes');
 for (let i = 0; i < 20; i++) {
     const shape = document.createElement('div'); shape.className = 'shape';
     const size = Math.random() * 70 + 20;
@@ -839,7 +950,7 @@ for (let i = 0; i < 20; i++) {
         top: Math.random()*100+'%', animationDelay: Math.random()*20+'s',
         animationDuration: Math.random()*25+15+'s'
     });
-    shapesContainer.appendChild(shape);
+    document.getElementById('shapes').appendChild(shape);
 }
 
 // ============ DARK MODE ============
@@ -848,7 +959,6 @@ function toggleDarkMode() {
     document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
     localStorage.setItem('darkMode', isDark ? '' : 'dark');
 }
-// Load saved preference
 if (localStorage.getItem('darkMode') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode'))) {
     document.documentElement.setAttribute('data-theme', 'dark');
 }
@@ -866,7 +976,7 @@ const lazyObserver = new IntersectionObserver((entries) => {
             }
         }
     });
-}, { rootMargin: '100px' });
+}, { rootMargin: '150px' });
 
 function observeLazyImages() {
     document.querySelectorAll('img[data-src]').forEach(img => lazyObserver.observe(img));
@@ -876,8 +986,8 @@ function observeLazyImages() {
 let currentLang = 'ar';
 const translations = {
     ar: {
-        subtitle: 'دليل المطاعم في سوريا', search_placeholder: '🔍 ابحث عن مطعم...',
-        quick_suggestions: 'اقتراحات سريعة:', home: 'الرئيسية', favorites: 'المفضلة', search: 'بحث متقدم',
+        subtitle: 'دليل المطاعم في سوريا', search_placeholder: '🔍 ابحث...',
+        quick_suggestions: 'اقتراحات سريعة:', home: 'الرئيسية', favorites: 'المفضلة', search: 'بحث',
         about_syria: 'عن سوريا', dark_mode: 'الوضع الليلي',
         hero_title_1: 'أهلاً بك في <span>سوريا</span>', hero_sub_1: 'اكتشف أشهى المطاعم في 14 محافظة',
         hero_title_2: 'أكثر من <span>7,000</span> مطعم', hero_sub_2: 'دليلك الشامل لأفضل الأكلات في سوريا',
@@ -896,7 +1006,7 @@ const translations = {
         review_saved: 'تم حفظ تقييمك! ⭐', added_fav: 'تمت الإضافة للمفضلة ❤️',
         removed_fav: 'تمت الإزالة من المفضلة', no_nearby: 'لا توجد مطاعم قريبة',
         share_text: 'شاهد مطعم {name} في {province} - تقييم {rating}⭐',
-        about_title: '🇸🇾 عن سوريا - أرض الحضارات',
+        about_title: 'عن سوريا - أرض الحضارات',
         about_subtitle: 'مهد أقدم الحضارات في التاريخ وأجمل مطبخ في العالم العربي',
         about_history: '📜 لمحة تاريخية',
         about_history_text: 'سوريا من أقدم مناطق العالم المأهولة، قامت فيها حضارات عريقة: الآرامية، الفينيقية، الآشورية، البابلية، الفارسية، الإغريقية، الرومانية، البيزنطية، والإسلامية. دمشق أقدم عاصمة مأهولة في التاريخ.',
@@ -907,7 +1017,7 @@ const translations = {
         about_provinces_title: '🗺️ المحافظات السورية'
     },
     en: {
-        subtitle: 'Syria Restaurant Guide', search_placeholder: '🔍 Search restaurants...',
+        subtitle: 'Syria Restaurant Guide', search_placeholder: '🔍 Search...',
         quick_suggestions: 'Quick suggestions:', home: 'Home', favorites: 'Favorites', search: 'Search',
         about_syria: 'About Syria', dark_mode: 'Dark Mode',
         hero_title_1: 'Welcome to <span>Syria</span>', hero_sub_1: 'Discover the best restaurants in 14 provinces',
@@ -927,7 +1037,7 @@ const translations = {
         review_saved: 'Review saved! ⭐', added_fav: 'Added to favorites ❤️',
         removed_fav: 'Removed from favorites', no_nearby: 'No restaurants nearby',
         share_text: 'Check out {name} in {province} - Rated {rating}⭐',
-        about_title: '🇸🇾 About Syria - Land of Civilizations',
+        about_title: 'About Syria - Land of Civilizations',
         about_subtitle: 'Cradle of the oldest civilizations and the finest cuisine in the Arab world',
         about_history: '📜 History',
         about_history_text: 'Syria is one of the oldest inhabited regions in the world, home to great civilizations. Damascus is the oldest continuously inhabited capital in history.',
@@ -948,21 +1058,17 @@ function toggleLanguage() {
     document.getElementById('langLabel').textContent = currentLang === 'ar' ? 'EN' : 'AR';
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18nPlaceholder || el.dataset.i18n;
+        const translated = t(key);
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = t(key);
+            el.placeholder = translated;
+        } else if (translated.includes('<span>')) {
+            el.innerHTML = translated;
         } else {
-            // Preserve HTML in translations
-            const translated = t(key);
-            if (translated.includes('<span>')) {
-                el.innerHTML = translated;
-            } else {
-                el.textContent = translated;
-            }
+            el.textContent = translated;
         }
     });
 }
 
-// ============ TOAST ============
 function showToast(msg) { const toast = document.getElementById('toast'); toast.textContent = t(msg) || msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
 
 // ============ MOBILE FUNCTIONS ============
@@ -1015,22 +1121,21 @@ const provinceImages = {
     'القنيطرة': 'https://imgur.com/QlsJK5A.jpg'
 };
 
-// Province info for About page
 const provinceInfo = {
     'دمشق': { desc: 'أقدم عاصمة مأهولة في التاريخ، قلب العالم العربي النابض. تشتهر بالجامع الأموي، سوق الحميدية، باب توما، وقصر العظم.', famous: 'الجامع الأموي، ضريح صلاح الدين' },
-    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف. تشتهر بالزبداني، بلودا، معلولا (المسيحية الناطقة بالآرامية)، وصيدنايا.', famous: 'معلولا، الزبداني، دير صيدنايا' },
-    'حلب': { desc: 'العاصمة الاقتصادية لسوريا، أقدم مدينة مأهولة. تشتهر بقلعتها الشهيرة، أسواقها المسقوفة، وصابون الغار.', famous: 'قلعة حلب، السوق المسقوف، صابون الغار' },
-    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال. تشتهر بجامع خالد بن الوليد، قلعة الحصن (الأكبر في العالم)، وسهل حمص الخصب.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
-    'حماة': { desc: 'مدينة النواعير على نهر العاصي. تشتهر بنواعيرها الخشبية العملاقة (أقدم نظام ري في العالم)، وأطباقها الشهية.', famous: 'النواعير، نهر العاصي، قلعة حماة' },
-    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط. تشتهر بشواطئها، مينائها، وغاباتها الخضراء. من أجمل مدن المتوسط.', famous: 'شاطئ الكورنيش، أوغاريت، قلعة صلاح الدين' },
-    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد الفينيقية. تشتهر بكاتدرائية طرطوس (متحف)، شواطئها الرملية، ومينائها التاريخي.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
-    'دير الزور': { desc: 'واحة الفرات الخضراء. تشتهر بالجسر المعلق (بناه الفرنسيون)، متحفها الغني، وموقع دورا أوروبوس الأثري.', famous: 'الجسر المعلق، نهر الفرات، دورا أوروبوس' },
-    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة الخصبة. تشتهر بالزراعة (قمح، قطن)، نهر الخابور، وتل حلف الأثري.', famous: 'نهر الخابور، تل حلف، سد الباسل' },
-    'الرقة': { desc: 'عاصمة الرشيد التاريخية. تشتهر بقصر البنات، سور الرقة العباسي، وبحيرة الأسد. أرض زراعية خصبة على الفرات.', famous: 'قصر البنات، سور الرقة، بحيرة الأسد' },
-    'إدلب': { desc: 'أرض الزيتون والطبيعة الخلابة. تشتهر بغابات الزيتون، إيبلا القديمة (أول مكتبة في التاريخ)، وجبل الزاوية.', famous: 'مملكة إيبلا، بساتين الزيتون، جبل الزاوية' },
-    'السويداء': { desc: 'جبل العرب، أرض الكروم والتفاح. تشتهر بآثارها الرومانية (قنوات)، قراها القديمة، وأشجار التفاح والكروم.', famous: 'آثار شهبا، قنوات رومانية، جبل العرب' },
-    'درعا': { desc: 'مهد الثورة العربية الكبرى. تشتهر بمدرجها الروماني، سهل حوران (إهراءات روما)، وبصرى الشام الأثرية.', famous: 'مدرج بصرى، سهل حوران، بصرى الشام' },
-    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء. تشتهر بغاباتها الكثيفة، ينابيعها الطبيعية، ومناظرها الخلابة المطلة على فلسطين.', famous: 'غابات الجولان، نبع بانياس، عين التينة' }
+    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف. تشتهر بالزبداني، بلودا، معلولا، وصيدنايا.', famous: 'معلولا، الزبداني، دير صيدنايا' },
+    'حلب': { desc: 'العاصمة الاقتصادية لسوريا. تشتهر بقلعتها الشهيرة، أسواقها المسقوفة، وصابون الغار.', famous: 'قلعة حلب، السوق المسقوف' },
+    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال. تشتهر بجامع خالد بن الوليد وقلعة الحصن.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
+    'حماة': { desc: 'مدينة النواعير على نهر العاصي. تشتهر بنواعيرها الخشبية العملاقة.', famous: 'النواعير، نهر العاصي' },
+    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط. تشتهر بشواطئها، مينائها، وغاباتها.', famous: 'شاطئ الكورنيش، أوغاريت' },
+    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد الفينيقية. تشتهر بشواطئها الرملية ومينائها التاريخي.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
+    'دير الزور': { desc: 'واحة الفرات الخضراء. تشتهر بالجسر المعلق، متحفها، وموقع دورا أوروبوس.', famous: 'الجسر المعلق، نهر الفرات' },
+    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة الخصبة. تشتهر بالزراعة ونهر الخابور.', famous: 'نهر الخابور، تل حلف' },
+    'الرقة': { desc: 'عاصمة الرشيد التاريخية. تشتهر بقصر البنات، سور الرقة، وبحيرة الأسد.', famous: 'قصر البنات، بحيرة الأسد' },
+    'إدلب': { desc: 'أرض الزيتون والطبيعة. تشتهر بغابات الزيتون وإيبلا القديمة.', famous: 'مملكة إيبلا، بساتين الزيتون' },
+    'السويداء': { desc: 'جبل العرب، أرض الكروم والتفاح. تشتهر بآثارها الرومانية وقراها القديمة.', famous: 'آثار شهبا، جبل العرب' },
+    'درعا': { desc: 'مهد الثورة العربية الكبرى. تشتهر بمدرجها الروماني وسهل حوران.', famous: 'مدرج بصرى، بصرى الشام' },
+    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء. تشتهر بغاباتها وينابيعها الطبيعية.', famous: 'غابات الجولان، نبع بانياس' }
 };
 
 // ============ GENERATE DATA ============
@@ -1137,7 +1242,7 @@ function submitReview() {
 function renderReviews(rest) {
     const container = document.getElementById('existingReviews');
     if (!rest.reviews || rest.reviews.length === 0) {
-        container.innerHTML = '<p style="color:var(--text-secondary);font-size:0.8rem;">لا توجد تقييمات بعد</p>';
+        container.innerHTML = '<p style="color:var(--text-secondary);font-size:0.75rem;">لا توجد تقييمات بعد</p>';
         return;
     }
     container.innerHTML = rest.reviews.slice().reverse().map(r => `
@@ -1190,15 +1295,14 @@ function displayNearbyRestaurants() {
         allRestaurants[p].forEach(r => all.push({...r, province: p, distance: getDistance(userLocation.lat, userLocation.lng, r.lat, r.lng)}));
     }
     all.sort((a,b) => a.distance - b.distance);
-    const nearest = all.slice(0, 20);
-    if (!nearest.length) { showToast('no_nearby'); return; }
+    if (!all.length) { showToast('no_nearby'); return; }
     
     document.getElementById('mainPage').style.display = 'none';
     document.getElementById('cityPagesContainer').innerHTML = `
         <div class="city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> ${t('back')}</button>
             <div class="city-header"><h2>${t('nearby_results')}</h2></div>
-            <div class="restaurants-grid">${nearest.map(r => createRestaurantCard(r.province, r, r.distance)).join('')}</div>
+            <div class="restaurants-grid">${all.slice(0,20).map(r => createRestaurantCard(r.province, r, r.distance)).join('')}</div>
         </div>
     `;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1206,27 +1310,13 @@ function displayNearbyRestaurants() {
     lastRenderedPage = 'nearby';
 }
 
-// ============ ABOUT SYRIA PAGE ============
+// ============ ABOUT SYRIA ============
 window.showAboutSyria = function() {
     document.getElementById('mainPage').style.display = 'none';
     const container = document.getElementById('cityPagesContainer');
     
     const landmarks = 'الجامع الأموي (دمشق)، قلعة حلب، قلعة الحصن (حمص)، النواعير (حماة)، أوغاريت (اللاذقية)، جزيرة أرواد (طرطوس)، دورا أوروبوس (دير الزور)، مملكة إيبلا (إدلب)، مدرج بصرى (درعا)، مرتفعات الجولان (القنيطرة)';
-    const facts = 'المساحة: 185,180 كم² | السكان: ~22 مليون | العاصمة: دمشق | اللغة: العربية | العملة: الليرة السورية | مهد الأبجدية الأولى (أوغاريت) | أقدم عاصمة مأهولة (دمشق)';
-    
-    const provincesHTML = provinces.map(p => {
-        const info = provinceInfo[p] || { desc: '', famous: '' };
-        return `
-            <div class="province-detail-card" onclick="showCityPage('${p}')">
-                <img src="${provinceImages[p]}" alt="${p}" loading="lazy" data-src="${provinceImages[p]}">
-                <div class="detail-body">
-                    <h4><i class="fas fa-${provinceIcons[p]||'city'}" style="color:var(--primary);margin-left:5px;"></i> ${p}</h4>
-                    <p>${info.desc}</p>
-                    <p style="margin-top:5px;font-weight:500;color:var(--primary);">🏛️ ${info.famous}</p>
-                </div>
-            </div>
-        `;
-    }).join('');
+    const facts = 'المساحة: 185,180 كم² | السكان: ~22 مليون | العاصمة: دمشق | اللغة: العربية | العملة: الليرة السورية | مهد الأبجدية الأولى | أقدم عاصمة مأهولة';
     
     container.innerHTML = `
         <div class="about-page city-page active">
@@ -1254,7 +1344,21 @@ window.showAboutSyria = function() {
                 </div>
             </div>
             <h2 class="section-title">${t('about_provinces_title')}</h2>
-            <div class="province-detail-grid">${provincesHTML}</div>
+            <div class="province-detail-grid">
+                ${provinces.map(p => {
+                    const info = provinceInfo[p] || { desc: '', famous: '' };
+                    return `
+                        <div class="province-detail-card" onclick="showCityPage('${p}')">
+                            <img src="${provinceImages[p]}" alt="${p}" loading="lazy" data-src="${provinceImages[p]}">
+                            <div class="detail-body">
+                                <h4><i class="fas fa-${provinceIcons[p]||'city'}" style="color:var(--primary);margin-left:5px;"></i> ${p}</h4>
+                                <p>${info.desc}</p>
+                                <p style="margin-top:4px;font-weight:500;color:var(--primary);font-size:0.68rem;">🏛️ ${info.famous}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
         </div>
     `;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1278,7 +1382,7 @@ function renderProvinces() {
     if (provincesSwiper) provincesSwiper.destroy(true, true);
     const isMobile = window.innerWidth < 1024;
     provincesSwiper = new Swiper('#provincesSwiper', {
-        slidesPerView: isMobile ? 1.5 : 3.5, spaceBetween: isMobile ? 12 : 25, loop: true,
+        slidesPerView: isMobile ? 1.5 : 3.5, spaceBetween: isMobile ? 10 : 25, loop: true,
         autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
         pagination: { el: '#provincePagination', clickable: true, dynamicBullets: true },
         navigation: isMobile ? false : { nextEl: '#provinceNext', prevEl: '#provincePrev' },
@@ -1330,10 +1434,6 @@ function renderCityPage(province, filters = {}) {
         const now = new Date().getHours();
         restaurants = restaurants.filter(r => now >= r.hourStart && now < r.hourEnd);
     }
-    if (activeFilters.search) {
-        const s = activeFilters.search.toLowerCase();
-        restaurants = restaurants.filter(r => r.name.toLowerCase().includes(s) || r.cuisine.toLowerCase().includes(s));
-    }
     if (activeFilters.sort === 'rating') restaurants.sort((a,b) => b.rating - a.rating);
     else if (activeFilters.sort === 'price_low') restaurants.sort((a,b) => a.priceLevel - b.priceLevel);
     else if (activeFilters.sort === 'price_high') restaurants.sort((a,b) => b.priceLevel - a.priceLevel);
@@ -1343,35 +1443,30 @@ function renderCityPage(province, filters = {}) {
     }
     
     currentProvince = province;
-    const filterBar = `
-        <div class="filter-bar">
-            <select class="filter-select" onchange="applyFilter('cuisine', this.value)">
-                <option value="all">${t('cuisine_all')}</option>
-                ${cuisineTypes.map(c => `<option value="${c}" ${activeFilters.cuisine===c?'selected':''}>${c}</option>`).join('')}
-            </select>
-            <select class="filter-select" onchange="applyFilter('price', this.value)">
-                <option value="all">${t('price_all')}</option>
-                <option value="budget" ${activeFilters.price==='budget'?'selected':''}>💰 اقتصادي</option>
-                <option value="mid" ${activeFilters.price==='mid'?'selected':''}>💰💰 متوسط</option>
-                <option value="luxury" ${activeFilters.price==='luxury'?'selected':''}>💰💰💰 فاخر</option>
-            </select>
-            <button class="filter-btn ${activeFilters.hours==='open'?'active':''}" onclick="applyFilter('hours', activeFilters.hours==='open'?'all':'open')">🕐 ${t('open_now')}</button>
-            <select class="filter-select sort" onchange="applyFilter('sort', this.value)">
-                <option value="default">${t('sort_default')}</option>
-                <option value="rating">${t('sort_rating')}</option>
-                <option value="price_low">${t('sort_price_low')}</option>
-                <option value="price_high">${t('sort_price_high')}</option>
-                ${userLocation ? `<option value="nearest">${t('sort_nearest')}</option>` : ''}
-            </select>
-            <button class="filter-btn reset" onclick="resetFilters()">✕ إعادة</button>
-        </div>
-    `;
-    
     document.getElementById('cityPagesContainer').innerHTML = `
         <div class="city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> ${t('back')}</button>
             <div class="city-header"><h2>📍 ${province}</h2><p>🌟 ${restaurants.length} مطعم</p></div>
-            ${filterBar}
+            <div class="filter-bar">
+                <select class="filter-select" onchange="applyFilter('cuisine', this.value)">
+                    <option value="all">${t('cuisine_all')}</option>
+                    ${cuisineTypes.map(c => `<option value="${c}" ${activeFilters.cuisine===c?'selected':''}>${c}</option>`).join('')}
+                </select>
+                <select class="filter-select" onchange="applyFilter('price', this.value)">
+                    <option value="all">${t('price_all')}</option>
+                    <option value="budget">💰 اقتصادي</option>
+                    <option value="mid">💰💰 متوسط</option>
+                    <option value="luxury">💰💰💰 فاخر</option>
+                </select>
+                <button class="filter-btn ${activeFilters.hours==='open'?'active':''}" onclick="applyFilter('hours', activeFilters.hours==='open'?'all':'open')">🕐 ${t('open_now')}</button>
+                <select class="filter-select sort" onchange="applyFilter('sort', this.value)" style="background:var(--accent);color:white;border-color:var(--accent);">
+                    <option value="default">${t('sort_default')}</option>
+                    <option value="rating">${t('sort_rating')}</option>
+                    <option value="price_low">${t('sort_price_low')}</option>
+                    <option value="price_high">${t('sort_price_high')}</option>
+                </select>
+                <button class="filter-btn reset" onclick="resetFilters()">✕ إعادة</button>
+            </div>
             <div class="restaurants-grid">${restaurants.map(r => createRestaurantCard(province, r, activeFilters.sort==='nearest'&&userLocation?r._distance:null)).join('')}</div>
         </div>
     `;
@@ -1419,7 +1514,7 @@ window.showRestaurantDetails = function(province, restId) {
     document.getElementById('modalPhone').innerHTML = `<i class="fas fa-phone"></i> 📞 ${rest.phone}`;
     document.getElementById('modalHours').innerHTML = `<i class="fas fa-clock"></i> 🕐 ${rest.openingHours}`;
     document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 ${rest.priceRange}`;
-    document.getElementById('modalMap').innerHTML = `<iframe width="100%" height="200" style="border:0;border-radius:15px;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${rest.lat},${rest.lng}&zoom=15&language=${currentLang}"></iframe>`;
+    document.getElementById('modalMap').innerHTML = `<iframe width="100%" height="180" style="border:0;border-radius:15px;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${rest.lat},${rest.lng}&zoom=15&language=${currentLang}"></iframe>`;
     
     const whatsappMsg = currentLang === 'en' ? `Hi, I'd like to order from ${rest.name} in ${province}%0AName: [Name]%0AOrder: [Order]` : `مرحباً، أرغب بالطلب من مطعم ${rest.name} في ${province}%0Aالاسم: [اكتب اسمك]%0Aالطلب: [اكتب طلبك]`;
     document.getElementById('modalWhatsapp').onclick = () => window.open(`https://wa.me/963${rest.phone}?text=${whatsappMsg}`, '_blank');
@@ -1429,7 +1524,6 @@ window.showRestaurantDetails = function(province, restId) {
     renderReviews(rest);
     initStarInput();
     document.getElementById('reviewText').value = '';
-    document.querySelectorAll('#starInput i').forEach(s => s.className = 'far fa-star');
     
     document.getElementById('restaurantModal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1438,7 +1532,6 @@ window.showRestaurantDetails = function(province, restId) {
 function closeModal() {
     document.getElementById('restaurantModal').classList.remove('active');
     document.body.style.overflow = '';
-    currentReviewProvince = null; currentReviewRestaurant = null;
 }
 
 window.globalSearch = function(searchTerm) {
@@ -1462,7 +1555,14 @@ window.globalSearch = function(searchTerm) {
     setTimeout(observeLazyImages, 200);
 };
 
-// ============ KEYBOARD & RESIZE ============
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded', () => {
+    renderProvinces();
+    document.getElementById('desktopSearch').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') globalSearch(this.value);
+    });
+});
+
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeMobileSearch(); closeMobileMenu(); } });
 window.addEventListener('resize', () => {
     if (provincesSwiper) {
@@ -1472,16 +1572,7 @@ window.addEventListener('resize', () => {
     }
 });
 
-// ============ INIT ============
-document.addEventListener('DOMContentLoaded', () => {
-    renderProvinces();
-    // Desktop search enter key
-    document.getElementById('desktopSearch').addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') globalSearch(this.value);
-    });
-});
-
-// Observe all lazy images after any DOM change
+// Observe lazy images
 const domObserver = new MutationObserver(() => observeLazyImages());
 domObserver.observe(document.getElementById('cityPagesContainer'), { childList: true, subtree: true });
 </script>
