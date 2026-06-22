@@ -309,7 +309,7 @@
         .hero-content h1 span { color: var(--secondary); }
         .hero-content p { font-size: 0.8rem; opacity: 0.92; margin-top: 5px; }
 
-        /* ============ STATS BANNER - منفصل ومتحرك للأعلى ============ */
+        /* ============ STATS BANNER ============ */
         .big-stat-banner {
             padding: 0 12px;
             margin: -35px auto 15px auto;
@@ -898,7 +898,7 @@ function setActiveNav(el) {
             </div>
         </div>
 
-        <!-- BIG STAT BANNER - مربع واحد فقط +7,000 مطعم -->
+        <!-- BIG STAT BANNER -->
         <div class="big-stat-banner" data-aos="fade-up">
             <div class="big-stat-card">
                 <div class="big-stat-icon">🍽️</div>
@@ -1045,370 +1045,102 @@ function closeMobileMenu() { document.getElementById('mobileMenuSidebar').classL
 function quickSearch(term) { document.getElementById('mobileSearchInput').value = term; closeMobileSearch(); globalSearch(term); }
 
 const provinces = ["دمشق", "ريف دمشق", "حلب", "حمص", "حماة", "اللاذقية", "طرطوس", "دير الزور", "الحسكة", "الرقة", "إدلب", "السويداء", "درعا", "القنيطرة"];
-const cuisineTypes = ['مشاوي', 'مأكولات بحرية', 'بيتزا وباستا', 'برغر', 'مطبخ شرقي', 'مطبخ غربي', 'حلويات', 'مقبلات', 'أكلات شعبية', 'بوفيه مفتوح'];
+const cuisineTypes = ['مشاوي', 'مأكولات بحرية', 'بيتزا وباستا', 'برغر', 'مطبخ شرقي', 'مطبخ غربي', 'حلويات', 'مقبلات', 'أكلات شعبية', 'بوفيه مفتوح', 'سوشي', 'شاورما', 'فطور', 'عصائر', 'قهوة'];
 
-// ============ بيانات المطاعم الحقيقية في دمشق ============
+// ============ بيانات المطاعم الحقيقية في دمشق (89 مطعماً) ============
 const damascusRealRestaurants = [
-    {
-        id: "damascus_real_1",
-        name: "مطعم دهب",
-        cuisine: "مطبخ شرقي",
-        rating: 4.5,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "من أشهر وأفخم مطاعم دمشق، يقدم ألذ المأكولات الشرقية والمشاوي بأجواء راقية وخدمة ممتازة.",
-        address: "دمشق - المالكي",
-        phone: "0113732527",
-        lat: 33.5190,
-        lng: 36.2785,
-        openingHours: "11:00 صباحاً - 12:00 منتصف الليل",
-        social: { facebook: "https://www.facebook.com/DahabRestaurant", instagram: "https://www.instagram.com/dahabrestaurant" }
-    },
-    {
-        id: "damascus_real_2",
-        name: "مطعم HUQQABAZ",
-        cuisine: "مطبخ شرقي",
-        rating: 4.3,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "مطعم راقي في منطقة المالكي، يقدم أشهى الأطباق الشرقية والعالمية في أجواء مميزة.",
-        address: "دمشق - المالكي",
-        phone: "0934100015",
-        lat: 33.5185,
-        lng: 36.2790,
-        openingHours: "10:00 صباحاً - 11:00 مساءً",
-        social: { instagram: "https://www.instagram.com/huqqabaz" }
-    },
-    {
-        id: "damascus_real_3",
-        name: "مطعم Ammoula",
-        cuisine: "مطبخ شرقي",
-        rating: 4.4,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "مطعم دافئ يقدم ألذ المأكولات البيتية والشرقية في المالكي.",
-        address: "دمشق - المالكي",
-        phone: "0935808487",
-        lat: 33.5178,
-        lng: 36.2800,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_4",
-        name: "عصير تايم",
-        cuisine: "حلويات",
-        rating: 4.2,
-        priceRange: "$",
-        priceLevel: 1,
-        description: "أفضل مكان للعصائر الطازجة والحلويات الباردة في دمشق.",
-        address: "دمشق - المالكي",
-        phone: "0983000559",
-        lat: 33.5180,
-        lng: 36.2780,
-        openingHours: "8:00 صباحاً - 12:00 منتصف الليل",
-        social: {}
-    },
-    {
-        id: "damascus_real_5",
-        name: "مطعم فابيان Fabian",
-        cuisine: "مطبخ غربي",
-        rating: 4.6,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "مطعم إيطالي راقي في منطقة المهاجرين، يقدم الباستا والبيتزا الأصيلة.",
-        address: "دمشق - المهاجرين",
-        phone: "0113712200",
-        lat: 33.5205,
-        lng: 36.2750,
-        openingHours: "11:00 صباحاً - 11:00 مساءً",
-        social: { facebook: "https://www.facebook.com/FabianRestaurant", instagram: "https://www.instagram.com/fabian_syria" }
-    },
-    {
-        id: "damascus_real_6",
-        name: "Pizza Hot",
-        cuisine: "بيتزا وباستا",
-        rating: 4.1,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "بيتزا ساخنة ولذيذة في المالكي، توصيل سريع وخدمة ممتازة.",
-        address: "دمشق - المالكي",
-        phone: "0113738964",
-        lat: 33.5175,
-        lng: 36.2810,
-        openingHours: "10:00 صباحاً - 1:00 بعد منتصف الليل",
-        social: {}
-    },
-    {
-        id: "damascus_real_7",
-        name: "Farouk Snax",
-        cuisine: "برغر",
-        rating: 4.0,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "أشهى السناكس والبرغر في المالكي، مكان مثالي للوجبات السريعة.",
-        address: "دمشق - المالكي",
-        phone: "0113739115",
-        lat: 33.5170,
-        lng: 36.2795,
-        openingHours: "9:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_8",
-        name: "خبز وجبنة Khebzeh w Jebneh",
-        cuisine: "أكلات شعبية",
-        rating: 4.3,
-        priceRange: "$",
-        priceLevel: 1,
-        description: "ألذ الفطائر والمعجنات الطازجة في المالكي، خبز وجبنة على أصوله.",
-        address: "دمشق - المالكي",
-        phone: "0113733743",
-        lat: 33.5173,
-        lng: 36.2805,
-        openingHours: "7:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_9",
-        name: "مطعم Butterfly",
-        cuisine: "مطبخ غربي",
-        rating: 4.2,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "مطعم جميل في المالكي، ديكورات رائعة وأطباق لذيذة.",
-        address: "دمشق - المالكي",
-        phone: "0955355555",
-        lat: 33.5188,
-        lng: 36.2808,
-        openingHours: "10:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_10",
-        name: "مطعم LA Fayette",
-        cuisine: "مطبخ غربي",
-        rating: 4.5,
-        priceRange: "$$$$",
-        priceLevel: 4,
-        description: "من أفخم مطاعم المالكي، يقدم أشهى الأطباق الفرنسية والعالمية.",
-        address: "دمشق - المالكي",
-        phone: "0113739994",
-        lat: 33.5192,
-        lng: 36.2815,
-        openingHours: "12:00 ظهراً - 12:00 منتصف الليل",
-        social: {}
-    },
-    {
-        id: "damascus_real_11",
-        name: "Coffee Shop أشاطي",
-        cuisine: "حلويات",
-        rating: 4.1,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "كافيه راقي في منطقة الجاحظ، يقدم أفخر أنواع القهوة والحلويات.",
-        address: "دمشق - الجاحظ",
-        phone: "0113333385",
-        lat: 33.5150,
-        lng: 36.2900,
-        openingHours: "8:00 صباحاً - 12:00 منتصف الليل",
-        social: {}
-    },
-    {
-        id: "damascus_real_12",
-        name: "مخبز AMELIE",
-        cuisine: "حلويات",
-        rating: 4.4,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "أشهر مخبز فرنسي في الجاحظ، كرواسون طازج وحلويات رائعة يومياً.",
-        address: "دمشق - الجاحظ",
-        phone: "",
-        lat: 33.5145,
-        lng: 36.2890,
-        openingHours: "7:00 صباحاً - 9:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_13",
-        name: "Alloh Pizza",
-        cuisine: "بيتزا وباستا",
-        rating: 4.2,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "بيتزا شهية في الجاحظ، عجينة طازجة وإضافات مميزة.",
-        address: "دمشق - الجاحظ",
-        phone: "0113339078",
-        lat: 33.5148,
-        lng: 36.2905,
-        openingHours: "10:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_14",
-        name: "Belle Coffee Shop",
-        cuisine: "حلويات",
-        rating: 4.3,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "كافيه أنيق في الجاحظ، مكان هادئ للعمل والاسترخاء مع قهوة ممتازة.",
-        address: "دمشق - الجاحظ",
-        phone: "0940355679",
-        lat: 33.5153,
-        lng: 36.2895,
-        openingHours: "8:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_15",
-        name: "Steam Coffee Shop",
-        cuisine: "حلويات",
-        rating: 4.0,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "فرع الجاحظ من سلسلة ستيم كافيه، قهوة محمصة طازجة وأجواء شبابية.",
-        address: "دمشق - الجاحظ",
-        phone: "0942220293",
-        lat: 33.5155,
-        lng: 36.2908,
-        openingHours: "7:00 صباحاً - 12:00 منتصف الليل",
-        social: { instagram: "https://www.instagram.com/steamcoffee" }
-    },
-    {
-        id: "damascus_real_16",
-        name: "Swirkies Chocolate Shop",
-        cuisine: "حلويات",
-        rating: 4.5,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "متجر شوكولا بلجيكية فاخرة في الجاحظ، هدايا راقية وشوكولا يدوية.",
-        address: "دمشق - الجاحظ",
-        phone: "0113333765",
-        lat: 33.5142,
-        lng: 36.2898,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_17",
-        name: "الخانم كافيه",
-        cuisine: "حلويات",
-        rating: 4.2,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "كافيه شرقي أصيل في الجاحظ، شاي وقهوة عربية في أجواء تراثية.",
-        address: "دمشق - الجاحظ",
-        phone: "0943337706",
-        lat: 33.5158,
-        lng: 36.2910,
-        openingHours: "9:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_18",
-        name: "Silk Chocolate Shop",
-        cuisine: "حلويات",
-        rating: 4.4,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "شوكولا فاخرة وحلويات راقية في الجاحظ، طعم كالحرير.",
-        address: "دمشق - الجاحظ",
-        phone: "0934029029",
-        lat: 33.5140,
-        lng: 36.2892,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_19",
-        name: "مطعم Toledo",
-        cuisine: "مطبخ غربي",
-        rating: 4.3,
-        priceRange: "$$$",
-        priceLevel: 3,
-        description: "مطعم إسباني مميز في الجاحظ، يقدم التاباس والباييلا الأصلية.",
-        address: "دمشق - الجاحظ",
-        phone: "0113333810",
-        lat: 33.5145,
-        lng: 36.2915,
-        openingHours: "11:00 صباحاً - 11:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_20",
-        name: "حلويات Baytoutoi",
-        cuisine: "حلويات",
-        rating: 4.6,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "أشهى الحلويات الشرقية والغربية في الجاحظ، كنافة وهريسة ووربات بالقشطة.",
-        address: "دمشق - الجاحظ",
-        phone: "0944234755",
-        lat: 33.5147,
-        lng: 36.2902,
-        openingHours: "8:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_21",
-        name: "Epic Cheesecake",
-        cuisine: "حلويات",
-        rating: 4.7,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "ألذ تشيز كيك طازج في الجاحظ، تشكيلة واسعة ونكهات مبتكرة.",
-        address: "دمشق - الجاحظ",
-        phone: "0933553383",
-        lat: 33.5152,
-        lng: 36.2900,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: { instagram: "https://www.instagram.com/epiccheesecake" }
-    },
-    {
-        id: "damascus_real_22",
-        name: "Dough & Co",
-        cuisine: "مخبوزات",
-        rating: 4.4,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "مخبوزات طازجة وكوكيز أمريكي في الجاحظ، عجينة طازجة يومياً.",
-        address: "دمشق - الجاحظ",
-        phone: "0113339350",
-        lat: 33.5143,
-        lng: 36.2908,
-        openingHours: "7:00 صباحاً - 9:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_23",
-        name: "Yalanji Store",
-        cuisine: "مطبخ شرقي",
-        rating: 4.5,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "متخصص في اليالنجي والمأكولات النباتية الشرقية، فرع الجاحظ والمزة.",
-        address: "دمشق - الجاحظ",
-        phone: "0113320109",
-        lat: 33.5150,
-        lng: 36.2912,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: {}
-    },
-    {
-        id: "damascus_real_24",
-        name: "Yalanji Store - المزة",
-        cuisine: "مطبخ شرقي",
-        rating: 4.5,
-        priceRange: "$$",
-        priceLevel: 2,
-        description: "فرع المزة من متجر اليالنجي، نفس الجودة والطعم الرائع.",
-        address: "دمشق - المزة",
-        phone: "0983618568",
-        lat: 33.5050,
-        lng: 36.2550,
-        openingHours: "9:00 صباحاً - 10:00 مساءً",
-        social: {}
-    }
+    // الدفعة الأولى - المالكي والمهاجرين والجاحظ
+    {id:"r1",name:"مطعم دهب",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$$",priceLevel:3,description:"من أشهر وأفخم مطاعم دمشق، يقدم ألذ المأكولات الشرقية والمشاوي بأجواء راقية.",address:"دمشق - المالكي",phone:"0113732527",lat:33.5190,lng:36.2785,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r2",name:"مطعم HUQQABAZ",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم راقي في منطقة المالكي، يقدم أشهى الأطباق الشرقية والعالمية.",address:"دمشق - المالكي",phone:"0934100015",lat:33.5185,lng:36.2790,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r3",name:"مطعم Ammoula",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"مطعم دافئ يقدم ألذ المأكولات البيتية والشرقية في المالكي.",address:"دمشق - المالكي",phone:"0935808487",lat:33.5178,lng:36.2800,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r4",name:"عصير تايم",cuisine:"عصائر",rating:4.2,priceRange:"$",priceLevel:1,description:"أفضل مكان للعصائر الطازجة والحلويات الباردة في دمشق.",address:"دمشق - المالكي",phone:"0983000559",lat:33.5180,lng:36.2780,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r5",name:"مطعم فابيان Fabian",cuisine:"مطبخ غربي",rating:4.6,priceRange:"$$$",priceLevel:3,description:"مطعم إيطالي راقي في المهاجرين، يقدم الباستا والبيتزا الأصيلة.",address:"دمشق - المهاجرين",phone:"0113712200",lat:33.5205,lng:36.2750,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r6",name:"Pizza Hot",cuisine:"بيتزا وباستا",rating:4.1,priceRange:"$$",priceLevel:2,description:"بيتزا ساخنة ولذيذة في المالكي، توصيل سريع وخدمة ممتازة.",address:"دمشق - المالكي",phone:"0113738964",lat:33.5175,lng:36.2810,openingHours:"10:00 صباحاً - 1:00 بعد منتصف الليل"},
+    {id:"r7",name:"Farouk Snax",cuisine:"برغر",rating:4.0,priceRange:"$$",priceLevel:2,description:"أشهى السناكس والبرغر في المالكي، مكان مثالي للوجبات السريعة.",address:"دمشق - المالكي",phone:"0113739115",lat:33.5170,lng:36.2795,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r8",name:"خبز وجبنة",cuisine:"أكلات شعبية",rating:4.3,priceRange:"$",priceLevel:1,description:"ألذ الفطائر والمعجنات الطازجة في المالكي.",address:"دمشق - المالكي",phone:"0113733743",lat:33.5173,lng:36.2805,openingHours:"7:00 صباحاً - 10:00 مساءً"},
+    {id:"r9",name:"مطعم Butterfly",cuisine:"مطبخ غربي",rating:4.2,priceRange:"$$",priceLevel:2,description:"مطعم جميل في المالكي، ديكورات رائعة وأطباق لذيذة.",address:"دمشق - المالكي",phone:"0955355555",lat:33.5188,lng:36.2808,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r10",name:"مطعم LA Fayette",cuisine:"مطبخ غربي",rating:4.5,priceRange:"$$$$",priceLevel:4,description:"من أفخم مطاعم المالكي، يقدم أشهى الأطباق الفرنسية والعالمية.",address:"دمشق - المالكي",phone:"0113739994",lat:33.5192,lng:36.2815,openingHours:"12:00 ظهراً - 12:00 منتصف الليل"},
+    {id:"r11",name:"Coffee Shop أشاطي",cuisine:"قهوة",rating:4.1,priceRange:"$$",priceLevel:2,description:"كافيه راقي في الجاحظ، يقدم أفخر أنواع القهوة والحلويات.",address:"دمشق - الجاحظ",phone:"0113333385",lat:33.5150,lng:36.2900,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r12",name:"مخبز AMELIE",cuisine:"حلويات",rating:4.4,priceRange:"$$",priceLevel:2,description:"أشهر مخبز فرنسي في الجاحظ، كرواسون طازج وحلويات رائعة.",address:"دمشق - الجاحظ",phone:"",lat:33.5145,lng:36.2890,openingHours:"7:00 صباحاً - 9:00 مساءً"},
+    {id:"r13",name:"Alloh Pizza",cuisine:"بيتزا وباستا",rating:4.2,priceRange:"$$",priceLevel:2,description:"بيتزا شهية في الجاحظ، عجينة طازجة وإضافات مميزة.",address:"دمشق - الجاحظ",phone:"0113339078",lat:33.5148,lng:36.2905,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r14",name:"Belle Coffee Shop",cuisine:"قهوة",rating:4.3,priceRange:"$$",priceLevel:2,description:"كافيه أنيق في الجاحظ، مكان هادئ للعمل والاسترخاء.",address:"دمشق - الجاحظ",phone:"0940355679",lat:33.5153,lng:36.2895,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r15",name:"Steam Coffee Shop",cuisine:"قهوة",rating:4.0,priceRange:"$$",priceLevel:2,description:"فرع الجاحظ من سلسلة ستيم كافيه، قهوة محمصة وأجواء شبابية.",address:"دمشق - الجاحظ",phone:"0942220293",lat:33.5155,lng:36.2908,openingHours:"7:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r16",name:"Swirkies Chocolate Shop",cuisine:"حلويات",rating:4.5,priceRange:"$$$",priceLevel:3,description:"متجر شوكولا بلجيكية فاخرة في الجاحظ.",address:"دمشق - الجاحظ",phone:"0113333765",lat:33.5142,lng:36.2898,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r17",name:"الخانم كافيه",cuisine:"قهوة",rating:4.2,priceRange:"$$",priceLevel:2,description:"كافيه شرقي أصيل في الجاحظ، شاي وقهوة عربية.",address:"دمشق - الجاحظ",phone:"0943337706",lat:33.5158,lng:36.2910,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r18",name:"Silk Chocolate Shop",cuisine:"حلويات",rating:4.4,priceRange:"$$$",priceLevel:3,description:"شوكولا فاخرة وحلويات راقية في الجاحظ.",address:"دمشق - الجاحظ",phone:"0934029029",lat:33.5140,lng:36.2892,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r19",name:"مطعم Toledo",cuisine:"مطبخ غربي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم إسباني مميز في الجاحظ، يقدم التاباس والباييلا.",address:"دمشق - الجاحظ",phone:"0113333810",lat:33.5145,lng:36.2915,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r20",name:"حلويات Baytoutoi",cuisine:"حلويات",rating:4.6,priceRange:"$$",priceLevel:2,description:"أشهى الحلويات الشرقية والغربية في الجاحظ.",address:"دمشق - الجاحظ",phone:"0944234755",lat:33.5147,lng:36.2902,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r21",name:"Epic Cheesecake",cuisine:"حلويات",rating:4.7,priceRange:"$$",priceLevel:2,description:"ألذ تشيز كيك طازج في الجاحظ.",address:"دمشق - الجاحظ",phone:"0933553383",lat:33.5152,lng:36.2900,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r22",name:"Dough & Co",cuisine:"مخبوزات",rating:4.4,priceRange:"$$",priceLevel:2,description:"مخبوزات طازجة وكوكيز أمريكي في الجاحظ.",address:"دمشق - الجاحظ",phone:"0113339350",lat:33.5143,lng:36.2908,openingHours:"7:00 صباحاً - 9:00 مساءً"},
+    {id:"r23",name:"Yalanji Store - الجاحظ",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"متخصص في اليالنجي والمأكولات النباتية الشرقية.",address:"دمشق - الجاحظ",phone:"0113320109",lat:33.5150,lng:36.2912,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r24",name:"Yalanji Store - المزة",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"فرع المزة من متجر اليالنجي.",address:"دمشق - المزة",phone:"0983618568",lat:33.5050,lng:36.2550,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    
+    // الدفعة الثانية - مطاعم جديدة
+    {id:"r25",name:"Maranello Café مارنيلو كافيه",cuisine:"قهوة",rating:4.4,priceRange:"$$",priceLevel:2,description:"كافيه راقي في أبو رمانة، أجواء إيطالية فاخرة.",address:"دمشق - أبو رمانة",phone:"0943732743",lat:33.5210,lng:36.2820,openingHours:"9:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r26",name:"سندوتش لذيذ Laziz Sandwich",cuisine:"ساندويش",rating:4.2,priceRange:"$",priceLevel:1,description:"ألذ الساندويشات الطازجة في دمشق.",address:"دمشق",phone:"0945223302",lat:33.5160,lng:36.2830,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r27",name:"Fuego Shawarma",cuisine:"شاورما",rating:4.5,priceRange:"$",priceLevel:1,description:"شاورما على أصولها، لحم ودجاج بنكهة لا تقاوم.",address:"دمشق",phone:"0953777571",lat:33.5170,lng:36.2840,openingHours:"10:00 صباحاً - 2:00 بعد منتصف الليل"},
+    {id:"r28",name:"مطعم Chevaliers",cuisine:"مطبخ غربي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم فاخر يقدم أشهى الأطباق الفرنسية.",address:"دمشق",phone:"0944212239",lat:33.5195,lng:36.2850,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r29",name:"Burgasm",cuisine:"برغر",rating:4.1,priceRange:"$$",priceLevel:2,description:"برغر عصري ولذيذ بنكهات مبتكرة.",address:"دمشق",phone:"0941420778",lat:33.5165,lng:36.2825,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r30",name:"Pizzaro",cuisine:"بيتزا وباستا",rating:4.3,priceRange:"$$",priceLevel:2,description:"بيتزا إيطالية أصلية في دمشق.",address:"دمشق",phone:"0113331115",lat:33.5150,lng:36.2860,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r31",name:"Slik Chocolatier Maison Slik",cuisine:"حلويات",rating:4.6,priceRange:"$$$",priceLevel:3,description:"أفخر أنواع الشوكولا السويسرية والبلجيكية.",address:"دمشق",phone:"0113331516",lat:33.5145,lng:36.2870,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r32",name:"dipndip",cuisine:"حلويات",rating:4.4,priceRange:"$$",priceLevel:2,description:"متجر شوكولا عالمي، وافل وكريب وشوكولا.",address:"دمشق",phone:"0113335354",lat:33.5155,lng:36.2865,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r33",name:"Napoli Restocafé",cuisine:"مطبخ إيطالي",rating:4.2,priceRange:"$$$",priceLevel:3,description:"مطعم ومقهى إيطالي بأجواء نابولية دافئة.",address:"دمشق",phone:"0946915918",lat:33.5180,lng:36.2835,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r34",name:"Deli Cake ديلي كيك",cuisine:"حلويات",rating:4.5,priceRange:"$$",priceLevel:2,description:"كيك طازج وحلويات غربية راقية.",address:"دمشق",phone:"0944022440",lat:33.5160,lng:36.2850,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r35",name:"Opa Snack",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"سناكس يوناني ولذيذ في دمشق.",address:"دمشق",phone:"0113331047",lat:33.5140,lng:36.2880,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r36",name:"Pasta House باستا هاوس",cuisine:"بيتزا وباستا",rating:4.3,priceRange:"$$",priceLevel:2,description:"بيت باستا إيطالي أصيل، باستا طازجة يومياً.",address:"دمشق",phone:"0113330047",lat:33.5155,lng:36.2875,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r37",name:"Cali Café Restaurant",cuisine:"مطبخ أمريكي",rating:4.1,priceRange:"$$",priceLevel:2,description:"مطعم وكافيه بأجواء كاليفورنيا، برغر وستيك.",address:"دمشق",phone:"0957777138",lat:33.5175,lng:36.2845,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r38",name:"مطعم سوا",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"مطعم شرقي أصيل، أكلات بيتية بنكهة مميزة.",address:"دمشق",phone:"0992222255",lat:33.5180,lng:36.2860,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r39",name:"Snack Pioneers سناك الرواد",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"سناكس سريعة ولذيذة، توصيل سريع.",address:"دمشق",phone:"0113334418",lat:33.5135,lng:36.2885,openingHours:"9:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r40",name:"مطعم مازيراتي Maserati",cuisine:"مطبخ إيطالي",rating:4.5,priceRange:"$$$$",priceLevel:4,description:"مطعم فاخر على اسم السيارة الإيطالية الشهيرة.",address:"دمشق",phone:"0968800880",lat:33.5200,lng:36.2840,openingHours:"12:00 ظهراً - 12:00 منتصف الليل"},
+    {id:"r41",name:"Karma Café كارما كافيه",cuisine:"قهوة",rating:4.2,priceRange:"$$",priceLevel:2,description:"كافيه هادئ وراقي، قهوة مختصة وحلويات.",address:"دمشق",phone:"0994913060",lat:33.5190,lng:36.2830,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r42",name:"Pages Cafe",cuisine:"قهوة",rating:4.3,priceRange:"$$",priceLevel:2,description:"كافيه ومكتبة، مكان مثالي للقراءة والقهوة.",address:"دمشق",phone:"0113353323",lat:33.5165,lng:36.2860,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r43",name:"MJ Pizza",cuisine:"بيتزا وباستا",rating:4.1,priceRange:"$$",priceLevel:2,description:"بيتزا أمريكية ستايل، توصيل سريع.",address:"دمشق",phone:"0113314545",lat:33.5140,lng:36.2850,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r44",name:"Romero",cuisine:"مطبخ إيطالي",rating:4.4,priceRange:"$$$",priceLevel:3,description:"مطعم إيطالي راقي، أجواء رومانسية.",address:"دمشق",phone:"0992327595",lat:33.5205,lng:36.2855,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r45",name:"Action Cafe",cuisine:"قهوة",rating:4.0,priceRange:"$$",priceLevel:2,description:"كافيه شبابي مفعم بالحيوية.",address:"دمشق",phone:"0113333583",lat:33.5150,lng:36.2880,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r46",name:"Spazzio Pizza بيتزا سبيزو",cuisine:"بيتزا وباستا",rating:4.2,priceRange:"$$",priceLevel:2,description:"بيتزا إيطالية على الحطب، طعم أصيل.",address:"دمشق",phone:"0113354220",lat:33.5170,lng:36.2870,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r47",name:"Nash Bakery",cuisine:"مخبوزات",rating:4.3,priceRange:"$$",priceLevel:2,description:"مخبز عصري، خبز طازج ومعجنات.",address:"دمشق",phone:"0987514666",lat:33.5160,lng:36.2840,openingHours:"6:00 صباحاً - 9:00 مساءً"},
+    {id:"r48",name:"مطعم ست الشام",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$$",priceLevel:3,description:"أشهر مطاعم دمشق، أكلات شامية أصيلة.",address:"دمشق",phone:"0113311238",lat:33.5155,lng:36.2845,openingHours:"9:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r49",name:"KARIZMA Cafe",cuisine:"قهوة",rating:4.1,priceRange:"$$",priceLevel:2,description:"كافيه أنيق بخدمة ممتازة.",address:"دمشق",phone:"0982094000",lat:33.5185,lng:36.2855,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r50",name:"Oki Sushi & Chinese",cuisine:"سوشي",rating:4.4,priceRange:"$$$",priceLevel:3,description:"سوشي ياباني وأكل صيني أصيل.",address:"دمشق",phone:"0995918882",lat:33.5190,lng:36.2860,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r51",name:"Fermo Fast Food Truck",cuisine:"برغر",rating:4.2,priceRange:"$",priceLevel:1,description:"شاحنة طعام متنقلة، برغر لذيذ.",address:"دمشق",phone:"0931819030",lat:33.5165,lng:36.2835,openingHours:"12:00 ظهراً - 12:00 منتصف الليل"},
+    {id:"r52",name:"Jazeel Restaurant",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم راقي، أطباق شرقية فاخرة.",address:"دمشق",phone:"0113333161",lat:33.5145,lng:36.2865,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r53",name:"مطعم 70's",cuisine:"مطبخ أمريكي",rating:4.0,priceRange:"$$",priceLevel:2,description:"مطعم بأجواء السبعينيات، برغر وستيك.",address:"دمشق",phone:"0993355705",lat:33.5170,lng:36.2855,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r54",name:"Bu Maria",cuisine:"مطبخ شرقي",rating:4.2,priceRange:"$$",priceLevel:2,description:"أكلات شرقية بيتية بنكهة مميزة.",address:"دمشق",phone:"0113337477",lat:33.5150,lng:36.2855,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r55",name:"Bella Ciao Coffee Shop",cuisine:"قهوة",rating:4.3,priceRange:"$$",priceLevel:2,description:"كافيه إيطالي الطابع، قهوة ممتازة.",address:"دمشق",phone:"0934109359",lat:33.5180,lng:36.2840,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r56",name:"Loveca Coffee Shop",cuisine:"قهوة",rating:4.1,priceRange:"$$",priceLevel:2,description:"كافيه هادئ، قهوة وحلويات.",address:"دمشق",phone:"0998727141",lat:33.5160,lng:36.2865,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r57",name:"Down Town داون تاون",cuisine:"مطبخ أمريكي",rating:4.2,priceRange:"$$$",priceLevel:3,description:"مطعم أمريكي عصري في قلب دمشق.",address:"دمشق",phone:"0113322321",lat:33.5195,lng:36.2870,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r58",name:"Fire House",cuisine:"برغر",rating:4.3,priceRange:"$$",priceLevel:2,description:"برغر على الفحم، نكهة مدخنة رائعة.",address:"دمشق",phone:"0994035027",lat:33.5175,lng:36.2865,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r59",name:"Frio فريو",cuisine:"حلويات",rating:4.4,priceRange:"$$",priceLevel:2,description:"آيس كريم وحلويات باردة، مكان منعش.",address:"دمشق",phone:"0113333852",lat:33.5145,lng:36.2875,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r60",name:"Merlan Seafood & Restaurant",cuisine:"مأكولات بحرية",rating:4.5,priceRange:"$$$",priceLevel:3,description:"أشهى المأكولات البحرية الطازجة.",address:"دمشق",phone:"0997202020",lat:33.5200,lng:36.2865,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"r61",name:"Baflay Burger بفلاي برغر",cuisine:"برغر",rating:4.1,priceRange:"$$",priceLevel:2,description:"برغر تركي ستايل، وجبات سريعة لذيذة.",address:"دمشق",phone:"0998585882",lat:33.5160,lng:36.2855,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r62",name:"Traces Cafe",cuisine:"قهوة",rating:4.2,priceRange:"$$",priceLevel:2,description:"كافيه فني، رسومات ومعارض مع القهوة.",address:"دمشق",phone:"0113332410",lat:33.5155,lng:36.2870,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r63",name:"Noura Café & Restaurant",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم وكافيه راقي، أطباق شرقية مميزة.",address:"دمشق",phone:"0113333622",lat:33.5180,lng:36.2865,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r64",name:"Flamengo Cafe",cuisine:"قهوة",rating:4.0,priceRange:"$$",priceLevel:2,description:"كافيه لاتيني، أجواء حماسية.",address:"دمشق",phone:"0933338284",lat:33.5170,lng:36.2850,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r65",name:"مطعم الشيف ابو دانيال",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"أكلات بيتية على أصولها، طبخ شرقي.",address:"دمشق",phone:"0935885280",lat:33.5150,lng:36.2840,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r66",name:"33 Chocolate",cuisine:"حلويات",rating:4.5,priceRange:"$$$",priceLevel:3,description:"شوكولا فاخرة، هدايا راقية.",address:"دمشق",phone:"0943250060",lat:33.5155,lng:36.2855,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r67",name:"Nomad Lounge",cuisine:"مطبخ عالمي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"لاونج راقي، أطباق عالمية ومشروبات.",address:"دمشق",phone:"0960002227",lat:33.5205,lng:36.2870,openingHours:"12:00 ظهراً - 1:00 بعد منتصف الليل"},
+    {id:"r68",name:"Hanabi Sushi Bar",cuisine:"سوشي",rating:4.6,priceRange:"$$$",priceLevel:3,description:"سوشي ياباني فاخر، أسماك طازجة.",address:"دمشق",phone:"0113354077",lat:33.5190,lng:36.2875,openingHours:"12:00 ظهراً - 11:00 مساءً"},
+    {id:"r69",name:"مطعم الشاميات",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$$",priceLevel:3,description:"أكلات شامية تراثية في أجواء دمشقية.",address:"دمشق",phone:"0112227270",lat:33.5130,lng:36.2900,openingHours:"9:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r70",name:"Aussie Bar Syria",cuisine:"مطبخ أسترالي",rating:4.2,priceRange:"$$$",priceLevel:3,description:"بار أسترالي، ستيك وبرغر ومشروبات.",address:"دمشق",phone:"0960099902",lat:33.5210,lng:36.2860,openingHours:"12:00 ظهراً - 1:00 بعد منتصف الليل"},
+    {id:"r71",name:"مطعم ومقهى أشكم",cuisine:"مطبخ تركي",rating:4.3,priceRange:"$$",priceLevel:2,description:"أكلات تركية أصيلة، مشاوي ومقبلات.",address:"دمشق",phone:"0930444333",lat:33.5170,lng:36.2875,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r72",name:"شاورما تنور",cuisine:"شاورما",rating:4.1,priceRange:"$",priceLevel:1,description:"شاورما على الطريقة التقليدية.",address:"دمشق",phone:"0965656559",lat:33.5150,lng:36.2835,openingHours:"10:00 صباحاً - 2:00 بعد منتصف الليل"},
+    {id:"r73",name:"مستر كومبرينو",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"ساندويشات ووجبات سريعة متنوعة.",address:"دمشق",phone:"0113353328",lat:33.5145,lng:36.2850,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r74",name:"Snack Honey سناك هني",cuisine:"وجبات سريعة",rating:4.1,priceRange:"$",priceLevel:1,description:"سناكس لذيذة، توصيل سريع.",address:"دمشق",phone:"0113337058",lat:33.5140,lng:36.2860,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r75",name:"التفاح الاخضر للوجبات السريعة",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة طازجة وصحية.",address:"دمشق",phone:"0113311415",lat:33.5150,lng:36.2845,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r76",name:"مطعم بوز الجدي",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$$",priceLevel:3,description:"مطعم دمشقي عريق، أكلات شعبية فاخرة.",address:"دمشق",phone:"0113339930",lat:33.5135,lng:36.2890,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r77",name:"مطعم الديوان الملكي",cuisine:"مطبخ شرقي",rating:4.2,priceRange:"$$$",priceLevel:3,description:"مطعم فاخر، أطباق شرقية ملكية.",address:"دمشق",phone:"0113336551",lat:33.5160,lng:36.2875,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"r78",name:"Chaplin Cafe & Rest",cuisine:"قهوة",rating:4.1,priceRange:"$$",priceLevel:2,description:"كافيه على طراز شارلي شابلن.",address:"دمشق",phone:"0993355114",lat:33.5170,lng:36.2860,openingHours:"8:00 صباحاً - 11:00 مساءً"},
+    {id:"r79",name:"So Sweet",cuisine:"حلويات",rating:4.3,priceRange:"$$",priceLevel:2,description:"حلويات غربية وشرقية، كيك وكوكيز.",address:"دمشق",phone:"0933950940",lat:33.5165,lng:36.2850,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r80",name:"Q-Deez كيو ديز",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة، فرايز ودجاج مقرمش.",address:"دمشق",phone:"0113348599",lat:33.5140,lng:36.2855,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r81",name:"مطعم فيلا ورد",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$$$",priceLevel:4,description:"مطعم فاخر في فيلا جميلة، أطباق راقية.",address:"دمشق",phone:"0937100002",lat:33.5210,lng:36.2880,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r82",name:"Baguette باغيت",cuisine:"ساندويش",rating:4.2,priceRange:"$",priceLevel:1,description:"ساندويشات فرنسية طازجة.",address:"دمشق",phone:"0113332122",lat:33.5155,lng:36.2860,openingHours:"7:00 صباحاً - 10:00 مساءً"},
+    {id:"r83",name:"سندويش لقمة الملك",cuisine:"ساندويش",rating:4.1,priceRange:"$",priceLevel:1,description:"ساندويشات ملكية، طعم لا يقاوم.",address:"دمشق",phone:"0113333590",lat:33.5145,lng:36.2840,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r84",name:"IN & OUT Cafe",cuisine:"قهوة",rating:4.0,priceRange:"$$",priceLevel:2,description:"كافيه أمريكي ستايل، برغر وقهوة.",address:"دمشق",phone:"0998490482",lat:33.5170,lng:36.2845,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r85",name:"حلويات داوود اخوان",cuisine:"حلويات",rating:4.4,priceRange:"$$",priceLevel:2,description:"حلويات شامية تقليدية، كنافة وبقلاوة.",address:"دمشق",phone:"0113334105",lat:33.5140,lng:36.2870,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"r86",name:"فلافل على كيفك",cuisine:"أكلات شعبية",rating:4.3,priceRange:"$",priceLevel:1,description:"ألذ فلافل في دمشق، طازجة ومقرمشة.",address:"دمشق",phone:"0113329923",lat:33.5130,lng:36.2880,openingHours:"7:00 صباحاً - 9:00 مساءً"},
+    {id:"r87",name:"فروج الوجبة السريعة",cuisine:"مشاوي",rating:4.1,priceRange:"$",priceLevel:1,description:"فروج مشوي على الفحم، وجبات سريعة.",address:"دمشق",phone:"0113336166",lat:33.5150,lng:36.2830,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"r88",name:"Crazy Cart كريزي كارت",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة، فرايز ودجاج.",address:"دمشق",phone:"0113325666",lat:33.5145,lng:36.2845,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"r89",name:"Time Out تايم آوت",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة، ساندويشات وبرغر.",address:"دمشق",phone:"0113319740",lat:33.5160,lng:36.2840,openingHours:"9:00 صباحاً - 11:00 مساءً"}
 ];
 
 const imagePool = [
@@ -1453,26 +1185,25 @@ const provinceImages = {
 };
 
 const provinceInfo = {
-    'دمشق': { desc: 'أقدم عاصمة مأهولة في التاريخ، قلب العالم العربي النابض. تشتهر بالجامع الأموي، سوق الحميدية، باب توما، وقصر العظم.', famous: 'الجامع الأموي، ضريح صلاح الدين' },
-    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف. تشتهر بالزبداني، بلودا، معلولا، وصيدنايا.', famous: 'معلولا، الزبداني، دير صيدنايا' },
-    'حلب': { desc: 'العاصمة الاقتصادية لسوريا. تشتهر بقلعتها الشهيرة، أسواقها المسقوفة، وصابون الغار.', famous: 'قلعة حلب، السوق المسقوف' },
-    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال. تشتهر بجامع خالد بن الوليد وقلعة الحصن.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
-    'حماة': { desc: 'مدينة النواعير على نهر العاصي. تشتهر بنواعيرها الخشبية العملاقة.', famous: 'النواعير، نهر العاصي' },
-    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط. تشتهر بشواطئها، مينائها، وغاباتها.', famous: 'شاطئ الكورنيش، أوغاريت' },
-    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد الفينيقية. تشتهر بشواطئها الرملية ومينائها التاريخي.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
-    'دير الزور': { desc: 'واحة الفرات الخضراء. تشتهر بالجسر المعلق، متحفها، وموقع دورا أوروبوس.', famous: 'الجسر المعلق، نهر الفرات' },
-    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة الخصبة. تشتهر بالزراعة ونهر الخابور.', famous: 'نهر الخابور، تل حلف' },
-    'الرقة': { desc: 'عاصمة الرشيد التاريخية. تشتهر بقصر البنات، سور الرقة، وبحيرة الأسد.', famous: 'قصر البنات، بحيرة الأسد' },
-    'إدلب': { desc: 'أرض الزيتون والطبيعة. تشتهر بغابات الزيتون وإيبلا القديمة.', famous: 'مملكة إيبلا، بساتين الزيتون' },
-    'السويداء': { desc: 'جبل العرب، أرض الكروم والتفاح. تشتهر بآثارها الرومانية وقراها القديمة.', famous: 'آثار شهبا، جبل العرب' },
-    'درعا': { desc: 'مهد الثورة العربية الكبرى. تشتهر بمدرجها الروماني وسهل حوران.', famous: 'مدرج بصرى، بصرى الشام' },
-    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء. تشتهر بغاباتها وينابيعها الطبيعية.', famous: 'غابات الجولان، نبع بانياس' }
+    'دمشق': { desc: 'أقدم عاصمة مأهولة في التاريخ، قلب العالم العربي النابض.', famous: 'الجامع الأموي، سوق الحميدية' },
+    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف.', famous: 'معلولا، الزبداني' },
+    'حلب': { desc: 'العاصمة الاقتصادية لسوريا، قلعتها الشهيرة.', famous: 'قلعة حلب، السوق المسقوف' },
+    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
+    'حماة': { desc: 'مدينة النواعير على نهر العاصي.', famous: 'النواعير، نهر العاصي' },
+    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط.', famous: 'شاطئ الكورنيش، أوغاريت' },
+    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
+    'دير الزور': { desc: 'واحة الفرات الخضراء.', famous: 'الجسر المعلق، نهر الفرات' },
+    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة.', famous: 'نهر الخابور، تل حلف' },
+    'الرقة': { desc: 'عاصمة الرشيد التاريخية.', famous: 'قصر البنات، بحيرة الأسد' },
+    'إدلب': { desc: 'أرض الزيتون والطبيعة.', famous: 'مملكة إيبلا، بساتين الزيتون' },
+    'السويداء': { desc: 'جبل العرب، أرض الكروم.', famous: 'آثار شهبا، جبل العرب' },
+    'درعا': { desc: 'مهد الثورة العربية الكبرى.', famous: 'مدرج بصرى، بصرى الشام' },
+    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء.', famous: 'غابات الجولان، نبع بانياس' }
 };
 
 function generateRestaurants(province, count = 50) {
-    // إذا كانت المحافظة دمشق، نستخدم المطاعم الحقيقية فقط
     if (province === "دمشق") {
-        return damascusRealRestaurants.map(r => ({...r, image: imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`}));
+        return damascusRealRestaurants.map(r => ({...r, image: imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`, reviews: []}));
     }
     
     const restaurants = [];
@@ -1645,7 +1376,7 @@ window.showAboutSyria = function() {
     const container = document.getElementById('cityPagesContainer');
     
     const landmarks = 'الجامع الأموي (دمشق)، قلعة حلب، قلعة الحصن (حمص)، النواعير (حماة)، أوغاريت (اللاذقية)، جزيرة أرواد (طرطوس)، دورا أوروبوس (دير الزور)، مملكة إيبلا (إدلب)، مدرج بصرى (درعا)، مرتفعات الجولان (القنيطرة)';
-    const facts = 'المساحة: 185,180 كم² | السكان: ~22 مليون | العاصمة: دمشق | اللغة: العربية | العملة: الليرة السورية | مهد الأبجدية الأولى | أقدم عاصمة مأهولة';
+    const facts = 'المساحة: 185,180 كم² | السكان: ~22 مليون | العاصمة: دمشق | اللغة: العربية | العملة: الليرة السورية';
     
     container.innerHTML = `
         <div class="about-page city-page active">
@@ -1655,22 +1386,10 @@ window.showAboutSyria = function() {
                 <p>مهد أقدم الحضارات في التاريخ وأجمل مطبخ في العالم العربي</p>
             </div>
             <div class="about-grid">
-                <div class="about-card">
-                    <h3>📜 لمحة تاريخية</h3>
-                    <p>سوريا من أقدم مناطق العالم المأهولة، قامت فيها حضارات عريقة: الآرامية، الفينيقية، الآشورية، البابلية، الفارسية، الإغريقية، الرومانية، البيزنطية، والإسلامية. دمشق أقدم عاصمة مأهولة في التاريخ.</p>
-                </div>
-                <div class="about-card">
-                    <h3>🍽️ المطبخ السوري</h3>
-                    <p>يعتبر من أغنى المطابخ العربية والعالمية. أشهر أكلاته: الكبة، اليبرق، الشاورما، الفتوش، التبولة، المقادم، الهريسة، الكنافة، البقلاوة، المعروك، والمشاوي.</p>
-                </div>
-                <div class="about-card">
-                    <h3>🏛️ أشهر المعالم</h3>
-                    <p>${landmarks}</p>
-                </div>
-                <div class="about-card">
-                    <h3>📊 حقائق سريعة</h3>
-                    <p>${facts}</p>
-                </div>
+                <div class="about-card"><h3>📜 لمحة تاريخية</h3><p>سوريا من أقدم مناطق العالم المأهولة، قامت فيها حضارات عريقة. دمشق أقدم عاصمة مأهولة في التاريخ.</p></div>
+                <div class="about-card"><h3>🍽️ المطبخ السوري</h3><p>يعتبر من أغنى المطابخ العربية. أشهر أكلاته: الكبة، اليبرق، الشاورما، الفتوش، الكنافة، البقلاوة.</p></div>
+                <div class="about-card"><h3>🏛️ أشهر المعالم</h3><p>${landmarks}</p></div>
+                <div class="about-card"><h3>📊 حقائق سريعة</h3><p>${facts}</p></div>
             </div>
             <h2 class="section-title">🗺️ المحافظات السورية</h2>
             <div class="province-detail-grid">
@@ -1843,7 +1562,6 @@ window.showRestaurantDetails = function(province, restId) {
     document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 ${rest.priceRange}`;
     document.getElementById('modalMap').innerHTML = `<iframe width="100%" height="180" style="border:0;border-radius:15px;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${rest.lat},${rest.lng}&zoom=15&language=ar"></iframe>`;
     
-    // إعداد زر الواتساب مع رقم الهاتف الحقيقي
     const whatsappMsg = `مرحباً، أرغب بالطلب من مطعم ${rest.name} في ${province}%0Aالاسم: [اكتب اسمك]%0Aالطلب: [اكتب طلبك]`;
     if (rest.phone) {
         document.getElementById('modalWhatsapp').onclick = () => window.open(`https://wa.me/963${rest.phone}?text=${whatsappMsg}`, '_blank');
