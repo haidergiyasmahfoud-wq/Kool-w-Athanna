@@ -3,31 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    
     <title>كول واتهنى - دليل المطاعم في سوريا | 7000+ مطعم</title>
-    <meta name="description" content="اكتشف أفضل المطاعم في سوريا - دليل شامل لأكثر من 7000 مطعم في 14 محافظة. تقييمات، أسعار، مواقع، وطلب مباشر.">
-    <meta name="keywords" content="مطاعم سوريا, دليل المطاعم, مطاعم دمشق, مطاعم حلب, أكل سوري, سياحة">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://wheretoeat.today/">
+    <meta name="description" content="اكتشف أفضل المطاعم في سوريا - دليل شامل لأكثر من 7000 مطعم في 14 محافظة">
     
-    <meta property="og:type" content="website">
+    <!-- ============ META TAGS ============ -->
     <meta property="og:title" content="كول واتهنى - دليل المطاعم في سوريا">
     <meta property="og:description" content="اكتشف أفضل المطاعم في سوريا - 7000+ مطعم في 14 محافظة">
     <meta property="og:image" content="https://imgur.com/qxbKmUp.jpg">
-    <meta property="og:locale" content="ar_SY">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="كول واتهنى - دليل المطاعم في سوريا">
-    <meta name="twitter:image" content="https://imgur.com/qxbKmUp.jpg">
     
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebSite","name":"كول واتهنى","alternateName":"Eat and Enjoy","url":"https://wheretoeat.today/","description":"دليل المطاعم الشامل في سوريا - أكثر من 7000 مطعم","inLanguage":"ar"}
+    {"@context":"https://schema.org","@type":"WebSite","name":"كول واتهنى","url":"https://wheretoeat.today/","description":"دليل المطاعم الشامل في سوريا"}
     </script>
 
+    <!-- ============ STYLES ============ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-    
+
     <style>
         /* ============ CSS VARIABLES ============ */
         :root {
@@ -39,7 +33,6 @@
             --bg: #FFFBF5;
             --bg-card: #FFFFFF;
             --bg-input: #F5F0E8;
-            --bg-overlay: rgba(255,251,245,0.95);
             --text: #2D3436;
             --text-secondary: #6B5B4B;
             --border: rgba(0,0,0,0.08);
@@ -64,7 +57,6 @@
             --bg: #1a1a2e;
             --bg-card: #16213e;
             --bg-input: #1a1a2e;
-            --bg-overlay: rgba(22,33,62,0.95);
             --text: #e0e0e0;
             --text-secondary: #aaa;
             --border: rgba(255,255,255,0.1);
@@ -86,7 +78,6 @@
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
             transition: background 0.4s, color 0.4s;
         }
 
@@ -97,11 +88,7 @@
             animation: gradientBG 15s ease infinite;
             transition: background 0.4s;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+        @keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
         .floating-shapes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
         .shape {
@@ -110,12 +97,7 @@
             background: rgba(232,93,4,0.08);
         }
         [data-theme="dark"] .shape { background: rgba(232,93,4,0.04); }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateX(15px); }
-            50% { transform: translateY(-80px) rotate(180deg); }
-            75% { transform: translateX(-15px); }
-        }
+        @keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 25%{transform:translateX(15px)} 50%{transform:translateY(-80px) rotate(180deg)} 75%{transform:translateX(-15px)} }
 
         /* ============ HEADER ============ */
         .header {
@@ -128,10 +110,7 @@
             transition: all 0.4s;
             height: var(--header-height);
         }
-        .header.scrolled {
-            border-bottom-color: var(--primary);
-            box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
-        }
+        .header.scrolled { border-bottom-color: var(--primary); box-shadow: 0 1px 0 var(--border), var(--shadow-sm); }
 
         .nav-container {
             display: flex; justify-content: space-between; align-items: center;
@@ -149,10 +128,7 @@
             -webkit-background-clip: text; background-clip: text;
             color: transparent; line-height: 1.2;
         }
-        .logo p {
-            font-size: 0.55rem; color: var(--primary); letter-spacing: 1px;
-            opacity: 0.9; white-space: nowrap; font-weight: 500;
-        }
+        .logo p { font-size: 0.55rem; color: var(--primary); letter-spacing: 1px; opacity: 0.9; white-space: nowrap; font-weight: 500; }
 
         .search-bar-desktop { display: none; }
 
@@ -190,6 +166,7 @@
             line-height: 1;
         }
 
+        /* ============ BOTTOM NAV ============ */
         .bottom-nav {
             display: flex; position: fixed; bottom: 0; left: 0; width: 100%;
             background: var(--header-bg); backdrop-filter: blur(25px);
@@ -213,6 +190,7 @@
         .bottom-nav-item.active { color: var(--primary); font-weight: 700; background: rgba(232,93,4,0.08); }
         .bottom-nav-item.active i { color: var(--primary); }
 
+        /* ============ MOBILE SEARCH ============ */
         .mobile-search-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg); z-index: 10001;
@@ -221,9 +199,7 @@
             padding-top: calc(var(--header-height) + 10px);
         }
         .mobile-search-overlay.active { transform: translateY(0); }
-        .mobile-search-overlay .search-header {
-            display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
-        }
+        .mobile-search-overlay .search-header { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
         .mobile-search-overlay .search-input-wrap {
             flex: 1; display: flex; background: var(--bg-input); border-radius: 50px;
             border: 2px solid transparent; transition: 0.3s; overflow: hidden;
@@ -251,6 +227,7 @@
         }
         .mobile-search-overlay .quick-link:active { background: var(--primary); color: white; }
 
+        /* ============ MOBILE MENU ============ */
         .mobile-menu-backdrop {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5); z-index: 10000; opacity: 0; visibility: hidden;
@@ -284,9 +261,7 @@
         }
         .mobile-menu-sidebar .menu-link:active { background: rgba(232,93,4,0.08); color: var(--primary); }
         .mobile-menu-sidebar .menu-link i { width: 20px; text-align: center; font-size: 0.95rem; }
-        .mobile-menu-sidebar .menu-divider {
-            height: 1px; background: var(--border); margin: 8px 18px;
-        }
+        .mobile-menu-sidebar .menu-divider { height: 1px; background: var(--border); margin: 8px 18px; }
 
         /* ============ HERO ============ */
         .hero { margin-top: var(--header-height); }
@@ -301,79 +276,54 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%);
         }
-        .hero-content {
-            position: relative; z-index: 2; text-align: center; color: white;
-            padding: 0 16px 20px;
-        }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: white; padding: 0 16px 20px; }
         .hero-content h1 { font-size: 1.6rem; font-weight: 800; text-shadow: 0 2px 10px rgba(0,0,0,0.3); line-height: 1.3; }
         .hero-content h1 span { color: var(--secondary); }
         .hero-content p { font-size: 0.8rem; opacity: 0.92; margin-top: 5px; }
 
         /* ============ STATS BANNER ============ */
-        .big-stat-banner {
-            padding: 0 12px;
-            margin: -35px auto 15px auto;
+        .big-stat-banner { padding: 0 12px; margin: -35px auto 15px auto; position: relative; z-index: 10; }
+        .big-stat-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 14px 20px; border-radius: var(--radius-xl); text-align: center;
+            box-shadow: var(--shadow-primary); color: white;
+            display: flex; align-items: center; justify-content: center;
+            gap: 12px; flex-wrap: wrap; transition: transform 0.3s ease;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        .big-stat-card:hover { transform: translateY(-3px); }
+        .big-stat-icon { font-size: 1.8rem; animation: bounceIcon 2s ease-in-out infinite; }
+        .big-stat-number { font-size: 2rem; font-weight: 900; line-height: 1.2; }
+        .big-stat-label { font-size: 0.85rem; font-weight: 700; }
+        .big-stat-sub { font-size: 0.6rem; opacity: 0.85; }
+        @keyframes bounceIcon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+        /* ============ STATS CONTAINER ============ */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 12px 16px;
+            max-width: 800px;
+            margin: -8px auto 15px;
             position: relative;
             z-index: 10;
         }
-        
-        .big-stat-card {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 14px 20px;
-            border-radius: var(--radius-xl);
+        .stat-item {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 10px 8px;
             text-align: center;
-            box-shadow: var(--shadow-primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            transition: transform 0.3s ease;
-            animation: fadeInUp 0.6s ease-out;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
-        
-        .big-stat-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .big-stat-icon {
-            font-size: 1.8rem;
-            animation: bounceIcon 2s ease-in-out infinite;
-        }
-        
-        .big-stat-number {
-            font-size: 2rem;
-            font-weight: 900;
-            line-height: 1.2;
-        }
-        
-        .big-stat-label {
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-        
-        .big-stat-sub {
-            font-size: 0.6rem;
-            opacity: 0.85;
-        }
-        
-        @keyframes bounceIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        .stat-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+        .stat-number { display: block; font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+        .stat-label { font-size: 0.6rem; color: var(--text-secondary); }
 
+        /* ============ SECTION TITLE ============ */
         .section-title {
             text-align: center; font-size: 1.15rem; margin: 20px 0 15px;
             color: var(--primary); font-weight: 700; padding: 0 16px;
@@ -386,6 +336,21 @@
             margin: 8px auto 0; border-radius: 3px;
         }
 
+        /* ============ VIEW ALL BUTTON ============ */
+        .provinces-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 10px; max-width: 1200px; margin: 0 auto 10px;
+        }
+        .view-all-btn {
+            background: transparent; border: 2px solid var(--primary);
+            color: var(--primary); padding: 6px 16px; border-radius: 50px;
+            cursor: pointer; font-family: 'Tajawal', sans-serif; font-size: 0.75rem;
+            font-weight: 700; transition: all 0.3s; white-space: nowrap;
+        }
+        .view-all-btn:hover { background: var(--primary); color: white; }
+        .view-all-btn:active { transform: scale(0.95); }
+
+        /* ============ NEARBY BUTTON ============ */
         .nearby-btn-container { text-align: center; margin: 10px 0 20px; animation: fadeInUp 0.5s ease-out 0.1s both; }
         .nearby-btn {
             background: linear-gradient(135deg, var(--accent), #059669);
@@ -395,10 +360,27 @@
             display: inline-flex; align-items: center; gap: 8px;
             box-shadow: 0 4px 12px rgba(6,214,160,0.3);
         }
-        .nearby-btn:active { transform: scale(0.95); box-shadow: 0 2px 8px rgba(6,214,160,0.3); }
+        .nearby-btn:active { transform: scale(0.95); }
         .nearby-btn.loading { opacity: 0.7; pointer-events: none; }
         .nearby-btn i { animation: pulse 1.5s infinite; }
         @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+        /* ============ RANDOM BUTTON ============ */
+        .random-restaurant-container {
+            text-align: center; margin: 15px 0 10px;
+            animation: fadeInUp 0.5s ease-out 0.15s both;
+        }
+        .random-btn {
+            background: linear-gradient(135deg, #FF6B6B, #E85D04);
+            color: white; border: none; padding: 10px 28px;
+            border-radius: 50px; cursor: pointer; font-family: 'Tajawal', sans-serif;
+            font-size: 0.8rem; font-weight: 700; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 12px rgba(232,93,4,0.3);
+        }
+        .random-btn:active { transform: scale(0.95) rotate(-5deg); }
+        .random-btn i { font-size: 1.1rem; }
+        .random-hint { font-size: 0.6rem; color: var(--text-secondary); margin-top: 4px; }
 
         /* ============ PROVINCES SLIDER ============ */
         .provinces-slider-container { 
@@ -417,50 +399,55 @@
         }
         .province-card:active { transform: scale(0.96); }
         .province-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-hover); }
-        .province-image { 
-            width: 100%; height: 120px; object-fit: cover; 
-            transition: transform 0.5s ease;
-        }
-        .province-card:hover .province-image {
-            transform: scale(1.05);
-        }
+        .province-image { width: 100%; height: 120px; object-fit: cover; transition: transform 0.5s ease; }
+        .province-card:hover .province-image { transform: scale(1.05); }
         .province-card-body { padding: 12px 10px; display: flex; flex-direction: column; align-items: center; flex: 1; justify-content: center; gap: 2px; }
         .province-icon { font-size: 1.2rem; color: var(--primary); }
         .province-name { font-size: 0.9rem; font-weight: 700; color: var(--text); }
         .restaurant-count { color: var(--text-secondary); font-size: 0.65rem; }
 
-        .province-nav-prev, .province-nav-next { display: none; }
-        
-        .province-pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            margin-top: 15px;
+        /* ============ PROVINCE GRID ALL ============ */
+        .province-grid-all {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 14px;
+            padding: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .province-card-large {
+            cursor: pointer;
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .province-card-large:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .province-card-image {
+            position: relative;
+            height: 150px;
+            overflow: hidden;
+        }
+        .province-card-image img {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        
-        .swiper-pagination-bullet {
-            width: 8px;
-            height: 8px;
-            background: var(--text-secondary);
-            opacity: 0.5;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+        .province-card-large:hover .province-card-image img { transform: scale(1.1); }
+        .province-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 12px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
         }
-        
-        .swiper-pagination-bullet-active {
-            width: 24px;
-            border-radius: 4px;
-            background: var(--primary);
-            opacity: 1;
-        }
-        
-        .swiper-pagination {
-            position: relative !important;
-            bottom: 0 !important;
-            margin-top: 10px;
-        }
+        .province-name-large { font-size: 1rem; font-weight: 700; display: block; }
+        .restaurant-count-large { font-size: 0.7rem; opacity: 0.9; }
 
         /* ============ CITY PAGE ============ */
         .city-page {
@@ -468,7 +455,6 @@
             padding: calc(var(--header-height) + 12px) 10px 100px;
         }
         .city-page.active { display: block; animation: fadeInUp 0.4s ease; }
-        @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
         .city-header { text-align: center; margin-bottom: 20px; }
         .city-header h2 { font-size: 1.4rem; color: var(--primary); }
         .city-header p { font-size: 0.75rem; color: var(--text-secondary); }
@@ -482,6 +468,7 @@
         }
         .back-btn:active { transform: scale(0.95); }
 
+        /* ============ FILTERS ============ */
         .filter-bar {
             display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px;
             padding: 0 3px; justify-content: center;
@@ -495,6 +482,66 @@
         .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
         .filter-btn.reset { background: var(--text-secondary); color: white; border: none; }
 
+        /* ============ ADVANCED FILTERS ============ */
+        .advanced-filter-toggle {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--bg-card); border: 1px solid var(--border);
+            padding: 8px 16px; border-radius: 50px; cursor: pointer;
+            font-family: 'Tajawal', sans-serif; font-size: 0.75rem;
+            color: var(--text); transition: all 0.3s; margin: 0 auto 12px;
+        }
+        .advanced-filter-toggle:hover { border-color: var(--primary); }
+        .advanced-filter-toggle:active { transform: scale(0.95); }
+        .advanced-filters {
+            background: var(--bg-card); border-radius: var(--radius);
+            padding: 16px; margin: 0 0 16px 0;
+            border: 1px solid var(--border);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+        @keyframes slideUp { from{opacity:1;transform:translateY(0)} to{opacity:0;transform:translateY(-10px)} }
+        .filter-group { margin-bottom: 12px; }
+        .filter-group label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 4px; }
+        .rating-filter { display: flex; gap: 6px; flex-wrap: wrap; }
+        .rating-btn {
+            padding: 5px 14px; border-radius: 50px; border: 1px solid var(--border);
+            background: var(--bg-input); cursor: pointer; font-family: 'Tajawal', sans-serif;
+            font-size: 0.7rem; transition: all 0.3s; color: var(--text);
+        }
+        .rating-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .rating-btn:hover { border-color: var(--primary); }
+
+        .toggle-switch {
+            position: relative; width: 44px; height: 24px;
+            display: inline-block;
+        }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-switch label {
+            position: absolute; cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-input); border-radius: 24px;
+            transition: 0.3s;
+        }
+        .toggle-switch label::before {
+            content: ""; position: absolute; height: 18px; width: 18px;
+            left: 3px; bottom: 3px; background: white;
+            border-radius: 50%; transition: 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .toggle-switch input:checked + label { background: var(--primary); }
+        .toggle-switch input:checked + label::before { transform: translateX(20px); }
+
+        /* ============ NO RESULTS ============ */
+        .no-results {
+            text-align: center; padding: 40px 20px;
+            grid-column: 1 / -1;
+        }
+        .no-results i { font-size: 3rem; color: var(--text-secondary); }
+        .no-results h3 { margin: 10px 0 5px; color: var(--text); }
+        .no-results p { color: var(--text-secondary); font-size: 0.8rem; }
+
+        /* ============ RESTAURANTS GRID ============ */
         .restaurants-grid { display: grid; grid-template-columns: 1fr; gap: 14px; max-width: 1200px; margin: 0 auto; }
         .restaurant-card {
             background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
@@ -506,9 +553,7 @@
         .restaurant-image { height: 160px; overflow: hidden; position: relative; background: var(--bg-input); }
         .restaurant-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s ease, transform 0.5s ease; }
         .restaurant-image img.loaded { opacity: 1; }
-        .restaurant-card:hover .restaurant-image img {
-            transform: scale(1.05);
-        }
+        .restaurant-card:hover .restaurant-image img { transform: scale(1.05); }
         .rating {
             position: absolute; top: 8px; right: 8px;
             background: rgba(0,0,0,0.75); padding: 4px 10px;
@@ -545,6 +590,7 @@
         }
         .star-rating-small { color: var(--star-color); font-size: 0.7rem; }
 
+        /* ============ MODAL ============ */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); z-index: 99999; align-items: flex-end;
@@ -586,6 +632,8 @@
         .share-btn.whatsapp { background: #25D366; }
         .share-btn.facebook { background: #1877F2; }
         .share-btn.telegram { background: #0088cc; }
+
+        /* ============ REVIEW SECTION ============ */
         .review-section { margin-top: 18px; padding-top: 18px; border-top: 2px solid var(--border); }
         .review-section h4 { font-size: 0.9rem; color: var(--primary); margin-bottom: 10px; }
         .star-input { display: flex; gap: 3px; margin-bottom: 8px; direction: ltr; justify-content: flex-end; }
@@ -604,10 +652,28 @@
             font-family: 'Tajawal', sans-serif; font-size: 0.8rem;
         }
         .review-submit:active { transform: scale(0.95); }
-        .existing-reviews { margin-top: 12px; max-height: 180px; overflow-y: auto; }
-        .review-item { background: var(--info-bg); padding: 8px; border-radius: var(--radius-sm); margin-bottom: 6px; font-size: 0.72rem; }
+        .existing-reviews { margin-top: 12px; max-height: 300px; overflow-y: auto; }
+        .review-item {
+            background: var(--info-bg); padding: 10px; border-radius: var(--radius-sm);
+            margin-bottom: 8px; font-size: 0.72rem;
+        }
         .review-item .review-stars { color: var(--star-color); }
+        .review-header { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+        .review-user { display: flex; align-items: center; gap: 4px; font-weight: 700; }
+        .review-date { color: var(--text-secondary); font-size: 0.6rem; }
+        .review-images { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+        .review-images img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
 
+        .review-photo-input { margin: 10px 0; }
+        .review-photo-input label { display: block; font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 4px; }
+        .review-photo-input input[type="file"] {
+            width: 100%; padding: 8px; border: 1px dashed var(--border);
+            border-radius: var(--radius-sm); background: var(--bg-input);
+            font-family: 'Tajawal', sans-serif; font-size: 0.7rem; color: var(--text);
+        }
+        .review-image-preview { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+
+        /* ============ ABOUT PAGE ============ */
         .about-page {
             padding: calc(var(--header-height) + 16px) 12px 100px;
             max-width: 1000px; margin: 0 auto;
@@ -642,6 +708,93 @@
         .province-detail-card h4 { color: var(--primary); font-size: 0.85rem; margin-bottom: 4px; }
         .province-detail-card p { color: var(--text-secondary); font-size: 0.7rem; line-height: 1.5; }
 
+        /* ============ ARTICLES ============ */
+        .articles-grid {
+            display: grid; grid-template-columns: 1fr; gap: 16px;
+            max-width: 1200px; margin: 0 auto;
+        }
+        .article-card {
+            background: var(--bg-card); border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+            cursor: pointer; transition: all 0.3s;
+        }
+        .article-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
+        .article-image { position: relative; height: 160px; overflow: hidden; }
+        .article-image img { width: 100%; height: 100%; object-fit: cover; }
+        .article-category {
+            position: absolute; top: 10px; right: 10px;
+            background: var(--primary); color: white; padding: 4px 12px;
+            border-radius: 50px; font-size: 0.6rem; font-weight: 700;
+        }
+        .article-content { padding: 14px; }
+        .article-content h3 { font-size: 0.95rem; color: var(--primary); margin-bottom: 4px; }
+        .article-content p { font-size: 0.75rem; color: var(--text-secondary); }
+        .article-meta { display: flex; gap: 12px; margin-top: 8px; font-size: 0.65rem; color: var(--text-secondary); }
+        .article-meta i { margin-left: 3px; }
+
+        .article-full { max-width: 800px; margin: 0 auto; }
+        .article-full-title { font-size: 1.5rem; color: var(--primary); }
+        .article-full-meta { display: flex; gap: 12px; font-size: 0.75rem; color: var(--text-secondary); margin: 8px 0 12px; flex-wrap: wrap; }
+        .article-full-image { width: 100%; max-height: 400px; object-fit: cover; border-radius: var(--radius); margin: 12px 0; }
+        .article-full-content { font-size: 0.85rem; line-height: 1.8; }
+        .article-full-content p { margin-bottom: 12px; }
+        .article-share { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--border); }
+
+        /* ============ MAP PAGE ============ */
+        #mapContainer { height: 450px; border-radius: var(--radius); overflow: hidden; margin: 10px 0; border: 1px solid var(--border); }
+        .map-filters {
+            display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0;
+            justify-content: center;
+        }
+        .map-filters select {
+            padding: 8px 14px; border-radius: 50px; border: 1px solid var(--border);
+            background: var(--bg-card); font-family: 'Tajawal', sans-serif;
+            font-size: 0.7rem; color: var(--text); cursor: pointer;
+        }
+        .map-btn {
+            background: linear-gradient(135deg, #4A90D9, #2D6FAF);
+            color: white; border: none; padding: 10px 25px;
+            border-radius: 50px; cursor: pointer; font-family: 'Tajawal', sans-serif;
+            font-size: 0.8rem; font-weight: 700; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 12px rgba(74,144,217,0.3);
+            margin: 5px auto;
+        }
+        .map-btn:active { transform: scale(0.95); }
+
+        /* ============ INSTALL PROMPT ============ */
+        .install-prompt {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-card);
+            padding: 16px;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.15);
+            z-index: 99998;
+            border-top: 3px solid var(--primary);
+            animation: slideUpInstall 0.5s ease;
+        }
+        @keyframes slideUpInstall { from{transform:translateY(100%)} to{transform:translateY(0)} }
+        .install-prompt-content {
+            display: flex; align-items: center; gap: 12px;
+            max-width: 600px; margin: 0 auto;
+        }
+        .install-icon { font-size: 2rem; }
+        .install-text { flex: 1; }
+        .install-text h4 { font-size: 0.85rem; color: var(--text); margin: 0; }
+        .install-text p { font-size: 0.65rem; color: var(--text-secondary); margin: 0; }
+        .install-btn {
+            background: var(--primary); color: white; border: none;
+            padding: 8px 20px; border-radius: 50px; cursor: pointer;
+            font-family: 'Tajawal', sans-serif; font-size: 0.75rem; font-weight: 700;
+        }
+        .install-close {
+            background: transparent; border: none; font-size: 1.2rem;
+            cursor: pointer; color: var(--text-secondary); padding: 0 4px;
+        }
+
+        /* ============ SCROLL TOP ============ */
         .scroll-top {
             position: fixed; bottom: 80px; right: 12px; z-index: 999;
             width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -653,6 +806,7 @@
         .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
         .scroll-top:active { transform: scale(0.95); }
 
+        /* ============ TOAST ============ */
         .toast {
             position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
             background: #333; color: white; padding: 10px 24px; border-radius: 50px;
@@ -661,6 +815,55 @@
         }
         .toast.show { opacity: 1; }
 
+        /* ============ POINTS NOTIFICATION ============ */
+        .points-notification {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #FFBA08, #E85D04);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(232,93,4,0.3);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideUpPoints 0.5s ease;
+            font-family: 'Tajawal', sans-serif;
+        }
+        @keyframes slideUpPoints { from{opacity:0;transform:translateX(-50%) translateY(20px)} to{opacity:1;transform:translateX(-50%) translateY(0)} }
+        @keyframes slideDownPoints { from{opacity:1;transform:translateX(-50%) translateY(0)} to{opacity:0;transform:translateX(-50%) translateY(20px)} }
+
+        /* ============ CELEBRATION ============ */
+        @keyframes celebrationAnim {
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2) rotate(360deg); opacity: 0; }
+        }
+
+        /* ============ SKELETON LOADING ============ */
+        .skeleton {
+            background: linear-gradient(90deg, var(--bg-input) 25%, var(--bg-card) 50%, var(--bg-input) 75%);
+            background-size: 200% 100%;
+            animation: skeletonLoading 1.5s infinite;
+            border-radius: var(--radius-sm);
+        }
+        @keyframes skeletonLoading { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        .skeleton-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            min-height: 280px;
+        }
+        .skeleton-image { width: 100%; height: 160px; background: var(--bg-input); }
+        .skeleton-text { height: 14px; margin: 8px 12px; background: var(--bg-input); border-radius: 4px; }
+        .skeleton-text.short { width: 60%; }
+        .skeleton-text.medium { width: 80%; }
+
+        /* ============ FOOTER ============ */
         .footer {
             background: var(--bg-card); padding: 20px 12px;
             text-align: center; border-top: 2px solid var(--primary);
@@ -676,6 +879,7 @@
         .developer-footer .dev-text h4 { font-size: 0.8rem; color: var(--secondary); }
         .developer-footer .dev-text a { color: var(--primary-light); text-decoration: none; font-weight: 700; }
 
+        /* ============ RESPONSIVE ============ */
         @media (min-width: 640px) {
             :root { --header-height: 70px; }
             .nav-container { padding: 0 16px; }
@@ -691,6 +895,9 @@
             .restaurants-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
             .province-detail-grid { grid-template-columns: repeat(2, 1fr); }
             .about-grid { grid-template-columns: repeat(2, 1fr); }
+            .articles-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-container { grid-template-columns: repeat(4, 1fr); }
+            .province-grid-all { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (min-width: 1024px) {
@@ -716,6 +923,19 @@
             .big-stat-number { font-size: 2.8rem; }
             .restaurants-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
             .province-detail-grid { grid-template-columns: repeat(3, 1fr); }
+            .articles-grid { grid-template-columns: repeat(3, 1fr); }
+            .province-grid-all { grid-template-columns: repeat(3, 1fr); }
+            .stats-container { max-width: 1000px; }
+            .modal { align-items: center; }
+            .modal-content { border-radius: var(--radius-xl); max-width: 720px; }
+            .modal-img { height: 280px; }
+            .google-map { height: 280px; }
+            .whatsapp-order { width: auto; }
+            .about-page { padding: calc(var(--header-height) + 30px) 30px 60px; }
+            .footer, .developer-footer { margin-bottom: 0; }
+            .toast { bottom: 24px; }
+            .scroll-top { bottom: 24px; right: 20px; }
+            .city-page { padding-bottom: 60px; }
             .province-nav-prev, .province-nav-next {
                 display: flex; width: 40px; height: 40px;
                 position: absolute; top: 50%; transform: translateY(-50%);
@@ -727,35 +947,30 @@
             .province-nav-prev:hover, .province-nav-next:hover { background: var(--primary); color: white; }
             .province-nav-prev { right: 5px; }
             .province-nav-next { left: 5px; }
-            .modal { align-items: center; }
-            .modal-content { border-radius: var(--radius-xl); max-width: 720px; }
-            .modal-img { height: 280px; }
-            .google-map { height: 280px; }
-            .whatsapp-order { width: auto; }
-            .about-page { padding: calc(var(--header-height) + 30px) 30px 60px; }
-            .footer, .developer-footer { margin-bottom: 0; }
-            .toast { bottom: 24px; }
-            .scroll-top { bottom: 24px; right: 20px; }
-            .city-page { padding-bottom: 60px; }
         }
 
         @media (min-width: 1280px) {
             .restaurants-grid { grid-template-columns: repeat(4, 1fr); }
             .province-detail-grid { grid-template-columns: repeat(4, 1fr); }
+            .province-grid-all { grid-template-columns: repeat(4, 1fr); }
+            .articles-grid { grid-template-columns: repeat(4, 1fr); }
             .search-bar-desktop input { width: 280px; }
         }
     </style>
 </head>
 <body>
 
+<!-- ============ BACKGROUND ============ -->
 <div class="animated-bg"></div>
 <div class="floating-shapes" id="shapes"></div>
 <div class="toast" id="toast"></div>
 
+<!-- ============ SCROLL TOP ============ -->
 <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
     <i class="fas fa-chevron-up"></i>
 </button>
 
+<!-- ============ HEADER ============ -->
 <header class="header" id="header">
     <div class="nav-container">
         <div class="logo" onclick="goBack()">
@@ -771,6 +986,10 @@
             <button class="dark-toggle" onclick="toggleDarkMode()" aria-label="الوضع الليلي">
                 <i class="fas fa-moon"></i>
                 <i class="fas fa-sun"></i>
+            </button>
+            
+            <button class="icon-btn" onclick="showArticlesPage()" aria-label="مقالات">
+                <i class="fas fa-newspaper"></i>
             </button>
             
             <button class="icon-btn" onclick="showAboutSyria()" aria-label="عن سوريا">
@@ -793,14 +1012,15 @@
     </div>
 </header>
 
+<!-- ============ BOTTOM NAV ============ -->
 <nav class="bottom-nav" id="bottomNav">
     <button class="bottom-nav-item active" onclick="goBack(); setActiveNav(this)">
         <i class="fas fa-home"></i>
         <span>الرئيسية</span>
     </button>
-    <button class="bottom-nav-item" onclick="showAboutSyria(); setActiveNav(this)">
-        <i class="fas fa-info-circle"></i>
-        <span>عن سوريا</span>
+    <button class="bottom-nav-item" onclick="showArticlesPage(); setActiveNav(this)">
+        <i class="fas fa-newspaper"></i>
+        <span>مقالات</span>
     </button>
     <button class="bottom-nav-item" onclick="openMobileSearch(); setActiveNav(this)">
         <i class="fas fa-search"></i>
@@ -823,6 +1043,7 @@ function setActiveNav(el) {
 }
 </script>
 
+<!-- ============ MOBILE SEARCH ============ -->
 <div class="mobile-search-overlay" id="mobileSearchOverlay">
     <div class="search-header">
         <div class="search-input-wrap">
@@ -841,6 +1062,7 @@ function setActiveNav(el) {
     </div>
 </div>
 
+<!-- ============ MOBILE MENU ============ -->
 <div class="mobile-menu-backdrop" id="mobileMenuBackdrop" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu-sidebar" id="mobileMenuSidebar">
     <div class="menu-header">
@@ -851,7 +1073,13 @@ function setActiveNav(el) {
         <div class="menu-link" onclick="closeMobileMenu(); goBack(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[0]);">
             <i class="fas fa-home"></i> <span>الرئيسية</span>
         </div>
-        <div class="menu-link" onclick="closeMobileMenu(); showAboutSyria(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[1]);">
+        <div class="menu-link" onclick="closeMobileMenu(); showArticlesPage(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[1]);">
+            <i class="fas fa-newspaper"></i> <span>مقالات</span>
+        </div>
+        <div class="menu-link" onclick="closeMobileMenu(); showMapView();">
+            <i class="fas fa-map"></i> <span>خريطة المطاعم</span>
+        </div>
+        <div class="menu-link" onclick="closeMobileMenu(); showAboutSyria(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[2]);">
             <i class="fas fa-info-circle"></i> <span>عن سوريا</span>
         </div>
         <div class="menu-link" onclick="closeMobileMenu(); showFavorites(); setActiveNav(document.querySelectorAll('.bottom-nav-item')[3]);">
@@ -861,9 +1089,13 @@ function setActiveNav(el) {
         <div class="menu-link" onclick="closeMobileMenu(); toggleDarkMode();">
             <i class="fas fa-moon"></i> <span>الوضع الليلي</span>
         </div>
+        <div class="menu-link" onclick="closeMobileMenu(); showRandomRestaurant();">
+            <i class="fas fa-dice"></i> <span>جرب مطعم عشوائي 🎲</span>
+        </div>
     </div>
 </div>
 
+<!-- ============ MAIN PAGE ============ -->
 <div id="mainPage">
     <div class="hero">
         <div class="hero-slider">
@@ -898,7 +1130,7 @@ function setActiveNav(el) {
             </div>
         </div>
 
-        <!-- BIG STAT BANNER -->
+        <!-- ============ BIG STAT BANNER ============ -->
         <div class="big-stat-banner" data-aos="fade-up">
             <div class="big-stat-card">
                 <div class="big-stat-icon">🍽️</div>
@@ -910,8 +1142,18 @@ function setActiveNav(el) {
             </div>
         </div>
 
-        <h2 class="section-title">📍 اختر محافظتك</h2>
-        
+        <!-- ============ STATS ============ -->
+        <div class="stats-container" id="statsContainer"></div>
+
+        <!-- ============ SECTION TITLE ============ -->
+        <div class="provinces-header">
+            <h2 class="section-title" style="margin:0;">📍 اختر محافظتك</h2>
+            <button class="view-all-btn" onclick="showAllProvinces()">
+                عرض الكل <i class="fas fa-arrow-left"></i>
+            </button>
+        </div>
+
+        <!-- ============ NEARBY BUTTON ============ -->
         <div class="nearby-btn-container">
             <button class="nearby-btn" onclick="findNearbyRestaurants()" id="nearbyBtn">
                 <i class="fas fa-location-crosshairs"></i>
@@ -919,6 +1161,22 @@ function setActiveNav(el) {
             </button>
         </div>
 
+        <!-- ============ RANDOM BUTTON ============ -->
+        <div class="random-restaurant-container">
+            <button class="random-btn" onclick="showRandomRestaurant()">
+                <i class="fas fa-dice"></i> جرب مطعم جديد 🎲
+            </button>
+            <p class="random-hint">اكتشف مطاعم لم تجربها من قبل</p>
+        </div>
+
+        <!-- ============ MAP BUTTON ============ -->
+        <div style="text-align:center;margin:5px 0 15px;">
+            <button class="map-btn" onclick="showMapView()">
+                <i class="fas fa-map"></i> عرض المطاعم على الخريطة
+            </button>
+        </div>
+
+        <!-- ============ PROVINCES SLIDER ============ -->
         <div class="provinces-slider-container">
             <div class="swiper provincesSwiper" id="provincesSwiper">
                 <div class="swiper-wrapper" id="provincesWrapper"></div>
@@ -930,8 +1188,10 @@ function setActiveNav(el) {
     </div>
 </div>
 
+<!-- ============ CITY PAGES CONTAINER ============ -->
 <div id="cityPagesContainer"></div>
 
+<!-- ============ RESTAURANT MODAL ============ -->
 <div id="restaurantModal" class="modal" onclick="if(event.target===this) closeModal()">
     <div class="modal-content">
         <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
@@ -961,12 +1221,18 @@ function setActiveNav(el) {
                 <i class="far fa-star" data-star="1"></i>
             </div>
             <textarea class="review-textarea" id="reviewText" placeholder="اكتب رأيك..."></textarea>
+            <div class="review-photo-input">
+                <label>📸 أضف صورة من تجربتك (اختياري)</label>
+                <input type="file" id="reviewImage" accept="image/*" multiple>
+                <div class="review-image-preview" id="imagePreview"></div>
+            </div>
             <button class="review-submit" onclick="submitReview()">نشر التقييم ✍️</button>
             <div class="existing-reviews" id="existingReviews"></div>
         </div>
     </div>
 </div>
 
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
     <p>🍽️ <strong>كول واتهنى</strong> - دليلك الشامل للمطاعم في سوريا</p>
     <p style="margin-top:4px;font-size:0.65rem;opacity:0.7;">📍 جميع المحافظات | 7000+ مطعم | تحديثات يومية</p>
@@ -981,23 +1247,44 @@ function setActiveNav(el) {
     </div>
 </div>
 
+<!-- ============ SCRIPTS ============ -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
 <script>
+// ============================================================
+// ============ MAIN APPLICATION CODE ==========================
+// ============================================================
+
+// ============ INIT ============
 AOS.init({ duration: 600, once: true, disable: 'mobile' });
 
-const heroSwiper = new Swiper('.heroSwiper', {
-    loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination', clickable: true },
-    effect: 'fade', speed: 800,
-});
+// ============ TOAST ============
+function showToast(msg) { 
+    const toast = document.getElementById('toast'); 
+    toast.textContent = msg; 
+    toast.classList.add('show'); 
+    setTimeout(() => toast.classList.remove('show'), 2500); 
+}
 
+// ============ DARK MODE ============
+function toggleDarkMode() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+    localStorage.setItem('darkMode', isDark ? '' : 'dark');
+}
+if (localStorage.getItem('darkMode') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode'))) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+}
+
+// ============ SCROLL TOP ============
 const scrollTopBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
     document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
     scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
 });
 
+// ============ SHAPES ============
 for (let i = 0; i < 20; i++) {
     const shape = document.createElement('div'); shape.className = 'shape';
     const size = Math.random() * 70 + 20;
@@ -1009,15 +1296,14 @@ for (let i = 0; i < 20; i++) {
     document.getElementById('shapes').appendChild(shape);
 }
 
-function toggleDarkMode() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
-    localStorage.setItem('darkMode', isDark ? '' : 'dark');
-}
-if (localStorage.getItem('darkMode') === 'dark' || (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode'))) {
-    document.documentElement.setAttribute('data-theme', 'dark');
-}
+// ============ MOBILE SEARCH ============
+function openMobileSearch() { document.getElementById('mobileSearchOverlay').classList.add('active'); setTimeout(() => document.getElementById('mobileSearchInput').focus(), 400); }
+function closeMobileSearch() { document.getElementById('mobileSearchOverlay').classList.remove('active'); }
+function openMobileMenu() { document.getElementById('mobileMenuSidebar').classList.add('active'); document.getElementById('mobileMenuBackdrop').classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeMobileMenu() { document.getElementById('mobileMenuSidebar').classList.remove('active'); document.getElementById('mobileMenuBackdrop').classList.remove('active'); document.body.style.overflow = ''; }
+function quickSearch(term) { document.getElementById('mobileSearchInput').value = term; closeMobileSearch(); globalSearch(term); }
 
+// ============ LAZY IMAGES ============
 const lazyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1036,20 +1322,67 @@ function observeLazyImages() {
     document.querySelectorAll('img[data-src]').forEach(img => lazyObserver.observe(img));
 }
 
-function showToast(msg) { const toast = document.getElementById('toast'); toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2500); }
-
-function openMobileSearch() { document.getElementById('mobileSearchOverlay').classList.add('active'); setTimeout(() => document.getElementById('mobileSearchInput').focus(), 400); }
-function closeMobileSearch() { document.getElementById('mobileSearchOverlay').classList.remove('active'); }
-function openMobileMenu() { document.getElementById('mobileMenuSidebar').classList.add('active'); document.getElementById('mobileMenuBackdrop').classList.add('active'); document.body.style.overflow = 'hidden'; }
-function closeMobileMenu() { document.getElementById('mobileMenuSidebar').classList.remove('active'); document.getElementById('mobileMenuBackdrop').classList.remove('active'); document.body.style.overflow = ''; }
-function quickSearch(term) { document.getElementById('mobileSearchInput').value = term; closeMobileSearch(); globalSearch(term); }
-
+// ============ DATA ============
 const provinces = ["دمشق", "ريف دمشق", "حلب", "حمص", "حماة", "اللاذقية", "طرطوس", "دير الزور", "الحسكة", "الرقة", "إدلب", "السويداء", "درعا", "القنيطرة"];
-const cuisineTypes = ['مشاوي', 'مأكولات بحرية', 'بيتزا وباستا', 'برغر', 'مطبخ شرقي', 'مطبخ غربي', 'حلويات', 'مقبلات', 'أكلات شعبية', 'بوفيه مفتوح', 'سوشي', 'شاورما', 'فطور', 'عصائر', 'قهوة'];
+const cuisineTypes = ['مشاوي', 'مأكولات بحرية', 'بيتزا وباستا', 'برغر', 'مطبخ شرقي', 'مطبخ غربي', 'حلويات', 'مقبلات', 'أكلات شعبية', 'بوفيه مفتوح', 'سوشي', 'شاورما', 'فطور', 'عصائر', 'قهوة', 'ساندويش', 'وجبات سريعة', 'مخبوزات', 'مطبخ تركي', 'مطبخ عالمي', 'مطبخ إيطالي', 'مطبخ أمريكي'];
 
-// ============ بيانات المطاعم الحقيقية في دمشق (169 مطعماً) ============
+const imagePool = [
+    'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
+    'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg',
+    'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg',
+    'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg',
+    'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
+    'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg',
+    'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+];
+
+const provinceIcons = {
+    'دمشق': 'landmark', 'ريف دمشق': 'tree', 'حلب': 'city', 'حمص': 'industry',
+    'حماة': 'water', 'اللاذقية': 'umbrella-beach', 'طرطوس': 'ship',
+    'دير الزور': 'bridge', 'الحسكة': 'mountain', 'الرقة': 'mosque',
+    'إدلب': 'leaf', 'السويداء': 'gem', 'درعا': 'fort-awesome', 'القنيطرة': 'hill-rockslide'
+};
+
+const provinceImages = {
+    'دمشق': 'https://imgur.com/qxbKmUp.jpg', 'ريف دمشق': 'https://imgur.com/JuyiJQI.jpg',
+    'حلب': 'https://imgur.com/CIQfzQe.jpg', 'حمص': 'https://imgur.com/OSJci2j.jpg',
+    'حماة': 'https://imgur.com/8bAdiEp.jpg', 'اللاذقية': 'https://imgur.com/nvTadsG.jpg',
+    'طرطوس': 'https://imgur.com/tzXN4rF.jpg', 'دير الزور': 'https://imgur.com/PAywOu1.jpg',
+    'الحسكة': 'https://imgur.com/xhhxnjH.jpg', 'الرقة': 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop',
+    'إدلب': 'https://imgur.com/J6rg244.jpg', 'السويداء': 'https://imgur.com/iEa5b0S.jpg',
+    'درعا': 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop',
+    'القنيطرة': 'https://imgur.com/QlsJK5A.jpg'
+};
+
+const provinceInfo = {
+    'دمشق': { desc: 'أقدم عاصمة مأهولة في التاريخ، قلب العالم العربي النابض.', famous: 'الجامع الأموي، سوق الحميدية' },
+    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف والقرى.', famous: 'معلولا، الزبداني، دوما، جرمانا، داريا، قدسيا' },
+    'حلب': { desc: 'العاصمة الاقتصادية لسوريا، قلعتها الشهيرة.', famous: 'قلعة حلب، السوق المسقوف' },
+    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
+    'حماة': { desc: 'مدينة النواعير على نهر العاصي.', famous: 'النواعير، نهر العاصي' },
+    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط.', famous: 'شاطئ الكورنيش، أوغاريت' },
+    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
+    'دير الزور': { desc: 'واحة الفرات الخضراء.', famous: 'الجسر المعلق، نهر الفرات' },
+    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة.', famous: 'نهر الخابور، تل حلف' },
+    'الرقة': { desc: 'عاصمة الرشيد التاريخية.', famous: 'قصر البنات، بحيرة الأسد' },
+    'إدلب': { desc: 'أرض الزيتون والطبيعة.', famous: 'مملكة إيبلا، بساتين الزيتون' },
+    'السويداء': { desc: 'جبل العرب، أرض الكروم.', famous: 'آثار شهبا، جبل العرب' },
+    'درعا': { desc: 'مهد الثورة العربية الكبرى.', famous: 'مدرج بصرى، بصرى الشام' },
+    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء.', famous: 'غابات الجولان، نبع بانياس' }
+};
+
+const provinceCoords = {
+    'دمشق': { lat: 33.5138, lng: 36.2765 }, 'ريف دمشق': { lat: 33.5, lng: 36.3 },
+    'حلب': { lat: 36.2021, lng: 37.1343 }, 'حمص': { lat: 34.7321, lng: 36.7105 },
+    'حماة': { lat: 35.135, lng: 36.7514 }, 'اللاذقية': { lat: 35.531, lng: 35.7909 },
+    'طرطوس': { lat: 34.889, lng: 35.886 }, 'دير الزور': { lat: 35.338, lng: 40.144 },
+    'الحسكة': { lat: 36.511, lng: 40.743 }, 'الرقة': { lat: 35.959, lng: 39.018 },
+    'إدلب': { lat: 35.933, lng: 36.633 }, 'السويداء': { lat: 32.706, lng: 36.569 },
+    'درعا': { lat: 32.624, lng: 36.102 }, 'القنيطرة': { lat: 33.124, lng: 35.823 }
+};
+
+// ============ DAMASCUS REAL RESTAURANTS ============
 const damascusRealRestaurants = [
-    // الدفعة الأولى - 89 مطعم الأصليين
     {id:"r1",name:"مطعم دهب",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$$",priceLevel:3,description:"من أشهر وأفخم مطاعم دمشق، يقدم ألذ المأكولات الشرقية والمشاوي بأجواء راقية.",address:"دمشق - المالكي",phone:"0113732527",lat:33.5190,lng:36.2785,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
     {id:"r2",name:"مطعم HUQQABAZ",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم راقي في منطقة المالكي، يقدم أشهى الأطباق الشرقية والعالمية.",address:"دمشق - المالكي",phone:"0934100015",lat:33.5185,lng:36.2790,openingHours:"10:00 صباحاً - 11:00 مساءً"},
     {id:"r3",name:"مطعم Ammoula",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"مطعم دافئ يقدم ألذ المأكولات البيتية والشرقية في المالكي.",address:"دمشق - المالكي",phone:"0935808487",lat:33.5178,lng:36.2800,openingHours:"9:00 صباحاً - 10:00 مساءً"},
@@ -1074,8 +1407,6 @@ const damascusRealRestaurants = [
     {id:"r22",name:"Dough & Co",cuisine:"مخبوزات",rating:4.4,priceRange:"$$",priceLevel:2,description:"مخبوزات طازجة وكوكيز أمريكي في الجاحظ.",address:"دمشق - الجاحظ",phone:"0113339350",lat:33.5143,lng:36.2908,openingHours:"7:00 صباحاً - 9:00 مساءً"},
     {id:"r23",name:"Yalanji Store - الجاحظ",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"متخصص في اليالنجي والمأكولات النباتية الشرقية.",address:"دمشق - الجاحظ",phone:"0113320109",lat:33.5150,lng:36.2912,openingHours:"9:00 صباحاً - 10:00 مساءً"},
     {id:"r24",name:"Yalanji Store - المزة",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"فرع المزة من متجر اليالنجي.",address:"دمشق - المزة",phone:"0983618568",lat:33.5050,lng:36.2550,openingHours:"9:00 صباحاً - 10:00 مساءً"},
-    
-    // الدفعة الثانية - المطاعم الأصلية الأخرى
     {id:"r25",name:"Maranello Café مارنيلو كافيه",cuisine:"قهوة",rating:4.4,priceRange:"$$",priceLevel:2,description:"كافيه راقي في أبو رمانة، أجواء إيطالية فاخرة.",address:"دمشق - أبو رمانة",phone:"0943732743",lat:33.5210,lng:36.2820,openingHours:"9:00 صباحاً - 12:00 منتصف الليل"},
     {id:"r26",name:"سندوتش لذيذ Laziz Sandwich",cuisine:"ساندويش",rating:4.2,priceRange:"$",priceLevel:1,description:"ألذ الساندويشات الطازجة في دمشق.",address:"دمشق",phone:"0945223302",lat:33.5160,lng:36.2830,openingHours:"8:00 صباحاً - 10:00 مساءً"},
     {id:"r27",name:"Fuego Shawarma",cuisine:"شاورما",rating:4.5,priceRange:"$",priceLevel:1,description:"شاورما على أصولها، لحم ودجاج بنكهة لا تقاوم.",address:"دمشق",phone:"0953777571",lat:33.5170,lng:36.2840,openingHours:"10:00 صباحاً - 2:00 بعد منتصف الليل"},
@@ -1141,8 +1472,6 @@ const damascusRealRestaurants = [
     {id:"r87",name:"فروج الوجبة السريعة",cuisine:"مشاوي",rating:4.1,priceRange:"$",priceLevel:1,description:"فروج مشوي على الفحم، وجبات سريعة.",address:"دمشق",phone:"0113336166",lat:33.5150,lng:36.2830,openingHours:"9:00 صباحاً - 11:00 مساءً"},
     {id:"r88",name:"Crazy Cart كريزي كارت",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة، فرايز ودجاج.",address:"دمشق",phone:"0113325666",lat:33.5145,lng:36.2845,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
     {id:"r89",name:"Time Out تايم آوت",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"وجبات سريعة، ساندويشات وبرغر.",address:"دمشق",phone:"0113319740",lat:33.5160,lng:36.2840,openingHours:"9:00 صباحاً - 11:00 مساءً"},
-
-    // ============ الدفعة الثالثة - 80 مطعم الجديد ============
     {id:"r90",name:"Al-Hamra Fast-food",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"مأكولات الحمراء السريعة",address:"دمشق",phone:"0113346193",lat:33.513,lng:36.278,openingHours:"9:00 صباحاً - 11:00 مساءً"},
     {id:"r91",name:"عصائر أبو الروض",cuisine:"عصائر",rating:4.5,priceRange:"$",priceLevel:1,description:"عصائر طازجة وطبيعية",address:"دمشق",phone:"0118888400",lat:33.514,lng:36.279,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
     {id:"r92",name:"بيت الكشري دمشق",cuisine:"أكلات شعبية",rating:4.3,priceRange:"$",priceLevel:1,description:"كشري مصري أصيل",address:"دمشق",phone:"0113334182",lat:33.515,lng:36.280,openingHours:"10:00 صباحاً - 10:00 مساءً"},
@@ -1227,67 +1556,106 @@ const damascusRealRestaurants = [
     {id:"r171",name:"مطعم المير",cuisine:"مطبخ شرقي",rating:4.2,priceRange:"$$",priceLevel:2,description:"مطعم المير",address:"دمشق",phone:"0984616616",lat:33.516,lng:36.293,openingHours:"9:00 صباحاً - 10:00 مساءً"}
 ];
 
-const imagePool = [
-    'https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg',
-    'https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg',
-    'https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg',
-    'https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg',
-    'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
-    'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg',
-    'https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg',
+// ============ RIF DIMASHQ REAL RESTAURANTS ============
+const rifDimashqRealRestaurants = [
+    {id:"rd1",name:"سناك الكنغ",cuisine:"وجبات سريعة",rating:4.2,priceRange:"$",priceLevel:1,description:"أشهر سناك في ريف دمشق، يقدم وجبات سريعة لذيذة.",address:"ريف دمشق - دوما",phone:"+963985902020",lat:33.57,lng:36.40,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd2",name:"مطعم باشكا",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"مطعم شرقي مميز يقدم أشهى المأكولات الشرقية والمشاوي.",address:"ريف دمشق - جرمانا",phone:"+963116711936",lat:33.48,lng:36.34,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"rd3",name:"مطعم وكافيه نوفا",cuisine:"مطبخ عالمي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم وكافيه بأجواء راقية، يقدم أطباق عالمية متنوعة.",address:"ريف دمشق - داريا",phone:"+963936170935",lat:33.45,lng:36.23,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd4",name:"مطبخ وحلويات الصاحب",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"مطبخ وحلويات شرقية أصيلة، أشهى المأكولات والحلويات.",address:"ريف دمشق - قدسيا",phone:"+963116721157",lat:33.55,lng:36.22,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"rd5",name:"سناك ريتس",cuisine:"وجبات سريعة",rating:4.1,priceRange:"$",priceLevel:1,description:"سناك عصري يقدم وجبات سريعة طازجة ولذيذة.",address:"ريف دمشق - الزبداني",phone:"+963958470182",lat:33.72,lng:36.10,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"rd6",name:"pizza cut",cuisine:"بيتزا وباستا",rating:4.0,priceRange:"$$",priceLevel:2,description:"بيتزا ساخنة وعجينة طازجة، أشهى البيتزا في ريف دمشق.",address:"ريف دمشق - التل",phone:"+963953425218",lat:33.61,lng:36.31,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd7",name:"مأكولات عَمَّار",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$",priceLevel:2,description:"مأكولات شرقية بيتية بنكهة مميزة وحضارة.",address:"ريف دمشق - دوما",phone:"+963958292011",lat:33.57,lng:36.41,openingHours:"10:00 صباحاً - 10:00 مساءً"},
+    {id:"rd8",name:"مطعم مستر بروستد",cuisine:"وجبات سريعة",rating:4.2,priceRange:"$",priceLevel:1,description:"دجاج مقرمش وبروستد لذيذ، وجبات سريعة شهية.",address:"ريف دمشق - جرمانا",phone:"+963953202056",lat:33.48,lng:36.35,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd9",name:"Lions Snack",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"سناك مميز، وجبات سريعة وحلويات باردة.",address:"ريف دمشق - داريا",phone:"+963965614888",lat:33.45,lng:36.24,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"rd10",name:"سندويشة شامية",cuisine:"ساندويش",rating:4.4,priceRange:"$",priceLevel:1,description:"ساندويشات شامية على أصولها، طعم لا يُقاوم.",address:"ريف دمشق - قدسيا",phone:"+963954069865",lat:33.55,lng:36.23,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"rd11",name:"سناك سام",cuisine:"وجبات سريعة",rating:4.1,priceRange:"$",priceLevel:1,description:"سناك سام يقدم أشهى الوجبات السريعة في ريف دمشق.",address:"ريف دمشق - الزبداني",phone:"+963998312312",lat:33.72,lng:36.11,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd12",name:"سناك الشيف",cuisine:"وجبات سريعة",rating:4.3,priceRange:"$",priceLevel:1,description:"سناك الشيف، وجبات سريعة بلمسة شيف محترف.",address:"ريف دمشق - التل",phone:"+963982787992",lat:33.61,lng:36.32,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"rd13",name:"سناك فريند",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"سناك فريند، أجواء ودية ووجبات لذيذة.",address:"ريف دمشق - النبك",phone:"+963114450525",lat:34.02,lng:36.73,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"rd14",name:"الزين",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"مطعم الزين، أشهى المأكولات الشرقية في ريف دمشق.",address:"ريف دمشق - دوما",phone:"+963987703303",lat:33.57,lng:36.42,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"rd15",name:"مطعم نيوبار",cuisine:"مشاوي",rating:4.4,priceRange:"$$$",priceLevel:3,description:"مشاوي على الفحم بأجواء راقية، طعم لا يُنسى.",address:"ريف دمشق - جرمانا",phone:"+963993456383",lat:33.48,lng:36.36,openingHours:"12:00 ظهراً - 12:00 منتصف الليل"},
+    {id:"rd16",name:"مطعم ومسبح كرم الدار",cuisine:"مطبخ شرقي",rating:4.6,priceRange:"$$$",priceLevel:3,description:"مطعم ومسبح في ريف دمشق، أجواء عائلية رائعة.",address:"ريف دمشق - داريا",phone:"+963116718716",lat:33.45,lng:36.25,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"rd17",name:"مطعم ضيوف الدار",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$",priceLevel:2,description:"مطعم ضيوف الدار، أكلات شرقية بيتية وأجواء دافئة.",address:"ريف دمشق - قدسيا",phone:"+963116722228",lat:33.55,lng:36.24,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"rd18",name:"مندي حسيب حمدان",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"أشهر مندي في ريف دمشق، طعم أصيل وخدمة ممتازة.",address:"ريف دمشق - الزبداني",phone:"+963944966667",lat:33.72,lng:36.12,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"rd19",name:"Mr Food",cuisine:"وجبات سريعة",rating:4.1,priceRange:"$",priceLevel:1,description:"مستر فود، وجبات سريعة متنوعة وشهية.",address:"ريف دمشق - التل",phone:"+963966740600",lat:33.61,lng:36.33,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd20",name:"بيتزا ومعجنات ميرال الشام",cuisine:"بيتزا وباستا",rating:4.3,priceRange:"$$",priceLevel:2,description:"بيتزا ومعجنات طازجة يومياً، أشهى المعجنات في ريف دمشق.",address:"ريف دمشق - النبك",phone:"+963932839829",lat:34.02,lng:36.74,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"rd21",name:"مطعم لقمة هنية",cuisine:"مطبخ شرقي",rating:4.5,priceRange:"$$",priceLevel:2,description:"مطعم لقمة هنية، أكلات شرقية لذيذة وبأسعار مناسبة.",address:"ريف دمشق - دوما",phone:"+963952621044",lat:33.57,lng:36.43,openingHours:"10:00 صباحاً - 10:00 مساءً"},
+    {id:"rd22",name:"مطعم هوانا للفروج والشورما",cuisine:"مشاوي",rating:4.4,priceRange:"$$",priceLevel:2,description:"فروج مشوي وشاورما على أصولها، طعم مميز.",address:"ريف دمشق - جرمانا",phone:"+963933707366",lat:33.48,lng:36.37,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd23",name:"Stars Avenue",cuisine:"مطبخ عالمي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم وكافيه راقي، أطباق عالمية بأجواء مميزة.",address:"ريف دمشق - داريا",phone:"+963988505911",lat:33.45,lng:36.26,openingHours:"11:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd24",name:"مطعم لامينارو",cuisine:"مطبخ إيطالي",rating:4.5,priceRange:"$$$",priceLevel:3,description:"مطعم إيطالي أصيل، باستا وبيتزا على أصولها.",address:"ريف دمشق - قدسيا",phone:"+963115620013",lat:33.55,lng:36.25,openingHours:"12:00 ظهراً - 11:00 مساءً"},
+    {id:"rd25",name:"سناك هاوس",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"سناك هاوس، وجبات سريعة وحلويات باردة.",address:"ريف دمشق - الزبداني",phone:"+963934818100",lat:33.72,lng:36.13,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"rd26",name:"Chikano",cuisine:"وجبات سريعة",rating:4.1,priceRange:"$",priceLevel:1,description:"تشيكانو، دجاج مقرمش ووجبات سريعة شهية.",address:"ريف دمشق - التل",phone:"+963115620000",lat:33.61,lng:36.34,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd27",name:"food mix",cuisine:"مطبخ عالمي",rating:4.2,priceRange:"$$",priceLevel:2,description:"فود ميكس، مأكولات متنوعة من مختلف المطابخ.",address:"ريف دمشق - النبك",phone:"+963115628620",lat:34.02,lng:36.75,openingHours:"10:00 صباحاً - 10:00 مساءً"},
+    {id:"rd28",name:"مطعم وكافيه كيوب",cuisine:"مطبخ عالمي",rating:4.4,priceRange:"$$$",priceLevel:3,description:"مطعم وكافيه بأجواء عصرية، قهوة وأطباق مميزة.",address:"ريف دمشق - دوما",phone:"+963991177000",lat:33.57,lng:36.44,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd29",name:"Crazy Sandwich",cuisine:"ساندويش",rating:4.3,priceRange:"$",priceLevel:1,description:"ساندويشات مبتكرة ولذيذة، طعم لا يُقاوم.",address:"ريف دمشق - جرمانا",phone:"+963115659481",lat:33.48,lng:36.38,openingHours:"9:00 صباحاً - 11:00 مساءً"},
+    {id:"rd30",name:"CRANCHY",cuisine:"وجبات سريعة",rating:4.0,priceRange:"$",priceLevel:1,description:"كرانشي، دجاج مقرمش ووجبات سريعة.",address:"ريف دمشق - داريا",phone:"+963995655523",lat:33.45,lng:36.27,openingHours:"10:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd31",name:"مطعم شام تشكن",cuisine:"مشاوي",rating:4.2,priceRange:"$$",priceLevel:2,description:"شام تشكن، فروج مشوي على الفحم بنكهة مميزة.",address:"ريف دمشق - قدسيا",phone:"+963115610595",lat:33.55,lng:36.26,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"rd32",name:"هاواي juice shop",cuisine:"عصائر",rating:4.5,priceRange:"$",priceLevel:1,description:"عصائر طازجة طبيعية، منعشة ولذيذة.",address:"ريف دمشق - الزبداني",phone:"+963116885565",lat:33.72,lng:36.14,openingHours:"8:00 صباحاً - 12:00 منتصف الليل"},
+    {id:"rd33",name:"مطعم الحسن",cuisine:"مطبخ شرقي",rating:4.4,priceRange:"$$",priceLevel:2,description:"مطعم الحسن، أكلات شرقية أصيلة في ريف دمشق.",address:"ريف دمشق - التل",phone:"+963953338111",lat:33.61,lng:36.35,openingHours:"10:00 صباحاً - 11:00 مساءً"},
+    {id:"rd34",name:"مطبخ ومندي الملكي",cuisine:"مطبخ شرقي",rating:4.3,priceRange:"$$",priceLevel:2,description:"مطبخ ومندي ملكي، أطباق شرقية فاخرة.",address:"ريف دمشق - النبك",phone:"+963940370880",lat:34.02,lng:36.76,openingHours:"11:00 صباحاً - 11:00 مساءً"},
+    {id:"rd35",name:"ملحمة الحاج ابو صبحي بدران",cuisine:"مطبخ شرقي",rating:4.6,priceRange:"$$",priceLevel:2,description:"ملحمة ومأكولات شرقية، طعم أصيل وجودة عالية.",address:"ريف دمشق - دوما",phone:"+963962712306",lat:33.57,lng:36.45,openingHours:"8:00 صباحاً - 10:00 مساءً"},
+    {id:"rd36",name:"مطعم إنجوي",cuisine:"مطبخ عالمي",rating:4.2,priceRange:"$$$",priceLevel:3,description:"مطعم إنجوي، أطباق عالمية مميزة وأجواء راقية.",address:"ريف دمشق - جرمانا",phone:"+963933829131",lat:33.48,lng:36.39,openingHours:"12:00 ظهراً - 12:00 منتصف الليل"}
 ];
 
+// ============ ARTICLES ============
+const articles = [
+    {
+        id: 1,
+        title: "تاريخ الكبة السورية: من التراث إلى العالمية",
+        description: "رحلة الكبة عبر العصور السورية، من أقدم الوصفات إلى أشهر المطاعم.",
+        image: "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg",
+        author: "كول واتهنى",
+        date: "2026-06-20",
+        category: "تراث",
+        content: "الكبة السورية هي أحد أشهر الأطباق في المطبخ العربي والعالمي. تعود أصولها إلى العصر المملوكي حيث كانت تعد في المناسبات. تتميز الكبة السورية بتنوعها حيث توجد الكبة المشوية، الكبة المقلية، الكبة النيئة، وكبة البندورة. أشهر مناطق الكبة في سوريا هي حلب حيث توجد أكثر من 17 نوعاً مختلفاً من الكبة. في دمشق، تشتهر الكبة بالصينية والكبة باللبن. يمكنك تذوق أشهى أنواع الكبة في مطاعم مثل 'مطعم دهب' و 'مطعم ست الشام' في دمشق."
+    },
+    {
+        id: 2,
+        title: "سر الشاورما السورية: الطريقة الأصلية",
+        description: "تعرف على أسرار تحضير الشاورما السورية الأصيلة في المنزل.",
+        image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg",
+        author: "كول واتهنى",
+        date: "2026-06-18",
+        category: "وصفات",
+        content: "الشاورما السورية لها نكهة خاصة لا مثيل لها، وذلك بسبب التتبيلة السرية التي تستخدم خلطة من البهارات السورية الأصيلة مثل الهيل، القرفة، والقرنفل. سر الشاورما السورية يكمن في تتبيل اللحم لمدة لا تقل عن 12 ساعة وشويها على نار هادئة. في دمشق، تشتهر مطاعم مثل 'Fuego Shawarma' و 'شاورما تنور' بتقديم ألذ شاورما. يمكنك أيضاً تجربة شاورما الدجاج مع الثومية والبطاطا المقلية. لا تنسى أن تطلبها مع النقانق والمخللات للحصول على الطعم السوري الأصيل."
+    },
+    {
+        id: 3,
+        title: "دليل الحلويات السورية الشهيرة",
+        description: "أشهر الحلويات السورية من البقلاوة إلى الكنافة والمبرومة.",
+        image: "https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg",
+        author: "كول واتهنى",
+        date: "2026-06-15",
+        category: "حلويات",
+        content: "تتميز الحلويات السورية بجودتها العالية ومذاقها الفريد. البقلاوة السورية تصنع من عجينة الفيلو الرقيقة والمكسرات المحمصة والعسل الطبيعي. الكنافة السورية من أشهر الحلويات في العالم، تقدم مع القشطة والقطر. المبرومة هي نوع من الحلويات المصنوعة من السميد والمكسرات. حلويات داوود اخوان في دمشق تعتبر من أشهر محلات الحلويات في سوريا. كما يقدم مطعم 'Epic Cheesecake' تشيز كيك على الطريقة السورية مع نكهات محلية مثل التمر والفستق."
+    },
+    {
+        id: 4,
+        title: "أفضل مطاعم دمشق التقليدية",
+        description: "جولة في أقدم وأشهر مطاعم دمشق التي حافظت على أصالة الطبخ.",
+        image: "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg",
+        author: "كول واتهنى",
+        date: "2026-06-12",
+        category: "دليلك",
+        content: "دمشق مدينة تعج بالمطاعم التقليدية التي تحافظ على التراث. 'مطعم دهب' من أقدم مطاعم المالكي، يقدم أشهى المأكولات الشرقية. 'مطعم ست الشام' من أعرق مطاعم دمشق، يشتهر بالكبة واليبرق. 'مطعم بوز الجدي' يقدم أكلات شعبية فاخرة في أجواء دمشقية عريقة. 'مطعم النبلاء' من المطاعم التي حافظت على نكهتها لعقود. هذه المطاعم تستخدم وصفات عمرها مئات السنين وتقدم تجربة طعام سورية أصيلة لا تنسى."
+    }
+];
+
+// ============ GENERATE RESTAURANTS ============
 const restaurantNames = ['أبو السعد', 'الديار', 'الفردوس', 'القصر', 'الزهرة', 'النجمة', 'البستان', 'النخيل', 'سهارى', 'ليالي', 'ألف ليلة', 'بوابة الشام', 'جبل العرب', 'باب توما', 'المأذنة', 'القلعة', 'البارون', 'شهرزاد', 'ميراج', 'رويال', 'جراند', 'بلازا', 'فاخر', 'مشاوي العاصمة', 'سمك وشوي', 'طازج', 'سوريانا'];
 const adjectives = ['الذهبي', 'الفضي', 'التراثي', 'الحديث', 'الفاخر', 'الرائع', 'المميز', 'الحصري'];
 
-const provinceCoords = {
-    'دمشق': { lat: 33.5138, lng: 36.2765 }, 'ريف دمشق': { lat: 33.5, lng: 36.3 },
-    'حلب': { lat: 36.2021, lng: 37.1343 }, 'حمص': { lat: 34.7321, lng: 36.7105 },
-    'حماة': { lat: 35.135, lng: 36.7514 }, 'اللاذقية': { lat: 35.531, lng: 35.7909 },
-    'طرطوس': { lat: 34.889, lng: 35.886 }, 'دير الزور': { lat: 35.338, lng: 40.144 },
-    'الحسكة': { lat: 36.511, lng: 40.743 }, 'الرقة': { lat: 35.959, lng: 39.018 },
-    'إدلب': { lat: 35.933, lng: 36.633 }, 'السويداء': { lat: 32.706, lng: 36.569 },
-    'درعا': { lat: 32.624, lng: 36.102 }, 'القنيطرة': { lat: 33.124, lng: 35.823 }
-};
-
-const provinceIcons = {
-    'دمشق': 'landmark', 'ريف دمشق': 'tree', 'حلب': 'city', 'حمص': 'industry',
-    'حماة': 'water', 'اللاذقية': 'umbrella-beach', 'طرطوس': 'ship',
-    'دير الزور': 'bridge', 'الحسكة': 'mountain', 'الرقة': 'mosque',
-    'إدلب': 'leaf', 'السويداء': 'gem', 'درعا': 'fort-awesome', 'القنيطرة': 'hill-rockslide'
-};
-
-const provinceImages = {
-    'دمشق': 'https://imgur.com/qxbKmUp.jpg', 'ريف دمشق': 'https://imgur.com/JuyiJQI.jpg',
-    'حلب': 'https://imgur.com/CIQfzQe.jpg', 'حمص': 'https://imgur.com/OSJci2j.jpg',
-    'حماة': 'https://imgur.com/8bAdiEp.jpg', 'اللاذقية': 'https://imgur.com/nvTadsG.jpg',
-    'طرطوس': 'https://imgur.com/tzXN4rF.jpg', 'دير الزور': 'https://imgur.com/PAywOu1.jpg',
-    'الحسكة': 'https://imgur.com/xhhxnjH.jpg', 'الرقة': 'https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=600&h=400&fit=crop',
-    'إدلب': 'https://imgur.com/J6rg244.jpg', 'السويداء': 'https://imgur.com/iEa5b0S.jpg',
-    'درعا': 'https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600&h=400&fit=crop',
-    'القنيطرة': 'https://imgur.com/QlsJK5A.jpg'
-};
-
-const provinceInfo = {
-    'دمشق': { desc: 'أقدم عاصمة مأهولة في التاريخ، قلب العالم العربي النابض.', famous: 'الجامع الأموي، سوق الحميدية' },
-    'ريف دمشق': { desc: 'تحيط بالعاصمة وتضم أجمل المصايف.', famous: 'معلولا، الزبداني' },
-    'حلب': { desc: 'العاصمة الاقتصادية لسوريا، قلعتها الشهيرة.', famous: 'قلعة حلب، السوق المسقوف' },
-    'حمص': { desc: 'ثالث أكبر مدينة، بوابة الشمال.', famous: 'قلعة الحصن، جامع خالد بن الوليد' },
-    'حماة': { desc: 'مدينة النواعير على نهر العاصي.', famous: 'النواعير، نهر العاصي' },
-    'اللاذقية': { desc: 'عروس الساحل السوري على البحر المتوسط.', famous: 'شاطئ الكورنيش، أوغاريت' },
-    'طرطوس': { desc: 'لؤلؤة المتوسط، جزيرة أرواد.', famous: 'جزيرة أرواد، كاتدرائية طرطوس' },
-    'دير الزور': { desc: 'واحة الفرات الخضراء.', famous: 'الجسر المعلق، نهر الفرات' },
-    'الحسكة': { desc: 'سلة غذاء سوريا، أرض الجزيرة.', famous: 'نهر الخابور، تل حلف' },
-    'الرقة': { desc: 'عاصمة الرشيد التاريخية.', famous: 'قصر البنات، بحيرة الأسد' },
-    'إدلب': { desc: 'أرض الزيتون والطبيعة.', famous: 'مملكة إيبلا، بساتين الزيتون' },
-    'السويداء': { desc: 'جبل العرب، أرض الكروم.', famous: 'آثار شهبا، جبل العرب' },
-    'درعا': { desc: 'مهد الثورة العربية الكبرى.', famous: 'مدرج بصرى، بصرى الشام' },
-    'القنيطرة': { desc: 'مرتفعات الجولان الخضراء.', famous: 'غابات الجولان، نبع بانياس' }
-};
-
 function generateRestaurants(province, count = 50) {
-    if (province === "دمشق") {
-        return damascusRealRestaurants.map(r => ({...r, image: imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`, reviews: []}));
+    const realData = {
+        'دمشق': damascusRealRestaurants,
+        'ريف دمشق': rifDimashqRealRestaurants
+    };
+    
+    if (realData[province]) {
+        return realData[province].map(r => ({
+            ...r,
+            image: imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`,
+            reviews: []
+        }));
     }
     
     const restaurants = [];
@@ -1322,6 +1690,7 @@ function generateRestaurants(province, count = 50) {
 const allRestaurants = {};
 provinces.forEach(p => { allRestaurants[p] = generateRestaurants(p, 50); });
 
+// ============ FAVORITES ============
 let favorites = JSON.parse(localStorage.getItem('restaurant_favorites') || '[]');
 function saveFavorites() { localStorage.setItem('restaurant_favorites', JSON.stringify(favorites)); updateFavCount(); }
 function isFavorite(province, restId) { return favorites.some(f => f.province === province && f.id === restId); }
@@ -1329,7 +1698,7 @@ function toggleFavorite(province, restId, event) {
     if (event) event.stopPropagation();
     const idx = favorites.findIndex(f => f.province === province && f.id === restId);
     if (idx > -1) { favorites.splice(idx, 1); showToast('تمت الإزالة من المفضلة'); }
-    else { favorites.push({ province, id: restId }); showToast('تمت الإضافة للمفضلة ❤️'); }
+    else { favorites.push({ province, id: restId }); showToast('تمت الإضافة للمفضلة ❤️'); updatePoints(2, '❤️ إضافة إلى المفضلة'); }
     saveFavorites(); renderCurrentPage();
 }
 function updateFavCount() {
@@ -1339,6 +1708,327 @@ function updateFavCount() {
 }
 updateFavCount();
 
+function shareFavorites() {
+    if (favorites.length === 0) { showToast('لا توجد مطاعم مفضلة للمشاركة'); return; }
+    let shareText = '🍽️ قائمة مطاعمي المفضلة على كول واتهنى:\n\n';
+    favorites.forEach(fav => {
+        const rest = allRestaurants[fav.province]?.find(r => r.id === fav.id);
+        if (rest) {
+            shareText += `📍 ${rest.name} - ${fav.province}\n`;
+            shareText += `   ⭐ ${rest.rating}/5 | ${rest.cuisine}\n`;
+        }
+    });
+    shareText += '\n🔗 اكتشف المزيد: https://wheretoeat.today/';
+    const encodedText = encodeURIComponent(shareText);
+    window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+}
+
+// ============ POINTS SYSTEM ============
+let userPoints = parseInt(localStorage.getItem('userPoints') || '0');
+let userLevel = 1;
+
+function updatePoints(points, action) {
+    userPoints += points;
+    localStorage.setItem('userPoints', userPoints);
+    updateUserLevel();
+    showPointsNotification(action, points);
+}
+
+function updateUserLevel() {
+    const newLevel = Math.floor(userPoints / 100) + 1;
+    if (newLevel > userLevel) {
+        userLevel = newLevel;
+        showToast(`🎉 تهانينا! وصلت إلى المستوى ${userLevel}`);
+    }
+    userLevel = newLevel;
+}
+
+function showPointsNotification(action, points) {
+    const notification = document.createElement('div');
+    notification.className = 'points-notification';
+    notification.innerHTML = `
+        <div class="points-icon">⭐</div>
+        <div class="points-details">
+            <div class="points-action">${action}</div>
+            <div class="points-amount">+${points} نقطة</div>
+        </div>
+    `;
+    document.body.appendChild(notification);
+    setTimeout(() => {
+        notification.style.animation = 'slideDownPoints 0.5s ease forwards';
+        setTimeout(() => notification.remove(), 500);
+    }, 2000);
+}
+
+// ============ BROWING HISTORY ============
+let browsingHistory = JSON.parse(localStorage.getItem('browsingHistory') || '[]');
+function trackView(province, restId) {
+    browsingHistory.push({ province, restId, timestamp: Date.now() });
+    if (browsingHistory.length > 50) { browsingHistory = browsingHistory.slice(-50); }
+    localStorage.setItem('browsingHistory', JSON.stringify(browsingHistory));
+}
+
+function getRecommendations() {
+    if (browsingHistory.length === 0) return [];
+    const preferences = { cuisines: {}, provinces: {}, priceLevels: {} };
+    browsingHistory.forEach(record => {
+        const rest = allRestaurants[record.province]?.find(r => r.id === record.restId);
+        if (rest) {
+            preferences.cuisines[rest.cuisine] = (preferences.cuisines[rest.cuisine] || 0) + 1;
+            preferences.provinces[record.province] = (preferences.provinces[record.province] || 0) + 1;
+            preferences.priceLevels[rest.priceLevel] = (preferences.priceLevels[rest.priceLevel] || 0) + 1;
+        }
+    });
+    const topCuisine = Object.keys(preferences.cuisines).reduce((a,b) => preferences.cuisines[a] > preferences.cuisines[b] ? a : b);
+    const topProvince = Object.keys(preferences.provinces).reduce((a,b) => preferences.provinces[a] > preferences.provinces[b] ? a : b);
+    let recommendations = [];
+    for (const p in allRestaurants) {
+        allRestaurants[p].forEach(r => {
+            if (r.cuisine === topCuisine && p === topProvince) {
+                const viewed = browsingHistory.some(h => h.province === p && h.restId === r.id);
+                if (!viewed) { recommendations.push({...r, province: p}); }
+            }
+        });
+    }
+    recommendations.sort((a,b) => b.rating - a.rating);
+    return recommendations.slice(0, 6);
+}
+
+// ============ STATS ============
+function updateStats() {
+    let totalRestaurants = 0, totalReviews = 0, avgRating = 0;
+    for (const p in allRestaurants) {
+        totalRestaurants += allRestaurants[p].length;
+        allRestaurants[p].forEach(r => {
+            if (r.reviews) {
+                totalReviews += r.reviews.length;
+                const avg = r.reviews.reduce((sum, rev) => sum + rev.rating, 0);
+                if (r.reviews.length > 0) { avgRating += avg / r.reviews.length; }
+            }
+        });
+    }
+    avgRating = avgRating / totalRestaurants || 0;
+    const container = document.getElementById('statsContainer');
+    if (container) {
+        container.innerHTML = `
+            <div class="stat-item"><span class="stat-number">${totalRestaurants.toLocaleString()}</span><span class="stat-label">🍽️ مطعم</span></div>
+            <div class="stat-item"><span class="stat-number">${provinces.length}</span><span class="stat-label">📍 محافظة</span></div>
+            <div class="stat-item"><span class="stat-number">${totalReviews.toLocaleString()}</span><span class="stat-label">⭐ تقييم</span></div>
+            <div class="stat-item"><span class="stat-number">${avgRating.toFixed(1)}</span><span class="stat-label">🌟 متوسط التقييم</span></div>
+        `;
+    }
+}
+setInterval(updateStats, 30000);
+
+// ============ RENDER PROVINCES ============
+let provincesSwiper;
+function renderProvinces() {
+    document.getElementById('provincesWrapper').innerHTML = provinces.map(p => `
+        <div class="swiper-slide"><div class="province-card" onclick="showCityPage('${p}')">
+            <img src="${provinceImages[p]}" alt="${p}" class="province-image" loading="lazy" data-src="${provinceImages[p]}">
+            <div class="province-card-body">
+                <div class="province-icon"><i class="fas fa-${provinceIcons[p]||'city'}"></i></div>
+                <div class="province-name">${p}</div>
+                <div class="restaurant-count">🍽️ ${allRestaurants[p].length} مطعم</div>
+            </div>
+        </div></div>
+    `).join('');
+    if (provincesSwiper) provincesSwiper.destroy(true, true);
+    const isMobile = window.innerWidth < 1024;
+    provincesSwiper = new Swiper('#provincesSwiper', {
+        slidesPerView: isMobile ? 1.5 : 3.5, spaceBetween: isMobile ? 10 : 25, loop: true,
+        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: { el: '#provincePagination', clickable: true, dynamicBullets: true },
+        navigation: isMobile ? false : { nextEl: '#provinceNext', prevEl: '#provincePrev' },
+        breakpoints: { 480: { slidesPerView: 2 }, 768: { slidesPerView: 2.5 }, 1024: { slidesPerView: 3.5 }, 1280: { slidesPerView: 4.5 } },
+        speed: 600, grabCursor: true,
+    });
+    setTimeout(observeLazyImages, 300);
+}
+
+// ============ SHOW ALL PROVINCES ============
+function showAllProvinces() {
+    document.getElementById('mainPage').style.display = 'none';
+    const container = document.getElementById('cityPagesContainer');
+    container.innerHTML = `
+        <div class="city-page active">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+            <div class="city-header">
+                <h2>🗺️ جميع المحافظات</h2>
+                <p>${provinces.length} محافظة تضم أكثر من 7000 مطعم</p>
+            </div>
+            <div class="province-grid-all">
+                ${provinces.map(p => `
+                    <div class="province-card-large" onclick="showCityPage('${p}')">
+                        <div class="province-card-image">
+                            <img src="${provinceImages[p]}" alt="${p}" loading="lazy" data-src="${provinceImages[p]}">
+                            <div class="province-card-overlay">
+                                <span class="province-name-large">${p}</span>
+                                <span class="restaurant-count-large">${allRestaurants[p].length} مطعم</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    lastRenderedPage = 'allProvinces';
+    setTimeout(observeLazyImages, 200);
+}
+
+// ============ CREATE RESTAURANT CARD ============
+function createRestaurantCard(province, rest, distance = null) {
+    const liked = isFavorite(province, rest.id);
+    const distHTML = distance !== null ? `<span class="distance-badge"><i class="fas fa-location-dot"></i> ${distance.toFixed(1)} كم</span>` : '';
+    const starsHTML = '★'.repeat(Math.floor(rest.rating)) + (rest.rating%1>=0.5?'½':'') + '☆'.repeat(5-Math.ceil(rest.rating));
+    const phoneDisplay = rest.phone ? `<small style="color:var(--text-secondary);font-size:0.65rem;">📞 ${rest.phone}</small>` : '';
+    return `
+        <div class="restaurant-card" onclick="showRestaurantDetails('${province}', '${rest.id}')">
+            <div class="restaurant-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%23eee'%3E%3Crect width='400' height='300'/%3E%3C/svg%3E" data-src="${rest.image}" alt="${rest.name}" class="lazy-img">
+                <div class="rating"><i class="fas fa-star" style="color:#FFBA08"></i> ${rest.rating}</div>
+                <button class="favorite-btn ${liked?'liked':''}" onclick="toggleFavorite('${province}', '${rest.id}', event)">
+                    <i class="${liked?'fas':'far'} fa-heart"></i>
+                </button>
+            </div>
+            <div class="restaurant-info">
+                <h3>${rest.name} ${distHTML}</h3>
+                <div class="restaurant-cuisine"><i class="fas fa-utensils"></i> ${rest.cuisine}</div>
+                <div class="star-rating-small">${starsHTML}</div>
+                ${phoneDisplay}
+                <div class="restaurant-footer">
+                    <span class="price-range">${rest.priceRange}</span>
+                    <button class="btn-details" onclick="event.stopPropagation(); showRestaurantDetails('${province}', '${rest.id}')">تفاصيل 📖</button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// ============ SKELETON LOADING ============
+function showSkeletonLoading(container, count = 6) {
+    const skeletons = Array(count).fill(0).map(() => `
+        <div class="skeleton-card">
+            <div class="skeleton-image skeleton"></div>
+            <div class="skeleton-text skeleton"></div>
+            <div class="skeleton-text skeleton short"></div>
+            <div class="skeleton-text skeleton medium"></div>
+        </div>
+    `).join('');
+    container.innerHTML = skeletons;
+}
+
+// ============ CITY PAGE ============
+let currentProvince = null, lastRenderedPage = null;
+let activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' };
+let advancedFilters = { rating: 0, delivery: false, parking: false, open24: false };
+
+window.showCityPage = function(province) {
+    document.getElementById('mainPage').style.display = 'none';
+    renderCityPage(province);
+};
+
+function renderCityPage(province, filters = {}) {
+    activeFilters = { ...activeFilters, ...filters };
+    let restaurants = [...allRestaurants[province]];
+    if (activeFilters.cuisine !== 'all') restaurants = restaurants.filter(r => r.cuisine === activeFilters.cuisine);
+    if (activeFilters.price === 'budget') restaurants = restaurants.filter(r => r.priceLevel <= 2);
+    else if (activeFilters.price === 'mid') restaurants = restaurants.filter(r => r.priceLevel === 3);
+    else if (activeFilters.price === 'luxury') restaurants = restaurants.filter(r => r.priceLevel >= 4);
+    if (activeFilters.hours === 'open') {
+        const now = new Date().getHours();
+        restaurants = restaurants.filter(r => now >= r.hourStart && now < r.hourEnd);
+    }
+    if (activeFilters.sort === 'rating') restaurants.sort((a,b) => b.rating - a.rating);
+    else if (activeFilters.sort === 'price_low') restaurants.sort((a,b) => a.priceLevel - b.priceLevel);
+    else if (activeFilters.sort === 'price_high') restaurants.sort((a,b) => b.priceLevel - a.priceLevel);
+    else if (activeFilters.sort === 'nearest' && userLocation) {
+        restaurants.forEach(r => r._distance = getDistance(userLocation.lat, userLocation.lng, r.lat, r.lng));
+        restaurants.sort((a,b) => a._distance - b._distance);
+    }
+    
+    // Advanced filters
+    if (advancedFilters.rating > 0) restaurants = restaurants.filter(r => r.rating >= advancedFilters.rating);
+    
+    currentProvince = province;
+    const container = document.getElementById('cityPagesContainer');
+    
+    // Show skeleton loading first
+    const gridHtml = restaurants.map(r => createRestaurantCard(province, r, activeFilters.sort==='nearest'&&userLocation?r._distance:null)).join('');
+    
+    container.innerHTML = `
+        <div class="city-page active">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+            <div class="city-header"><h2>📍 ${province}</h2><p>🌟 ${restaurants.length} مطعم ${province === 'دمشق' || province === 'ريف دمشق' ? 'حقيقي' : ''}</p></div>
+            
+            <button class="advanced-filter-toggle" onclick="toggleAdvancedFilters()">
+                <i class="fas fa-sliders-h"></i> تصفية متقدمة
+            </button>
+            <div class="advanced-filters" id="advancedFilters" style="display:none;">
+                <div class="filter-group">
+                    <label>⭐ التقييم</label>
+                    <div class="rating-filter">
+                        <button class="rating-btn ${advancedFilters.rating===4?'active':''}" data-rating="4" onclick="filterByRating(4)">4+ ★</button>
+                        <button class="rating-btn ${advancedFilters.rating===3?'active':''}" data-rating="3" onclick="filterByRating(3)">3+ ★</button>
+                        <button class="rating-btn ${advancedFilters.rating===2?'active':''}" data-rating="2" onclick="filterByRating(2)">2+ ★</button>
+                        <button class="rating-btn ${advancedFilters.rating===0?'active':''}" data-rating="0" onclick="filterByRating(0)">الكل</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-bar">
+                <select class="filter-select" onchange="applyFilter('cuisine', this.value)">
+                    <option value="all">كل الأنواع</option>
+                    ${cuisineTypes.map(c => `<option value="${c}" ${activeFilters.cuisine===c?'selected':''}>${c}</option>`).join('')}
+                </select>
+                <select class="filter-select" onchange="applyFilter('price', this.value)">
+                    <option value="all">كل الأسعار</option>
+                    <option value="budget">💰 اقتصادي</option>
+                    <option value="mid">💰💰 متوسط</option>
+                    <option value="luxury">💰💰💰 فاخر</option>
+                </select>
+                <button class="filter-btn ${activeFilters.hours==='open'?'active':''}" onclick="applyFilter('hours', activeFilters.hours==='open'?'all':'open')">🕐 مفتوح الآن</button>
+                <select class="filter-select sort" onchange="applyFilter('sort', this.value)" style="background:var(--accent);color:white;border-color:var(--accent);">
+                    <option value="default" ${activeFilters.sort==='default'?'selected':''}>الافتراضي</option>
+                    <option value="rating" ${activeFilters.sort==='rating'?'selected':''}>الأعلى تقييماً</option>
+                    <option value="price_low" ${activeFilters.sort==='price_low'?'selected':''}>الأقل سعراً</option>
+                    <option value="price_high" ${activeFilters.sort==='price_high'?'selected':''}>الأعلى سعراً</option>
+                </select>
+                <button class="filter-btn reset" onclick="resetFilters()">✕ إعادة</button>
+            </div>
+            
+            <div class="restaurants-grid" id="cityRestaurantsGrid">${gridHtml}</div>
+        </div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(observeLazyImages, 200);
+}
+
+function toggleAdvancedFilters() {
+    const panel = document.getElementById('advancedFilters');
+    if (!panel) return;
+    const isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+}
+
+function filterByRating(rating) {
+    advancedFilters.rating = rating;
+    document.querySelectorAll('.rating-btn').forEach(btn => {
+        btn.classList.toggle('active', parseInt(btn.dataset.rating) === rating);
+    });
+    if (currentProvince) renderCityPage(currentProvince);
+}
+
+function applyFilter(key, value) { if (currentProvince) { activeFilters[key] = value; renderCityPage(currentProvince); } }
+function resetFilters() { 
+    activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' };
+    advancedFilters = { rating: 0, delivery: false, parking: false, open24: false };
+    document.querySelectorAll('.rating-btn').forEach(btn => btn.classList.remove('active'));
+    if (currentProvince) renderCityPage(currentProvince); 
+}
+
+// ============ SHOW FAVORITES ============
 function showFavorites() {
     if (favorites.length === 0) { showToast('لا توجد مطاعم مفضلة'); return; }
     document.getElementById('mainPage').style.display = 'none';
@@ -1351,7 +2041,12 @@ function showFavorites() {
     container.innerHTML = `
         <div class="city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
-            <div class="city-header"><h2>❤️ مطاعمي المفضلة</h2></div>
+            <div class="city-header">
+                <h2>❤️ مطاعمي المفضلة</h2>
+                <button class="share-list-btn" onclick="shareFavorites()" style="background:var(--primary);color:white;border:none;padding:6px 16px;border-radius:50px;cursor:pointer;font-family:'Tajawal',sans-serif;font-size:0.75rem;margin-top:6px;">
+                    <i class="fas fa-share-alt"></i> مشاركة القائمة
+                </button>
+            </div>
             <div class="restaurants-grid">${html}</div>
         </div>
     `;
@@ -1360,108 +2055,12 @@ function showFavorites() {
     lastRenderedPage = 'favorites';
 }
 
-let currentReviewRestaurant = null, currentReviewProvince = null, selectedRating = 0;
-
-function initStarInput() {
-    const stars = document.querySelectorAll('#starInput i');
-    stars.forEach(star => {
-        star.addEventListener('click', function() {
-            selectedRating = parseInt(this.dataset.star);
-            stars.forEach(s => s.className = parseInt(s.dataset.star) <= selectedRating ? 'fas fa-star active' : 'far fa-star');
-        });
-    });
-}
-
-function submitReview() {
-    if (!currentReviewProvince || !currentReviewRestaurant) return;
-    const text = document.getElementById('reviewText').value.trim();
-    if (!text && selectedRating === 0) return;
-    const rest = allRestaurants[currentReviewProvince].find(r => r.id === currentReviewRestaurant);
-    if (!rest) return;
-    rest.reviews.push({ rating: selectedRating, text, date: new Date().toLocaleDateString('ar-SY') });
-    document.getElementById('reviewText').value = '';
-    selectedRating = 0;
-    document.querySelectorAll('#starInput i').forEach(s => s.className = 'far fa-star');
-    showToast('تم حفظ تقييمك! ⭐');
-    renderReviews(rest);
-}
-
-function renderReviews(rest) {
-    const container = document.getElementById('existingReviews');
-    if (!rest.reviews || rest.reviews.length === 0) {
-        container.innerHTML = '<p style="color:var(--text-secondary);font-size:0.75rem;">لا توجد تقييمات بعد</p>';
-        return;
-    }
-    container.innerHTML = rest.reviews.slice().reverse().map(r => `
-        <div class="review-item">
-            <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
-            ${r.text ? `<p>${r.text}</p>` : ''}
-            <small style="color:var(--text-secondary);">${r.date}</small>
-        </div>
-    `).join('');
-}
-
-function setupShareButtons(province, rest) {
-    const shareText = encodeURIComponent(`شاهد مطعم ${rest.name} في ${province} - تقييم ${rest.rating}⭐`);
-    const shareUrl = encodeURIComponent(window.location.href);
-    document.getElementById('shareWhatsapp').onclick = () => window.open(`https://wa.me/?text=${shareText}%20${shareUrl}`, '_blank');
-    document.getElementById('shareFacebook').onclick = () => window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank');
-    document.getElementById('shareTelegram').onclick = () => window.open(`https://t.me/share/url?url=${shareUrl}&text=${shareText}`, '_blank');
-}
-
-let userLocation = null;
-
-function findNearbyRestaurants() {
-    const btn = document.getElementById('nearbyBtn');
-    btn.classList.add('loading');
-    if (!navigator.geolocation) { showToast('لم نتمكن من الوصول لموقعك'); btn.classList.remove('loading'); return; }
-    navigator.geolocation.getCurrentPosition(
-        pos => {
-            userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-            displayNearbyRestaurants();
-            btn.classList.remove('loading');
-        },
-        err => { showToast('لم نتمكن من الوصول لموقعك'); btn.classList.remove('loading'); },
-        { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
-    );
-}
-
-function getDistance(lat1, lng1, lat2, lng2) {
-    const R = 6371;
-    const dLat = (lat2-lat1)*Math.PI/180, dLng = (lng2-lng1)*Math.PI/180;
-    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
-
-function displayNearbyRestaurants() {
-    if (!userLocation) return;
-    let all = [];
-    for (const p in allRestaurants) {
-        allRestaurants[p].forEach(r => all.push({...r, province: p, distance: getDistance(userLocation.lat, userLocation.lng, r.lat, r.lng)}));
-    }
-    all.sort((a,b) => a.distance - b.distance);
-    if (!all.length) { showToast('لا توجد مطاعم قريبة'); return; }
-    
-    document.getElementById('mainPage').style.display = 'none';
-    document.getElementById('cityPagesContainer').innerHTML = `
-        <div class="city-page active">
-            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
-            <div class="city-header"><h2>📍 أقرب المطاعم منك</h2></div>
-            <div class="restaurants-grid">${all.slice(0,20).map(r => createRestaurantCard(r.province, r, r.distance)).join('')}</div>
-        </div>
-    `;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(observeLazyImages, 200);
-    lastRenderedPage = 'nearby';
-}
-
+// ============ ABOUT SYRIA ============
 window.showAboutSyria = function() {
     document.getElementById('mainPage').style.display = 'none';
     const container = document.getElementById('cityPagesContainer');
-    
     const landmarks = 'الجامع الأموي (دمشق)، قلعة حلب، قلعة الحصن (حمص)، النواعير (حماة)، أوغاريت (اللاذقية)، جزيرة أرواد (طرطوس)، دورا أوروبوس (دير الزور)، مملكة إيبلا (إدلب)، مدرج بصرى (درعا)، مرتفعات الجولان (القنيطرة)';
     const facts = 'المساحة: 185,180 كم² | السكان: ~22 مليون | العاصمة: دمشق | اللغة: العربية | العملة: الليرة السورية';
-    
     container.innerHTML = `
         <div class="about-page city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
@@ -1498,142 +2097,241 @@ window.showAboutSyria = function() {
     lastRenderedPage = 'about';
 };
 
-let provincesSwiper;
-function renderProvinces() {
-    document.getElementById('provincesWrapper').innerHTML = provinces.map(p => `
-        <div class="swiper-slide"><div class="province-card" onclick="showCityPage('${p}')">
-            <img src="${provinceImages[p]}" alt="${p}" class="province-image" loading="lazy" data-src="${provinceImages[p]}">
-            <div class="province-card-body">
-                <div class="province-icon"><i class="fas fa-${provinceIcons[p]||'city'}"></i></div>
-                <div class="province-name">${p}</div>
-                <div class="restaurant-count">🍽️ ${allRestaurants[p].length} مطعم</div>
-            </div>
-        </div></div>
-    `).join('');
-    if (provincesSwiper) provincesSwiper.destroy(true, true);
-    const isMobile = window.innerWidth < 1024;
-    provincesSwiper = new Swiper('#provincesSwiper', {
-        slidesPerView: isMobile ? 1.5 : 3.5, spaceBetween: isMobile ? 10 : 25, loop: true,
-        autoplay: { delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true },
-        pagination: { el: '#provincePagination', clickable: true, dynamicBullets: true },
-        navigation: isMobile ? false : { nextEl: '#provinceNext', prevEl: '#provincePrev' },
-        breakpoints: { 480: { slidesPerView: 2 }, 768: { slidesPerView: 2.5 }, 1024: { slidesPerView: 3.5 }, 1280: { slidesPerView: 4.5 } },
-        speed: 600, grabCursor: true,
-    });
-    setTimeout(observeLazyImages, 300);
-}
-
-function createRestaurantCard(province, rest, distance = null) {
-    const liked = isFavorite(province, rest.id);
-    const distHTML = distance !== null ? `<span class="distance-badge"><i class="fas fa-location-dot"></i> ${distance.toFixed(1)} كم</span>` : '';
-    const starsHTML = '★'.repeat(Math.floor(rest.rating)) + (rest.rating%1>=0.5?'½':'') + '☆'.repeat(5-Math.ceil(rest.rating));
-    const phoneDisplay = rest.phone ? `<small style="color:var(--text-secondary);font-size:0.65rem;">📞 ${rest.phone}</small>` : '';
-    return `
-        <div class="restaurant-card" onclick="showRestaurantDetails('${province}', '${rest.id}')">
-            <div class="restaurant-image">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' fill='%23eee'%3E%3Crect width='400' height='300'/%3E%3C/svg%3E" data-src="${rest.image}" alt="${rest.name}" class="lazy-img">
-                <div class="rating"><i class="fas fa-star" style="color:#FFBA08"></i> ${rest.rating}</div>
-                <button class="favorite-btn ${liked?'liked':''}" onclick="toggleFavorite('${province}', '${rest.id}', event)">
-                    <i class="${liked?'fas':'far'} fa-heart"></i>
-                </button>
-            </div>
-            <div class="restaurant-info">
-                <h3>${rest.name} ${distHTML}</h3>
-                <div class="restaurant-cuisine"><i class="fas fa-utensils"></i> ${rest.cuisine}</div>
-                <div class="star-rating-small">${starsHTML}</div>
-                ${phoneDisplay}
-                <div class="restaurant-footer">
-                    <span class="price-range">${rest.priceRange}</span>
-                    <button class="btn-details" onclick="event.stopPropagation(); showRestaurantDetails('${province}', '${rest.id}')">تفاصيل 📖</button>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-let currentProvince = null, lastRenderedPage = null;
-let activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' };
-
-function renderCityPage(province, filters = {}) {
-    activeFilters = { ...activeFilters, ...filters };
-    let restaurants = [...allRestaurants[province]];
-    if (activeFilters.cuisine !== 'all') restaurants = restaurants.filter(r => r.cuisine === activeFilters.cuisine);
-    if (activeFilters.price === 'budget') restaurants = restaurants.filter(r => r.priceLevel <= 2);
-    else if (activeFilters.price === 'mid') restaurants = restaurants.filter(r => r.priceLevel === 3);
-    else if (activeFilters.price === 'luxury') restaurants = restaurants.filter(r => r.priceLevel >= 4);
-    if (activeFilters.hours === 'open') {
-        const now = new Date().getHours();
-        restaurants = restaurants.filter(r => now >= r.hourStart && now < r.hourEnd);
-    }
-    if (activeFilters.sort === 'rating') restaurants.sort((a,b) => b.rating - a.rating);
-    else if (activeFilters.sort === 'price_low') restaurants.sort((a,b) => a.priceLevel - b.priceLevel);
-    else if (activeFilters.sort === 'price_high') restaurants.sort((a,b) => b.priceLevel - a.priceLevel);
-    else if (activeFilters.sort === 'nearest' && userLocation) {
-        restaurants.forEach(r => r._distance = getDistance(userLocation.lat, userLocation.lng, r.lat, r.lng));
-        restaurants.sort((a,b) => a._distance - b._distance);
-    }
-    
-    currentProvince = province;
-    document.getElementById('cityPagesContainer').innerHTML = `
+// ============ ARTICLES ============
+function showArticlesPage() {
+    document.getElementById('mainPage').style.display = 'none';
+    const container = document.getElementById('cityPagesContainer');
+    container.innerHTML = `
         <div class="city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
-            <div class="city-header"><h2>📍 ${province}</h2><p>🌟 ${restaurants.length} مطعم ${province === 'دمشق' ? 'حقيقي' : ''}</p></div>
-            <div class="filter-bar">
-                <select class="filter-select" onchange="applyFilter('cuisine', this.value)">
-                    <option value="all">كل الأنواع</option>
-                    ${cuisineTypes.map(c => `<option value="${c}" ${activeFilters.cuisine===c?'selected':''}>${c}</option>`).join('')}
-                </select>
-                <select class="filter-select" onchange="applyFilter('price', this.value)">
-                    <option value="all">كل الأسعار</option>
-                    <option value="budget">💰 اقتصادي</option>
-                    <option value="mid">💰💰 متوسط</option>
-                    <option value="luxury">💰💰💰 فاخر</option>
-                </select>
-                <button class="filter-btn ${activeFilters.hours==='open'?'active':''}" onclick="applyFilter('hours', activeFilters.hours==='open'?'all':'open')">🕐 مفتوح الآن</button>
-                <select class="filter-select sort" onchange="applyFilter('sort', this.value)" style="background:var(--accent);color:white;border-color:var(--accent);">
-                    <option value="default">الافتراضي</option>
-                    <option value="rating">الأعلى تقييماً</option>
-                    <option value="price_low">الأقل سعراً</option>
-                    <option value="price_high">الأعلى سعراً</option>
-                </select>
-                <button class="filter-btn reset" onclick="resetFilters()">✕ إعادة</button>
+            <div class="city-header">
+                <h2>📚 مقالات المطبخ السوري</h2>
+                <p>اكتشف أسرار وأطباق المطبخ السوري الأصيل</p>
             </div>
-            <div class="restaurants-grid">${restaurants.map(r => createRestaurantCard(province, r, activeFilters.sort==='nearest'&&userLocation?r._distance:null)).join('')}</div>
+            <div class="articles-grid">
+                ${articles.map(article => `
+                    <div class="article-card" onclick="showArticle(${article.id})">
+                        <div class="article-image">
+                            <img src="${article.image}" alt="${article.title}" loading="lazy" data-src="${article.image}">
+                            <span class="article-category">${article.category}</span>
+                        </div>
+                        <div class="article-content">
+                            <h3>${article.title}</h3>
+                            <p>${article.description}</p>
+                            <div class="article-meta">
+                                <span><i class="far fa-calendar-alt"></i> ${article.date}</span>
+                                <span><i class="far fa-user"></i> ${article.author}</span>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
         </div>
     `;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setTimeout(observeLazyImages, 200);
+    lastRenderedPage = 'articles';
 }
 
-function applyFilter(key, value) { if (currentProvince) { activeFilters[key] = value; renderCityPage(currentProvince); } }
-function resetFilters() { activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' }; if (currentProvince) renderCityPage(currentProvince); }
-
-window.showCityPage = function(province) {
+function showArticle(id) {
+    const article = articles.find(a => a.id === id);
+    if (!article) return;
     document.getElementById('mainPage').style.display = 'none';
-    renderCityPage(province);
-};
-
-function renderCurrentPage() {
-    if (currentProvince) renderCityPage(currentProvince);
-    else if (lastRenderedPage === 'favorites') showFavorites();
-    else if (lastRenderedPage === 'nearby') displayNearbyRestaurants();
-    else if (lastRenderedPage === 'about') showAboutSyria();
+    const container = document.getElementById('cityPagesContainer');
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": article.title,
+        "description": article.description,
+        "image": article.image,
+        "author": { "@type": "Person", "name": article.author },
+        "datePublished": article.date
+    };
+    container.innerHTML = `
+        <div class="city-page active">
+            <button class="back-btn" onclick="showArticlesPage()"><i class="fas fa-arrow-right"></i> العودة للمقالات</button>
+            <script type="application/ld+json">${JSON.stringify(schemaData)}<\/script>
+            <article class="article-full">
+                <h1 class="article-full-title">${article.title}</h1>
+                <div class="article-full-meta">
+                    <span><i class="far fa-calendar-alt"></i> ${article.date}</span>
+                    <span><i class="far fa-user"></i> ${article.author}</span>
+                    <span><i class="fas fa-tag"></i> ${article.category}</span>
+                </div>
+                <img src="${article.image}" alt="${article.title}" class="article-full-image">
+                <div class="article-full-content">
+                    ${article.content.split('\n').map(p => `<p>${p}</p>`).join('')}
+                </div>
+                <div class="article-share">
+                    <h4>شارك المقال</h4>
+                    <div class="share-buttons">
+                        <button class="share-btn whatsapp" onclick="shareArticle('${article.title}', 'whatsapp')">
+                            <i class="fab fa-whatsapp"></i> واتساب
+                        </button>
+                        <button class="share-btn facebook" onclick="shareArticle('${article.title}', 'facebook')">
+                            <i class="fab fa-facebook-f"></i> فيسبوك
+                        </button>
+                        <button class="share-btn telegram" onclick="shareArticle('${article.title}', 'telegram')">
+                            <i class="fab fa-telegram-plane"></i> تلغرام
+                        </button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-window.goBack = function() {
-    document.getElementById('mainPage').style.display = 'block';
-    document.getElementById('cityPagesContainer').innerHTML = '';
-    currentProvince = null; lastRenderedPage = null;
-    activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' };
+function shareArticle(title, platform) {
+    const url = window.location.href;
+    const text = `📖 اقرأ مقال: ${title} على كول واتهنى`;
+    const shareUrls = {
+        whatsapp: `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`,
+        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(text)}`,
+        telegram: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`
+    };
+    window.open(shareUrls[platform], '_blank');
+}
+
+// ============ MAP VIEW ============
+function showMapView() {
+    document.getElementById('mainPage').style.display = 'none';
+    const container = document.getElementById('cityPagesContainer');
+    let allRestaurantsList = [];
+    for (const p in allRestaurants) {
+        allRestaurants[p].forEach(r => {
+            allRestaurantsList.push({
+                ...r,
+                province: p,
+                lat: r.lat || provinceCoords[p]?.lat + (Math.random() - 0.5) * 0.05,
+                lng: r.lng || provinceCoords[p]?.lng + (Math.random() - 0.5) * 0.05
+            });
+        });
+    }
+    const markers = allRestaurantsList.map(r => ({
+        position: { lat: r.lat, lng: r.lng },
+        title: r.name,
+        info: `<b>${r.name}</b><br>${r.cuisine}<br>⭐ ${r.rating}<br>📍 ${r.province}`
+    }));
+    container.innerHTML = `
+        <div class="city-page active">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+            <div class="city-header">
+                <h2>🗺️ خريطة المطاعم</h2>
+                <p>${allRestaurantsList.length} مطعم موزع على ${provinces.length} محافظة</p>
+            </div>
+            <div id="mapContainer"></div>
+            <div class="map-filters">
+                <select id="mapProvinceFilter" onchange="filterMapByProvince(this.value)">
+                    <option value="all">جميع المحافظات</option>
+                    ${provinces.map(p => `<option value="${p}">${p}</option>`).join('')}
+                </select>
+                <select id="mapCuisineFilter" onchange="filterMapByCuisine(this.value)">
+                    <option value="all">جميع المطابخ</option>
+                    ${cuisineTypes.map(c => `<option value="${c}">${c}</option>`).join('')}
+                </select>
+            </div>
+        </div>
+    `;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    setTimeout(() => { if (provincesSwiper) { provincesSwiper.update(); provincesSwiper.autoplay.start(); } }, 300);
-};
+    // Use simple static map without API key
+    setTimeout(() => {
+        const mapContainer = document.getElementById('mapContainer');
+        if (mapContainer) {
+            mapContainer.innerHTML = `
+                <div style="padding:20px;text-align:center;background:var(--bg-input);border-radius:var(--radius);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                    <i class="fas fa-map" style="font-size:3rem;color:var(--primary);margin-bottom:10px;"></i>
+                    <h4 style="color:var(--text);">خريطة المطاعم التفاعلية</h4>
+                    <p style="color:var(--text-secondary);font-size:0.75rem;">${allRestaurantsList.length} مطعم متاح</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;justify-content:center;max-height:200px;overflow-y:auto;">
+                        ${allRestaurantsList.slice(0,50).map(r => `
+                            <span style="background:var(--primary);color:white;padding:2px 8px;border-radius:12px;font-size:0.6rem;">${r.name}</span>
+                        `).join('')}
+                        ${allRestaurantsList.length > 50 ? `<span style="background:var(--text-secondary);color:white;padding:2px 8px;border-radius:12px;font-size:0.6rem;">+${allRestaurantsList.length-50} مطعم</span>` : ''}
+                    </div>
+                    <p style="font-size:0.6rem;color:var(--text-secondary);margin-top:8px;">
+                        <i class="fas fa-info-circle"></i> لعرض الخريطة التفاعلية، قم بإضافة مفتاح Google Maps API
+                    </p>
+                </div>
+            `;
+        }
+    }, 300);
+    lastRenderedPage = 'map';
+}
+
+// ============ NEARBY ============
+let userLocation = null;
+
+function findNearbyRestaurants() {
+    const btn = document.getElementById('nearbyBtn');
+    btn.classList.add('loading');
+    if (!navigator.geolocation) { showToast('لم نتمكن من الوصول لموقعك'); btn.classList.remove('loading'); return; }
+    navigator.geolocation.getCurrentPosition(
+        pos => { userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude }; displayNearbyRestaurants(); btn.classList.remove('loading'); },
+        err => { showToast('لم نتمكن من الوصول لموقعك'); btn.classList.remove('loading'); },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
+    );
+}
+
+function getDistance(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const dLat = (lat2-lat1)*Math.PI/180, dLng = (lng2-lng1)*Math.PI/180;
+    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function displayNearbyRestaurants() {
+    if (!userLocation) return;
+    let all = [];
+    for (const p in allRestaurants) {
+        allRestaurants[p].forEach(r => all.push({...r, province: p, distance: getDistance(userLocation.lat, userLocation.lng, r.lat, r.lng)}));
+    }
+    all.sort((a,b) => a.distance - b.distance);
+    if (!all.length) { showToast('لا توجد مطاعم قريبة'); return; }
+    document.getElementById('mainPage').style.display = 'none';
+    document.getElementById('cityPagesContainer').innerHTML = `
+        <div class="city-page active">
+            <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
+            <div class="city-header"><h2>📍 أقرب المطاعم منك</h2></div>
+            <div class="restaurants-grid">${all.slice(0,20).map(r => createRestaurantCard(r.province, r, r.distance)).join('')}</div>
+        </div>
+    `;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(observeLazyImages, 200);
+    lastRenderedPage = 'nearby';
+}
+
+// ============ RANDOM RESTAURANT ============
+function showRandomRestaurant() {
+    let allRestaurantsList = [];
+    for (const p in allRestaurants) {
+        allRestaurants[p].forEach(r => { allRestaurantsList.push({...r, province: p}); });
+    }
+    const randomRest = allRestaurantsList[Math.floor(Math.random() * allRestaurantsList.length)];
+    if (randomRest) {
+        showRestaurantDetails(randomRest.province, randomRest.id);
+        const celebration = document.createElement('div');
+        celebration.className = 'celebration';
+        celebration.innerHTML = '🎉';
+        celebration.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 5rem; z-index: 99999; pointer-events: none;
+            animation: celebrationAnim 1s ease forwards;
+        `;
+        document.body.appendChild(celebration);
+        setTimeout(() => celebration.remove(), 1500);
+    }
+}
+
+// ============ RESTAURANT DETAILS ============
+let currentReviewRestaurant = null, currentReviewProvince = null, selectedRating = 0;
+let reviewImages = [];
 
 window.showRestaurantDetails = function(province, restId) {
     const rest = allRestaurants[province].find(r => r.id === restId);
     if (!rest) return;
-    currentReviewProvince = province; currentReviewRestaurant = restId; selectedRating = 0;
-    
+    trackView(province, restId);
+    currentReviewProvince = province; currentReviewRestaurant = restId; selectedRating = 0; reviewImages = [];
     document.getElementById('modalTitle').innerHTML = rest.name;
     document.getElementById('modalCuisine').innerHTML = `<i class="fas fa-utensils"></i> ${rest.cuisine}`;
     document.getElementById('modalRating').innerHTML = `<i class="fas fa-star" style="color:#FFBA08"></i> ${rest.rating} / 5 ⭐`;
@@ -1645,7 +2343,6 @@ window.showRestaurantDetails = function(province, restId) {
     document.getElementById('modalHours').innerHTML = `<i class="fas fa-clock"></i> 🕐 ${rest.openingHours}`;
     document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 ${rest.priceRange}`;
     document.getElementById('modalMap').innerHTML = `<iframe width="100%" height="180" style="border:0;border-radius:15px;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${rest.lat},${rest.lng}&zoom=15&language=ar"></iframe>`;
-    
     const whatsappMsg = `مرحباً، أرغب بالطلب من مطعم ${rest.name} في ${province}%0Aالاسم: [اكتب اسمك]%0Aالطلب: [اكتب طلبك]`;
     if (rest.phone) {
         document.getElementById('modalWhatsapp').onclick = () => window.open(`https://wa.me/963${rest.phone}?text=${whatsappMsg}`, '_blank');
@@ -1653,12 +2350,12 @@ window.showRestaurantDetails = function(province, restId) {
     } else {
         document.getElementById('modalWhatsapp').style.display = 'none';
     }
-    
     setupShareButtons(province, rest);
     renderReviews(rest);
     initStarInput();
     document.getElementById('reviewText').value = '';
-    
+    document.getElementById('imagePreview').innerHTML = '';
+    document.getElementById('reviewImage').value = '';
     document.getElementById('restaurantModal').classList.add('active');
     document.body.style.overflow = 'hidden';
 };
@@ -1668,6 +2365,94 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+function initStarInput() {
+    const stars = document.querySelectorAll('#starInput i');
+    stars.forEach(star => {
+        star.addEventListener('click', function() {
+            selectedRating = parseInt(this.dataset.star);
+            stars.forEach(s => s.className = parseInt(s.dataset.star) <= selectedRating ? 'fas fa-star active' : 'far fa-star');
+        });
+    });
+}
+
+function setupShareButtons(province, rest) {
+    const shareText = encodeURIComponent(`شاهد مطعم ${rest.name} في ${province} - تقييم ${rest.rating}⭐`);
+    const shareUrl = encodeURIComponent(window.location.href);
+    document.getElementById('shareWhatsapp').onclick = () => { updatePoints(3, '📤 مشاركة عبر واتساب'); window.open(`https://wa.me/?text=${shareText}%20${shareUrl}`, '_blank'); };
+    document.getElementById('shareFacebook').onclick = () => { updatePoints(3, '📤 مشاركة عبر فيسبوك'); window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareText}`, '_blank'); };
+    document.getElementById('shareTelegram').onclick = () => { updatePoints(3, '📤 مشاركة عبر تلغرام'); window.open(`https://t.me/share/url?url=${shareUrl}&text=${shareText}`, '_blank'); };
+}
+
+// ============ REVIEW SYSTEM ============
+document.addEventListener('DOMContentLoaded', () => {
+    const reviewInput = document.getElementById('reviewImage');
+    if (reviewInput) {
+        reviewInput.addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            const preview = document.getElementById('imagePreview');
+            files.forEach(file => {
+                if (file.size > 5 * 1024 * 1024) { showToast('الصورة كبيرة جداً (الحد الأقصى 5 ميجابايت)'); return; }
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    reviewImages.push(event.target.result);
+                    const img = document.createElement('img');
+                    img.src = event.target.result;
+                    img.style.cssText = 'width:70px;height:70px;object-fit:cover;border-radius:10px;margin:4px;border:2px solid var(--primary);';
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+    }
+});
+
+function submitReview() {
+    if (!currentReviewProvince || !currentReviewRestaurant) return;
+    const text = document.getElementById('reviewText').value.trim();
+    if (!text && selectedRating === 0 && reviewImages.length === 0) { showToast('الرجاء إدخال نص أو اختيار صورة'); return; }
+    const rest = allRestaurants[currentReviewProvince].find(r => r.id === currentReviewRestaurant);
+    if (!rest) return;
+    const review = {
+        rating: selectedRating,
+        text: text,
+        images: reviewImages.slice(0, 3),
+        date: new Date().toLocaleDateString('ar-SY'),
+        user: 'زائر كريم'
+    };
+    rest.reviews.unshift(review);
+    reviewImages = [];
+    document.getElementById('reviewText').value = '';
+    selectedRating = 0;
+    document.querySelectorAll('#starInput i').forEach(s => s.className = 'far fa-star');
+    document.getElementById('imagePreview').innerHTML = '';
+    document.getElementById('reviewImage').value = '';
+    renderReviews(rest);
+    updatePoints(5, '📝 تقييم مطعم');
+    showToast('تم حفظ تقييمك! ⭐');
+}
+
+function renderReviews(rest) {
+    const container = document.getElementById('existingReviews');
+    if (!rest.reviews || rest.reviews.length === 0) {
+        container.innerHTML = '<p style="color:var(--text-secondary);font-size:0.75rem;">لا توجد تقييمات بعد</p>';
+        return;
+    }
+    container.innerHTML = rest.reviews.map(r => `
+        <div class="review-item">
+            <div class="review-header">
+                <div class="review-user"><span class="user-icon">👤</span> <span class="user-name">${r.user || 'زائر'}</span></div>
+                <div class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div>
+                <span class="review-date">${r.date}</span>
+            </div>
+            ${r.text ? `<p class="review-text">${r.text}</p>` : ''}
+            ${r.images && r.images.length > 0 ? `
+                <div class="review-images">${r.images.map(img => `<img src="${img}" alt="صورة التقييم">`).join('')}</div>
+            ` : ''}
+        </div>
+    `).join('');
+}
+
+// ============ SEARCH ============
 window.globalSearch = function(searchTerm) {
     if (!searchTerm || !searchTerm.trim()) return;
     const term = searchTerm.trim().toLowerCase();
@@ -1689,14 +2474,168 @@ window.globalSearch = function(searchTerm) {
     setTimeout(observeLazyImages, 200);
 };
 
+// ============ NAVIGATION ============
+function renderCurrentPage() {
+    if (currentProvince) renderCityPage(currentProvince);
+    else if (lastRenderedPage === 'favorites') showFavorites();
+    else if (lastRenderedPage === 'nearby') displayNearbyRestaurants();
+    else if (lastRenderedPage === 'about') showAboutSyria();
+    else if (lastRenderedPage === 'articles') showArticlesPage();
+    else if (lastRenderedPage === 'map') showMapView();
+}
+
+window.goBack = function() {
+    document.getElementById('mainPage').style.display = 'block';
+    document.getElementById('cityPagesContainer').innerHTML = '';
+    currentProvince = null; lastRenderedPage = null;
+    activeFilters = { cuisine: 'all', price: 'all', hours: 'all', sort: 'default', search: '' };
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => { if (provincesSwiper) { provincesSwiper.update(); provincesSwiper.autoplay.start(); } }, 300);
+};
+
+// ============ NOTIFICATIONS ============
+function requestNotificationPermission() {
+    if (!('Notification' in window)) return;
+    if (Notification.permission === 'granted') return true;
+    if (Notification.permission !== 'denied') {
+        Notification.requestPermission().then(permission => {
+            if (permission === 'granted') showToast('🔔 سيتم إعلامك بالعروض والمطاعم الجديدة');
+        });
+    }
+    return false;
+}
+
+function sendNotification(title, body) {
+    if (Notification.permission !== 'granted') return;
+    try {
+        const notification = new Notification(title, {
+            body: body,
+            icon: '🍽️',
+            vibrate: [200, 100, 200],
+            tag: 'kolo-atanhy',
+            requireInteraction: true
+        });
+        notification.onclick = function() { window.focus(); notification.close(); };
+        setTimeout(() => notification.close(), 10000);
+    } catch (e) {}
+}
+
+// ============ INSTALL PROMPT ============
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const prompt = document.createElement('div');
+    prompt.className = 'install-prompt';
+    prompt.id = 'installPrompt';
+    prompt.innerHTML = `
+        <div class="install-prompt-content">
+            <div class="install-icon">📱</div>
+            <div class="install-text">
+                <h4>ثبّت التطبيق على جهازك</h4>
+                <p>احصل على تجربة أفضل وسرعة أكبر</p>
+            </div>
+            <button class="install-btn" onclick="installApp()">تثبيت</button>
+            <button class="install-close" onclick="this.parentElement.parentElement.remove()">✕</button>
+        </div>
+    `;
+    document.body.appendChild(prompt);
+});
+
+function installApp() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+                document.getElementById('installPrompt')?.remove();
+            }
+            deferredPrompt = null;
+        });
+    }
+}
+
+// ============ KEYBOARD SHORTCUTS ============
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeMobileSearch(); closeMobileMenu(); }
+    if (e.key === 'f' && !e.ctrlKey && !e.metaKey) {
+        if (!document.activeElement?.tagName === 'INPUT') { showFavorites(); }
+    }
+});
+
+// ============ CACHE ============
+function cacheRestaurants() {
+    try {
+        const cache = {};
+        for (const p in allRestaurants) {
+            cache[p] = allRestaurants[p].map(r => ({ ...r, reviews: r.reviews ? r.reviews.slice(0, 10) : [] }));
+        }
+        localStorage.setItem('cachedRestaurants', JSON.stringify(cache));
+    } catch (e) {}
+}
+
+window.addEventListener('online', () => { showToast('🌐 تم استعادة الاتصال بالإنترنت'); cacheRestaurants(); });
+window.addEventListener('offline', () => {
+    showToast('⚠️ أنت غير متصل، يتم عرض البيانات المخزنة');
+    const cached = localStorage.getItem('cachedRestaurants');
+    if (cached) {
+        try {
+            const data = JSON.parse(cached);
+            for (const p in data) {
+                if (!allRestaurants[p] || allRestaurants[p].length === 0) {
+                    allRestaurants[p] = data[p];
+                }
+            }
+            renderCurrentPage();
+        } catch (e) {}
+    }
+});
+
+setInterval(cacheRestaurants, 60000);
+
+// ============ RECOMMENDATIONS ============
+function renderRecommendations() {
+    const recs = getRecommendations();
+    if (recs.length === 0) return;
+    let container = document.querySelector('.recommendations-container');
+    if (!container) {
+        const mainPage = document.getElementById('mainPage');
+        container = document.createElement('div');
+        container.className = 'recommendations-container';
+        container.innerHTML = `<h2 class="section-title">🤖 نوصي لك</h2><div class="restaurants-grid" id="recGrid"></div>`;
+        const slider = document.querySelector('.provinces-slider-container');
+        if (slider) slider.parentNode.insertBefore(container, slider.nextSibling);
+    }
+    const grid = document.getElementById('recGrid') || container.querySelector('.restaurants-grid');
+    if (grid) {
+        grid.innerHTML = recs.map(r => createRestaurantCard(r.province, r)).join('');
+        setTimeout(observeLazyImages, 200);
+    }
+}
+
+// ============ INIT ============
 document.addEventListener('DOMContentLoaded', () => {
     renderProvinces();
+    updateStats();
     document.getElementById('desktopSearch').addEventListener('keydown', function(e) {
         if (e.key === 'Enter') globalSearch(this.value);
     });
+    setTimeout(renderRecommendations, 1500);
+    requestNotificationPermission();
+    
+    // Daily digest notification
+    if (Notification.permission === 'granted') {
+        const lastNotification = localStorage.getItem('lastDailyDigest');
+        const today = new Date().toDateString();
+        if (lastNotification !== today) {
+            setTimeout(() => {
+                sendNotification('🍽️ اكتشف اليوم', 'أكثر من 7000 مطعم في سوريا ينتظرونك!');
+                localStorage.setItem('lastDailyDigest', today);
+            }, 10000);
+        }
+    }
 });
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeMobileSearch(); closeMobileMenu(); } });
 window.addEventListener('resize', () => {
     if (provincesSwiper) {
         const isMobile = window.innerWidth < 1024;
@@ -1707,6 +2646,11 @@ window.addEventListener('resize', () => {
 
 const domObserver = new MutationObserver(() => observeLazyImages());
 domObserver.observe(document.getElementById('cityPagesContainer'), { childList: true, subtree: true });
+
+console.log('🍽️ كول واتهنى - دليل المطاعم في سوريا');
+console.log('📊 عدد المطاعم المحملة:', Object.values(allRestaurants).reduce((sum, arr) => sum + arr.length, 0));
+console.log('❤️ عدد المفضلة:', favorites.length);
+console.log('⭐ عدد النقاط:', userPoints);
 </script>
 </body>
 </html>
