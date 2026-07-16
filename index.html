@@ -76,6 +76,8 @@
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
+            cursor: pointer;
+            background: transparent;
         }
         
         .sponsor-banner .sponsor-link:hover {
@@ -109,6 +111,7 @@
             transition: all 0.3s ease;
             border: 2px solid rgba(255,255,255,0.2);
             animation: floatBounce 2s ease-in-out infinite;
+            cursor: pointer;
         }
         
         @keyframes floatBounce {
@@ -151,11 +154,88 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            cursor: pointer;
         }
         
         .footer-sponsor a:hover {
             color: #ff6b35;
             transform: scale(1.05);
+        }
+        
+        /* ====== SPONSOR IFRAME OVERLAY ====== */
+        .sponsor-iframe-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.92);
+            z-index: 10000;
+            padding: 20px;
+            box-sizing: border-box;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .sponsor-iframe-overlay.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .sponsor-iframe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 16px 16px 0 0;
+            border-bottom: 3px solid #F48C06;
+        }
+        
+        .sponsor-iframe-header h3 {
+            color: #F48C06;
+            margin: 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sponsor-iframe-header .close-iframe-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 50px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sponsor-iframe-header .close-iframe-btn:hover {
+            background: #ff4444;
+            transform: scale(1.05);
+        }
+        
+        .sponsor-iframe-container {
+            width: 100%;
+            height: calc(100% - 70px);
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+            background: #fff;
+        }
+        
+        .sponsor-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         /* ====== RESPONSIVE ====== */
@@ -181,6 +261,13 @@
             .floating-sponsor i {
                 font-size: 1rem;
             }
+            .sponsor-iframe-header h3 {
+                font-size: 0.8rem;
+            }
+            .sponsor-iframe-header .close-iframe-btn {
+                font-size: 1rem;
+                padding: 4px 12px;
+            }
         }
     </style>
 </head>
@@ -190,10 +277,26 @@
 <div class="sponsor-banner" id="sponsorBanner">
     <span class="sponsor-label">⭐ راعي الموقع</span>
     <span class="sponsor-name">مطعم الشواب</span>
-    <a href="https://haidergiyasmahfoud-wq.github.io/Shawab-" target="_blank" class="sponsor-link" rel="noopener noreferrer">
+    <button class="sponsor-link" onclick="openSponsorSite()">
         <i class="fas fa-external-link-alt sponsor-icon"></i>
         زيارة الموقع الإلكتروني
-    </a>
+    </button>
+</div>
+
+<!-- ====== SPONSOR IFRAME OVERLAY ====== -->
+<div class="sponsor-iframe-overlay" id="sponsorIframeOverlay">
+    <div class="sponsor-iframe-header">
+        <h3>
+            <i class="fas fa-utensils" style="color:#F48C06;"></i>
+            مطعم الشواب - الموقع الرسمي
+        </h3>
+        <button class="close-iframe-btn" onclick="closeSponsorSite()">
+            <i class="fas fa-times"></i> إغلاق
+        </button>
+    </div>
+    <div class="sponsor-iframe-container">
+        <iframe src="https://haidergiyasmahfoud-wq.github.io/Shawab-" id="sponsorIframe" allowfullscreen></iframe>
+    </div>
 </div>
 
 <!-- ============ PROGRESS BAR ============ -->
@@ -210,11 +313,11 @@
 </button>
 
 <!-- ============ FLOATING SPONSOR BUTTON ============ -->
-<a href="https://haidergiyasmahfoud-wq.github.io/Shawab-" target="_blank" class="floating-sponsor" rel="noopener noreferrer">
+<button class="floating-sponsor" onclick="openSponsorSite()">
     <i class="fas fa-utensils"></i>
     <span>مطعم الشواب</span>
     <i class="fas fa-arrow-left" style="font-size:0.7rem;"></i>
-</a>
+</button>
 
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
@@ -587,11 +690,13 @@
     <!-- ====== FOOTER SPONSOR ====== -->
     <div class="footer-sponsor">
         <p>🌟 بدعم من</p>
-        <a href="https://haidergiyasmahfoud-wq.github.io/Shawab-" target="_blank" rel="noopener noreferrer">
-            <i class="fas fa-utensils" style="color:#F48C06;"></i>
-            مطعم الشواب - الموقع الإلكتروني الرسمي
-            <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:#F48C06;"></i>
-        </a>
+        <button onclick="openSponsorSite()" style="background:none;border:none;cursor:pointer;font-family:inherit;width:100%;">
+            <a style="color:#F48C06;text-decoration:none;font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;">
+                <i class="fas fa-utensils" style="color:#F48C06;"></i>
+                مطعم الشواب - الموقع الإلكتروني الرسمي
+                <i class="fas fa-external-link-alt" style="font-size:0.7rem;color:#F48C06;"></i>
+            </a>
+        </button>
     </div>
     
     <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:15px;padding-top:15px;border-top:1px solid var(--border);">
@@ -632,6 +737,39 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    // ====== SPONSOR FUNCTIONS ======
+    function openSponsorSite() {
+        const overlay = document.getElementById('sponsorIframeOverlay');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        // منع التمرير في الخلفية
+        document.getElementById('sponsorIframe').src = 'https://haidergiyasmahfoud-wq.github.io/Shawab-';
+    }
+    
+    function closeSponsorSite() {
+        const overlay = document.getElementById('sponsorIframeOverlay');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+        // إعادة تعيين المصدر لإلغاء تحميل الصفحة
+        document.getElementById('sponsorIframe').src = 'about:blank';
+    }
+    
+    // إغلاق بالإسكيب (Escape)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeSponsorSite();
+        }
+    });
+    
+    // إغلاق عند النقر على الخلفية
+    document.getElementById('sponsorIframeOverlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeSponsorSite();
+        }
+    });
+</script>
 
 <script src="js/data.js"></script>
 <script src="js/utils.js"></script>
