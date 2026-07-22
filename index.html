@@ -1142,6 +1142,131 @@
             .articles-grid { grid-template-columns: repeat(4, 1fr); }
             .search-bar-desktop input { width: 280px; }
         }
+
+        /* ============ MENU MODAL ============ */
+        .menu-modal-content {
+            max-width: 600px;
+            margin: auto;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            padding: 20px;
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: 85vh;
+            overflow-y: auto;
+            color: var(--text);
+        }
+        .menu-modal-content .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .menu-modal-content .menu-item .item-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-modal-content .menu-item .item-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--primary);
+        }
+        .menu-modal-content .menu-item .item-desc {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+        .menu-modal-content .menu-item .item-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+        .menu-modal-content .menu-item .order-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            transition: transform 0.2s;
+        }
+        .menu-modal-content .menu-item .order-btn:active { transform: scale(0.95); }
+        .menu-modal-content .order-summary {
+            margin-top: 15px;
+            padding: 10px;
+            background: var(--info-bg);
+            border-radius: var(--radius-sm);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .menu-modal-content .order-summary .total-price {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .menu-modal-content .order-summary .send-order-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ============ RECOMMENDED CARD ============ */
+        .recommended-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 2px solid var(--accent);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .recommended-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .recommended-card .restaurant-image { height: 160px; overflow: hidden; position: relative; }
+        .recommended-card .restaurant-image img { width: 100%; height: 100%; object-fit: cover; }
+        .recommended-card .badge-recommended {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            z-index: 2;
+        }
+        .recommended-card .restaurant-info { padding: 12px; }
+        .recommended-card .restaurant-info h3 { font-size: 0.95rem; color: var(--primary); }
+        .recommended-card .restaurant-info p { font-size: 0.75rem; color: var(--text-secondary); }
+
+        #recommendedGrid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px 20px;
+        }
+
+        @media (min-width: 640px) {
+            #recommendedGrid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            #recommendedGrid { grid-template-columns: repeat(3, 1fr); }
+        }
     </style>
 </head>
 <body>
@@ -1288,7 +1413,6 @@ function setActiveNav(el) {
         <div class="menu-link" onclick="closeMobileMenu(); showRandomRestaurant();">
             <i class="fas fa-dice"></i> <span>جرب مطعم عشوائي 🎲</span>
         </div>
-        <!-- ===== روابط سياسة الخصوصية في القائمة الجانبية ===== -->
         <div class="menu-divider"></div>
         <div class="menu-link" onclick="window.location.href='privacy-terms.html'">
             <i class="fas fa-shield-alt"></i> <span>سياسة الخصوصية</span>
@@ -1375,6 +1499,12 @@ function setActiveNav(el) {
             </button>
         </div>
 
+        <!-- ============ RECOMMENDED RESTAURANTS ============ -->
+        <div id="recommendedContainer">
+            <h2 class="section-title">⭐ مطاعم مميزة من دمشق</h2>
+            <div id="recommendedGrid"></div>
+        </div>
+
         <!-- ============ MOST VIEWED ============ -->
         <div id="mostViewedContainer">
             <h2 class="section-title">👀 الأكثر مشاهدة</h2>
@@ -1440,7 +1570,6 @@ function setActiveNav(el) {
         <div id="adminReviewsList" class="admin-list"></div>
     </div>
 
-    <!-- ===== روابط سياسة الخصوصية في لوحة التحكم ===== -->
     <div class="admin-card">
         <h3>🔗 روابط سريعة</h3>
         <div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
@@ -1468,6 +1597,11 @@ function setActiveNav(el) {
         <div class="info-row" id="modalHours"></div>
         <div class="info-row" id="modalPrice"></div>
         <div id="modalMap" class="google-map"></div>
+        
+        <!-- ===== MENU BUTTON ===== -->
+        <button id="modalMenuBtn" class="whatsapp-order" style="background:var(--primary);" onclick="showMenuModal()">
+            <i class="fas fa-utensils"></i> 📋 عرض القائمة
+        </button>
         
         <!-- ===== BOOKING FORM ===== -->
         <div class="booking-form">
@@ -1509,6 +1643,20 @@ function setActiveNav(el) {
             </div>
             <button class="review-submit" onclick="submitReview()">نشر التقييم ✍️</button>
             <div class="existing-reviews" id="existingReviews"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============ MENU MODAL ============ -->
+<div id="menuModal" class="modal" onclick="if(event.target===this) closeMenuModal()">
+    <div class="menu-modal-content">
+        <button class="modal-close" onclick="closeMenuModal()"><i class="fas fa-times"></i></button>
+        <h2 style="color:var(--primary);margin-bottom:10px;">📋 قائمة طعام مطعم الشواب</h2>
+        <div id="menuItems"></div>
+        <div class="order-summary" id="orderSummary">
+            <span>السلة: <span id="cartCount">0</span> طبق</span>
+            <span class="total-price" id="cartTotal">0 ل.س</span>
+            <button class="send-order-btn" onclick="sendOrderViaWhatsapp()"><i class="fab fa-whatsapp"></i> إرسال الطلب</button>
         </div>
     </div>
 </div>
@@ -1555,7 +1703,6 @@ function setActiveNav(el) {
         <div class="dev-text">
             <h4>🚀 تم تطويره بواسطة</h4>
             <p><a href="#" target="_blank">Kyntrava AI</a> - الذكاء الاصطناعي بأيدي عربية</p>
-            <!-- ===== روابط سياسة الخصوصية في الفوتر السفلي ===== -->
             <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:8px;">
                 <a href="privacy-terms.html" style="color:#F48C06;text-decoration:none;font-size:0.7rem;transition:0.3s;">
                     <i class="fas fa-shield-alt"></i> سياسة الخصوصية
@@ -1596,7 +1743,6 @@ function toggleDarkMode() {
     document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
     localStorage.setItem('darkMode', isDark ? '' : 'dark');
 }
-// Auto detect system dark mode
 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('darkMode')) {
     document.documentElement.setAttribute('data-theme', 'dark');
 }
@@ -1884,7 +2030,10 @@ const damascusRealRestaurants = [
     {id:"r168",name:"مطعم شاورما أرت",cuisine:"شاورما",rating:4.4,priceRange:"$",priceLevel:1,description:"شاورما أرت",address:"دمشق",phone:"0953281121",lat:33.522,lng:36.296,openingHours:"10:00 صباحاً - 2:00 بعد منتصف الليل"},
     {id:"r169",name:"Qshrimp",cuisine:"مأكولات بحرية",rating:4.5,priceRange:"$$$",priceLevel:3,description:"كيوشرمب",address:"دمشق",phone:"0941434333",lat:33.514,lng:36.291,openingHours:"11:00 صباحاً - 11:00 مساءً"},
     {id:"r170",name:"Ultra Vista",cuisine:"مطبخ عالمي",rating:4.3,priceRange:"$$$",priceLevel:3,description:"مطعم ألترا فيستا",address:"دمشق",phone:"0116110657",lat:33.515,lng:36.292,openingHours:"11:00 صباحاً - 11:00 مساءً"},
-    {id:"r171",name:"مطعم المير",cuisine:"مطبخ شرقي",rating:4.2,priceRange:"$$",priceLevel:2,description:"مطعم المير",address:"دمشق",phone:"0984616616",lat:33.516,lng:36.293,openingHours:"9:00 صباحاً - 10:00 مساءً"}
+    {id:"r171",name:"مطعم المير",cuisine:"مطبخ شرقي",rating:4.2,priceRange:"$$",priceLevel:2,description:"مطعم المير",address:"دمشق",phone:"0984616616",lat:33.516,lng:36.293,openingHours:"9:00 صباحاً - 10:00 مساءً"},
+    {id:"r172",name:"مطعم الشواب",cuisine:"مطبخ شرقي",rating:4.8,priceRange:"$$$",priceLevel:3,description:"مطعم الشواب يقدم أشهى المأكولات الشرقية والمشاوي في دمشق. تجربة طعام فريدة من نوعها مع أجواء راقية وخدمة ممتازة.",address:"دمشق - المالكي",phone:"0113732527",lat:33.5195,lng:36.2800,openingHours:"11:00 صباحاً - 12:00 منتصف الليل",hourStart:11,hourEnd:24,website:"https://haidergiyasmahfoud-wq.github.io/Shawab-",image:"https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?w=600&h=400&random=shawab",reviews:[],views:0},
+    {id:"r173",name:"حلويات الوسام",cuisine:"حلويات",rating:4.7,priceRange:"$$",priceLevel:2,description:"أشهر محلات الحلويات الشرقية في دمشق، يقدم ألذ الكنافة، البقلاوة، والمعمول. جودة عالية ونكهة لا تُقاوم.",address:"دمشق - شارع بغداد",phone:"0114452926",lat:33.5119,lng:36.2920,openingHours:"8:00 صباحاً - 11:00 مساءً",hourStart:8,hourEnd:23,image:"https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg?w=600&h=400&random=wisam",reviews:[],views:0},
+    {id:"r174",name:"مطعم الشامي الأصيل",cuisine:"مطبخ شرقي",rating:4.6,priceRange:"$$$",priceLevel:3,description:"مطعم تراثي يقدم أشهى المأكولات الشامية الأصيلة. الكبة، اليبرق، والمشاوي على أصولها في أجواء دمشقية عريقة.",address:"دمشق - المالكي",phone:"",lat:33.5197,lng:36.2810,openingHours:"10:00 صباحاً - 12:00 منتصف الليل",hourStart:10,hourEnd:24,image:"https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?w=600&h=400&random=shami",reviews:[],views:0}
 ];
 
 // ============ RIF DIMASHQ REAL RESTAURANTS ============
@@ -1971,6 +2120,30 @@ const articles = [
     }
 ];
 
+// ============ RECOMMENDED RESTAURANTS ============
+const recommendedRestaurants = [
+    {
+        id: "rec1",
+        name: "شركة الفادي",
+        cuisine: "خدمة توصيل",
+        rating: 4.9,
+        priceRange: "$$",
+        priceLevel: 2,
+        description: "شركة الفادي للخدمات اللوجستية والتوصيل. نوفر خدمة توصيل سريعة وموثوقة للطلبات من جميع المطاعم في دمشق. نضمن وصول طلبك طازجاً وفي الوقت المحدد. خدمتنا تغطي كافة مناطق دمشق وريفها.",
+        address: "دمشق",
+        phone: "0113732527",
+        lat: 33.5190,
+        lng: 36.2785,
+        openingHours: "8:00 صباحاً - 12:00 منتصف الليل",
+        hourStart: 8,
+        hourEnd: 24,
+        image: "https://imgur.com/mYw0b1U",
+        reviews: [],
+        views: 0,
+        isDelivery: true
+    }
+];
+
 // ============ GENERATE RESTAURANTS ============
 const restaurantNames = ['أبو السعد', 'الديار', 'الفردوس', 'القصر', 'الزهرة', 'النجمة', 'البستان', 'النخيل', 'سهارى', 'ليالي', 'ألف ليلة', 'بوابة الشام', 'جبل العرب', 'باب توما', 'المأذنة', 'القلعة', 'البارون', 'شهرزاد', 'ميراج', 'رويال', 'جراند', 'بلازا', 'فاخر', 'مشاوي العاصمة', 'سمك وشوي', 'طازج', 'سوريانا'];
 const adjectives = ['الذهبي', 'الفضي', 'التراثي', 'الحديث', 'الفاخر', 'الرائع', 'المميز', 'الحصري'];
@@ -1984,9 +2157,10 @@ function generateRestaurants(province, count = 50) {
     if (realData[province]) {
         return realData[province].map(r => ({
             ...r,
-            image: imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`,
-            reviews: [],
-            views: 0
+            image: r.image || (imagePool[Math.floor(Math.random() * imagePool.length)] + `?w=600&h=400&random=${Math.random()}`),
+            reviews: r.reviews || [],
+            views: r.views || 0,
+            website: r.website || ''
         }));
     }
     
@@ -2014,40 +2188,16 @@ function generateRestaurants(province, count = 50) {
             lat: coords.lat + (Math.random() - 0.5) * 0.08,
             lng: coords.lng + (Math.random() - 0.5) * 0.08,
             reviews: [],
-            views: 0
+            views: 0,
+            website: ''
         });
     }
     return restaurants;
 }
 
-// ============ ADD SHAWAB RESTAURANT ============
-const shawabRestaurant = {
-    id: "shawab_restaurant",
-    name: "مطعم الشواب",
-    cuisine: "مطبخ شرقي",
-    rating: 4.8,
-    priceRange: "$$$",
-    priceLevel: 3,
-    description: "مطعم الشواب يقدم أشهى المأكولات الشرقية والمشاوي في دمشق. تجربة طعام فريدة من نوعها مع أجواء راقية وخدمة ممتازة. يشتهر المطعم بمشاوي اللحم على الفحم والمقبلات الشرقية الأصيلة.",
-    address: "دمشق - المالكي",
-    phone: "0113732527",
-    lat: 33.5195,
-    lng: 36.2800,
-    openingHours: "11:00 صباحاً - 12:00 منتصف الليل",
-    hourStart: 11,
-    hourEnd: 24,
-    image: "https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?w=600&h=400&random=shawab",
-    reviews: [],
-    views: 100,
-    website: "https://haidergiyasmahfoud-wq.github.io/Shawab-" // الموقع الإلكتروني
-};
-
 // ============ INIT DATA ============
 const allRestaurants = {};
 provinces.forEach(p => { allRestaurants[p] = generateRestaurants(p, 50); });
-
-// إضافة مطعم الشواب إلى دمشق
-allRestaurants['دمشق'].unshift(shawabRestaurant);
 
 // ============ FAVORITES ============
 let favorites = JSON.parse(localStorage.getItem('restaurant_favorites') || '[]');
@@ -2125,7 +2275,6 @@ function trackView(province, restId) {
     browsingHistory.push({ province, restId, timestamp: Date.now() });
     if (browsingHistory.length > 50) { browsingHistory = browsingHistory.slice(-50); }
     localStorage.setItem('browsingHistory', JSON.stringify(browsingHistory));
-    // Increment view count for the restaurant
     const rest = allRestaurants[province]?.find(r => r.id === restId);
     if (rest) {
         rest.views = (rest.views || 0) + 1;
@@ -2185,7 +2334,6 @@ function getOpenNowRestaurants(limit = 6) {
             }
         });
     }
-    // Sort by rating
     open.sort((a,b) => b.rating - a.rating);
     return open.slice(0, limit);
 }
@@ -2279,7 +2427,6 @@ function createRestaurantCard(province, rest, distance = null) {
     const distHTML = distance !== null ? `<span class="distance-badge"><i class="fas fa-location-dot"></i> ${distance.toFixed(1)} كم</span>` : '';
     const starsHTML = '★'.repeat(Math.floor(rest.rating)) + (rest.rating%1>=0.5?'½':'') + '☆'.repeat(5-Math.ceil(rest.rating));
     const phoneDisplay = rest.phone ? `<small style="color:var(--text-secondary);font-size:0.65rem;">📞 ${rest.phone}</small>` : '';
-    // إضافة أيقونة الموقع الإلكتروني إذا كان موجوداً
     const websiteDisplay = rest.website ? `<small style="color:var(--primary);font-size:0.65rem;"><i class="fas fa-globe"></i> موقع إلكتروني</small>` : '';
     return `
         <div class="restaurant-card" onclick="showRestaurantDetails('${province}', '${rest.id}')">
@@ -2347,19 +2494,17 @@ function renderCityPage(province, filters = {}) {
         restaurants.sort((a,b) => a._distance - b._distance);
     }
     
-    // Advanced filters
     if (advancedFilters.rating > 0) restaurants = restaurants.filter(r => r.rating >= advancedFilters.rating);
     
     currentProvince = province;
     const container = document.getElementById('cityPagesContainer');
     
-    // Show skeleton loading first
     const gridHtml = restaurants.map(r => createRestaurantCard(province, r, activeFilters.sort==='nearest'&&userLocation?r._distance:null)).join('');
     
     container.innerHTML = `
         <div class="city-page active">
             <button class="back-btn" onclick="goBack()"><i class="fas fa-arrow-right"></i> العودة للرئيسية</button>
-            <div class="city-header"><h2>📍 ${province}</h2><p>🌟 ${restaurants.length} مطعم ${province === 'دمشق' || province === 'ريف دمشق' ? 'حقيقي' : ''}</p></div>
+            <div class="city-header"><h2>📍 ${province}</h2><p>🌟 ${restaurants.length} مطعم</p></div>
             
             <button class="advanced-filter-toggle" onclick="toggleAdvancedFilters()">
                 <i class="fas fa-sliders-h"></i> تصفية متقدمة
@@ -2631,7 +2776,6 @@ function showMapView() {
         </div>
     `;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // Initialize Leaflet map
     setTimeout(() => {
         const mapContainer = document.getElementById('mapContainer');
         if (mapContainer && typeof L !== 'undefined') {
@@ -2667,7 +2811,6 @@ function showMapView() {
             });
             map.invalidateSize();
         } else {
-            // Fallback
             mapContainer.innerHTML = `
                 <div style="padding:20px;text-align:center;background:var(--bg-input);border-radius:var(--radius);height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
                     <i class="fas fa-map" style="font-size:3rem;color:var(--primary);margin-bottom:10px;"></i>
@@ -2777,6 +2920,83 @@ let currentReviewRestaurant = null, currentReviewProvince = null, selectedRating
 let reviewImages = [];
 let currentCompareList = JSON.parse(localStorage.getItem('compareList') || '[]');
 
+// ============ MENU SYSTEM ============
+const shawabMenu = [
+    { name: "مشاوي مشكلة", desc: "تشكيلة من اللحم المشوي على الفحم مع أرز وخضار", price: 15000 },
+    { name: "شيش طاووق", desc: "صدور دجاج متبلة ومشوية على الفحم مع الخضار", price: 12000 },
+    { name: "لحم بالعظم", desc: "لحم ضأن مطبوخ ببطء مع البهارات والتوابل", price: 18000 },
+    { name: "كبة مشوية", desc: "كبة لحم محشية بالجوز والبصل مشوية على الفحم", price: 10000 },
+    { name: "مقبلات مشكلة", desc: "حمص، متبل، ورق عنب، فلافل، مكدوس", price: 8000 },
+    { name: "سلطة خضراء", desc: "خيار، طماطم، خس، فجل، بقدونس مع عصير الليمون", price: 5000 },
+    { name: "أرز بخاري", desc: "أرز بنكهة البهارات مع اللحم المفروم والمكسرات", price: 7000 },
+    { name: "كنافة نابلسية", desc: "كنافة بالجبنة مع القطر والمكسرات", price: 8000 }
+];
+
+let orderCart = [];
+
+function showMenuModal() {
+    const modal = document.getElementById('menuModal');
+    const container = document.getElementById('menuItems');
+    container.innerHTML = shawabMenu.map((item, index) => `
+        <div class="menu-item">
+            <div class="item-details">
+                <span class="item-name">${item.name}</span>
+                <span class="item-desc">${item.desc}</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span class="item-price">${item.price.toLocaleString()} ل.س</span>
+                <button class="order-btn" onclick="addToCart(${index})">➕ طلب</button>
+            </div>
+        </div>
+    `).join('');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateCartSummary();
+}
+
+function closeMenuModal() {
+    document.getElementById('menuModal').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function addToCart(index) {
+    const item = shawabMenu[index];
+    const existing = orderCart.find(i => i.index === index);
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        orderCart.push({ ...item, index, qty: 1 });
+    }
+    updateCartSummary();
+    showToast(`تمت إضافة ${item.name} إلى السلة 🛒`);
+}
+
+function updateCartSummary() {
+    const totalItems = orderCart.reduce((sum, i) => sum + i.qty, 0);
+    const totalPrice = orderCart.reduce((sum, i) => sum + (i.price * i.qty), 0);
+    document.getElementById('cartCount').textContent = totalItems;
+    document.getElementById('cartTotal').textContent = totalPrice.toLocaleString() + ' ل.س';
+}
+
+function sendOrderViaWhatsapp() {
+    if (orderCart.length === 0) { showToast('السلة فارغة! أضف أطباقاً أولاً'); return; }
+    const rest = allRestaurants['دمشق']?.find(r => r.name === 'مطعم الشواب');
+    if (!rest) { showToast('لم نتمكن من العثور على المطعم'); return; }
+    let orderText = `🍽️ طلب جديد من مطعم الشواب\n\n`;
+    orderCart.forEach(item => {
+        orderText += `• ${item.name} (${item.qty}) - ${(item.price * item.qty).toLocaleString()} ل.س\n`;
+    });
+    orderText += `\n💰 المجموع: ${orderCart.reduce((sum, i) => sum + (i.price * i.qty), 0).toLocaleString()} ل.س`;
+    orderText += `\n\n📞 اسمي: [اكتب اسمك]\n📍 العنوان: [اكتب عنوانك]`;
+    const phone = rest.phone || '0113732527';
+    window.open(`https://wa.me/963${phone}?text=${encodeURIComponent(orderText)}`, '_blank');
+    updatePoints(3, '📦 طلب عبر القائمة');
+    orderCart = [];
+    updateCartSummary();
+    closeMenuModal();
+}
+
+// ============ SHOW RESTAURANT DETAILS ============
 window.showRestaurantDetails = function(province, restId) {
     const rest = allRestaurants[province].find(r => r.id === restId);
     if (!rest) return;
@@ -2793,6 +3013,15 @@ window.showRestaurantDetails = function(province, restId) {
     document.getElementById('modalHours').innerHTML = `<i class="fas fa-clock"></i> 🕐 ${rest.openingHours}`;
     document.getElementById('modalPrice').innerHTML = `<i class="fas fa-tag"></i> 💰 ${rest.priceRange}`;
     document.getElementById('modalMap').innerHTML = `<iframe width="100%" height="180" style="border:0;border-radius:15px;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${rest.lat},${rest.lng}&zoom=15&language=ar"></iframe>`;
+    
+    // Show menu button only for Shawab restaurant
+    const menuBtn = document.getElementById('modalMenuBtn');
+    if (rest.name === 'مطعم الشواب') {
+        menuBtn.style.display = 'block';
+    } else {
+        menuBtn.style.display = 'none';
+    }
+    
     const whatsappMsg = `مرحباً، أرغب بالطلب من مطعم ${rest.name} في ${province}%0Aالاسم: [اكتب اسمك]%0Aالطلب: [اكتب طلبك]`;
     if (rest.phone) {
         document.getElementById('modalWhatsapp').onclick = () => window.open(`https://wa.me/963${rest.phone}?text=${whatsappMsg}`, '_blank');
@@ -2800,7 +3029,8 @@ window.showRestaurantDetails = function(province, restId) {
     } else {
         document.getElementById('modalWhatsapp').style.display = 'none';
     }
-    // إضافة زر الموقع الإلكتروني إذا كان موجوداً
+    
+    // Website button
     const websiteBtn = document.createElement('button');
     websiteBtn.style.cssText = 'background:var(--primary);color:white;border:none;padding:10px 18px;border-radius:50px;cursor:pointer;margin-top:8px;width:100%;font-family:Tajawal,sans-serif;font-size:0.85rem;display:flex;align-items:center;justify-content:center;gap:6px;';
     websiteBtn.innerHTML = '<i class="fas fa-globe"></i> 🌐 زيارة الموقع الإلكتروني';
@@ -2811,6 +3041,7 @@ window.showRestaurantDetails = function(province, restId) {
         websiteBtn.className = 'website-btn';
         document.getElementById('modalWhatsapp').after(websiteBtn);
     }
+    
     setupShareButtons(province, rest);
     renderReviews(rest);
     initStarInput();
@@ -2819,7 +3050,6 @@ window.showRestaurantDetails = function(province, restId) {
     document.getElementById('reviewImage').value = '';
     document.getElementById('restaurantModal').classList.add('active');
     document.body.style.overflow = 'hidden';
-    // Set default booking date
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('bookingDate').value = today;
     document.getElementById('bookingDate').min = today;
@@ -2860,7 +3090,6 @@ function submitBooking() {
     if (rest.phone) {
         window.open(`https://wa.me/963${rest.phone}?text=${encodeURIComponent(message)}`, '_blank');
     } else {
-        // Fallback email
         window.location.href = `mailto:booking@wheretoeat.today?subject=حجز طاولة في ${rest.name}&body=${encodeURIComponent(message)}`;
     }
     updatePoints(3, '📅 حجز طاولة');
@@ -3170,10 +3399,9 @@ function addNewRestaurant(event) {
         lng: coords.lng + (Math.random() - 0.5) * 0.02,
         reviews: [],
         views: 0,
-        website: '' // إضافة حقل الموقع الإلكتروني للمطاعم المضافة
+        website: ''
     };
     allRestaurants[province].unshift(newRest);
-    // Save to localStorage
     try {
         const cache = {};
         for (const p in allRestaurants) {
@@ -3233,6 +3461,28 @@ window.goBack = function() {
 
 // ============ RENDER HOME SECTIONS ============
 function renderHomeSections() {
+    // Recommended Restaurants
+    const recGrid = document.getElementById('recommendedGrid');
+    if (recGrid) {
+        recGrid.innerHTML = recommendedRestaurants.map(r => `
+            <div class="recommended-card" onclick="showRestaurantDetails('دمشق', '${r.id}')">
+                <div class="restaurant-image">
+                    <img src="${r.image}" alt="${r.name}" loading="lazy" data-src="${r.image}">
+                    <div class="badge-recommended">⭐ مميز</div>
+                </div>
+                <div class="restaurant-info">
+                    <h3>${r.name}</h3>
+                    <p>${r.description}</p>
+                    <div class="restaurant-footer">
+                        <span class="price-range">${r.priceRange}</span>
+                        <button class="btn-details" onclick="event.stopPropagation(); showRestaurantDetails('دمشق', '${r.id}')">تفاصيل 📖</button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        setTimeout(observeLazyImages, 200);
+    }
+    
     // Most Viewed
     const mostViewed = getMostViewedRestaurants(6);
     const mvGrid = document.getElementById('mostViewedGrid');
@@ -3314,7 +3564,7 @@ function installApp() {
 
 // ============ KEYBOARD SHORTCUTS ============
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal(); closeMobileSearch(); closeMobileMenu(); }
+    if (e.key === 'Escape') { closeModal(); closeMenuModal(); closeMobileSearch(); closeMobileMenu(); }
     if (e.key === 'f' && !e.ctrlKey && !e.metaKey) {
         if (!document.activeElement?.tagName === 'INPUT') { showFavorites(); }
     }
@@ -3382,16 +3632,13 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(renderRecommendations, 1500);
     requestNotificationPermission();
     
-    // Daily digest notification
-    if (Notification.permission === 'granted') {
-        const lastNotification = localStorage.getItem('lastDailyDigest');
-        const today = new Date().toDateString();
-        if (lastNotification !== today) {
-            setTimeout(() => {
-                sendNotification('🍽️ اكتشف اليوم', 'أكثر من 7000 مطعم في سوريا ينتظرونك!');
-                localStorage.setItem('lastDailyDigest', today);
-            }, 10000);
-        }
+    const lastNotification = localStorage.getItem('lastDailyDigest');
+    const today = new Date().toDateString();
+    if (lastNotification !== today && Notification.permission === 'granted') {
+        setTimeout(() => {
+            sendNotification('🍽️ اكتشف اليوم', 'أكثر من 7000 مطعم في سوريا ينتظرونك!');
+            localStorage.setItem('lastDailyDigest', today);
+        }, 10000);
     }
 });
 
@@ -3410,7 +3657,7 @@ console.log('🍽️ كول واتهنى - دليل المطاعم في سوري
 console.log('📊 عدد المطاعم المحملة:', Object.values(allRestaurants).reduce((sum, arr) => sum + arr.length, 0));
 console.log('❤️ عدد المفضلة:', favorites.length);
 console.log('⭐ عدد النقاط:', userPoints);
-console.log('🌐 مطعم الشواب: تمت إضافته مع الموقع الإلكتروني');
+console.log('🌐 مطعم الشواب: تمت إضافته مع الموقع الإلكتروني والقائمة');
 </script>
 </body>
 </html>
